@@ -1,29 +1,32 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import * as THREE from "three";
+import { useEffect, useRef, useState } from "react";
 import FOG from "vanta/dist/vanta.fog.min";
+import * as THREE from "three";
 
-import { ReactNode } from "react";
-
-export default function VantaBackground({ children }: { children: ReactNode }) {
+export default function VantaBackground({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof FOG> | null>(
     null
   );
-  const vantaRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!vantaEffect && vantaRef.current) {
+    if (!vantaEffect) {
       setVantaEffect(
         FOG({
-          el: vantaRef.current,
+          el: vantaRef.current!,
           THREE: THREE,
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0xffeccc,
+          highlightColor: 0xffd37b,
           midtoneColor: 0xffc2bd,
           lowlightColor: 0xcec4ff,
           baseColor: 0xffffff,
@@ -32,6 +35,7 @@ export default function VantaBackground({ children }: { children: ReactNode }) {
           zoom: 1,
         })
       );
+      setTimeout(() => setIsLoaded(true), 100);
     }
     return () => {
       if (vantaEffect) vantaEffect.destroy();
@@ -40,11 +44,14 @@ export default function VantaBackground({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* Fixed background */}
       <div ref={vantaRef} className="fixed inset-0 -z-10" />
-
-      {/* Scrollable content container */}
-      <div className="relative z-10">{children}</div>
+      <div
+        className={`relative z-10 min-h-screen transition-opacity duration-1000 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {children}
+      </div>
     </>
   );
 }

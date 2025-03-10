@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import VantaBackground from "@/components/background/VantaBackground";
+import { Roboto, Roboto_Mono, Borel } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const robotoMono = Roboto_Mono({
+  weight: ["400", "500"],
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-roboto-mono",
+});
+
+const borel = Borel({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-borel",
 });
 
 export const metadata: Metadata = {
@@ -24,9 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${roboto.variable} ${robotoMono.variable} ${borel.variable}`}
+    >
       <body
-        className={`${geistSans.variable} ${geistMono.variable}`}
+        className={roboto.className}
         style={{ overflow: "auto", height: "100%" }}
       >
         <VantaBackground>{children}</VantaBackground>

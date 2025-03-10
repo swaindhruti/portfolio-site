@@ -9,7 +9,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ["var(--font-roboto)"],
+        "roboto-mono": ["var(--font-roboto-mono)"],
+        borel: ["var(--font-borel)"],
+      },
+    },
   },
   plugins: [],
 };
