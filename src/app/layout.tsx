@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import VantaBackground from "@/components/background/VantaBackground";
 import { Roboto, Roboto_Mono, Borel } from "next/font/google";
+import Navbar from "@/components/marginals/navbar";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -43,7 +44,10 @@ export default function RootLayout({
         className={roboto.className}
         style={{ overflow: "auto", height: "100%" }}
       >
-        <VantaBackground>{children}</VantaBackground>
+        <VantaBackground>
+          <Navbar />
+          {children}
+        </VantaBackground>
       </body>
     </html>
   );
