@@ -31,7 +31,7 @@ export default function VantaBackground({
           lowlightColor: 0xcec4ff,
           baseColor: 0xffffff,
           blurFactor: 0.6,
-          speed: 1,
+          speed: 1.3,
           zoom: 1,
         })
       );
@@ -43,15 +43,18 @@ export default function VantaBackground({
   }, [vantaEffect]);
 
   return (
-    <>
+    <div className="w-full h-full">
+      {/* Vanta background container - fixed position */}
       <div ref={vantaRef} className="fixed inset-0 -z-10" />
+
+      {/* Content container - scrollable */}
       <div
-        className={`relative z-10 min-h-screen transition-opacity duration-1000 ${
+        className={`relative z-10 min-h-screen w-full overflow-y-auto transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
         {children}
       </div>
-    </>
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import "./globals.css";
 import VantaBackground from "@/components/background/VantaBackground";
 import { Roboto, Roboto_Mono, Borel } from "next/font/google";
 import Navbar from "@/components/marginals/navbar";
+import Footer from "@/components/marginals/footer";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -47,6 +48,7 @@ export default function RootLayout({
         <VantaBackground>
           <Navbar />
           {children}
+          <Footer />
         </VantaBackground>
       </body>
     </html>
