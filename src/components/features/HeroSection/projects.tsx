@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,6 +20,7 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const projects = [
   {
@@ -83,49 +86,52 @@ const ProjectSection = () => {
             {projects.map((project, index) => (
               <CarouselItem
                 key={index}
-                className="pl-2 md:pl-4 basis-full xs:basis-4/5 sm:basis-1/2 md:basis-1/3 lg:basis-1/3 xl:basis-1/4"
+                className="pl-2 md:pl-4 basis-full xs:basis-4/5 sm:basis-1/2 md:basis-1/3"
               >
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 * index }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
                   className="h-full"
                 >
-                  <Card className="bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/30 transition-all duration-300 ease-in-out h-full">
+                  <Card className="bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/30 transition-all duration-300 ease-in-out flex flex-col overflow-hidden border-2 border-black/10 hover:border-black py-2">
                     <CardHeader>
                       <CardTitle className="text-lg sm:text-xl md:text-2xl">
                         {project.title}
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-4">
+                    <CardContent className="flex-1">
                       <CardDescription className="text-sm sm:text-base">
                         {project.description}
                       </CardDescription>
-                      <CardFooter className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 justify-center p-0">
-                        <Link href={project.link} className="w-full sm:w-auto">
-                          <Button className="w-full text-sm sm:text-base md:text-lg lg:text-xl font-sans">
-                            View Project
-                          </Button>
-                        </Link>
-                        <Link
-                          href={project.github}
-                          className="w-full sm:w-auto"
-                        >
-                          <Button className="w-full text-sm sm:text-base md:text-lg lg:text-xl font-sans">
-                            View Code
-                          </Button>
-                        </Link>
-                      </CardFooter>
                     </CardContent>
+                    <CardFooter className="flex flex-col sm:flex-row gap-3 justify-around p-4 mt-auto">
+                      <Link href={project.link} className="w-full sm:w-auto">
+                        <Button className="w-full text-sm sm:text-xl group relative overflow-hidden bg-white/10 border-2 border-black text-black backdrop-blur-lg hover:bg-black hover:text-white transition-all duration-300 ease-in-out ">
+                          <span className="flex items-center gap-2">
+                            View Project
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                          </span>
+                        </Button>
+                      </Link>
+                      <Link href={project.github} className="w-full sm:w-auto">
+                        <Button className="w-full text-sm sm:text-xl group relative overflow-hidden bg-black border-2 border-black text-white hover:backdrop-blur-lg hover:bg-white/10 hover:text-black transition-all duration-300 ease-in-out">
+                          <span className="flex items-center gap-2">
+                            View Code
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                          </span>
+                        </Button>
+                      </Link>
+                    </CardFooter>
                   </Card>
                 </motion.div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden lg:flex justify-center">
-            <CarouselPrevious />
-            <CarouselNext />
+          <div className="hidden sm:flex justify-center">
+            <CarouselPrevious className="mr-2" />
+            <CarouselNext className="ml-2" />
           </div>
         </Carousel>
       </motion.div>
@@ -136,8 +142,9 @@ const ProjectSection = () => {
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
       >
-        <Button className="bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-lg sm:text-xl md:text-2xl font-sans px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 lg:px-6 lg:py-7 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
+        <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-lg sm:text-xl md:text-2xl font-sans px-3 py-4 sm:px-4 sm:py-5 md:px-5 md:py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
           See All Projects
+          <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transform group-hover:translate-x-1 transition-transform duration-300" />
         </Button>
       </motion.div>
     </div>

@@ -47,7 +47,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }} // Reduced delay and duration
+        transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }} // Reduced delay and duration
         className={`flex justify-between items-center fixed w-full z-20 pt-6 px-4 md:pt-10 md:px-8 pb-4 transition-all duration-500 ${
           scrolled ? "bg-white/20 backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}

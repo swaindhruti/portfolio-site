@@ -8,9 +8,9 @@ import { useEffect } from "react";
 const Footer = () => {
   // Colors matching the Vanta fog theme
   const vantaColors = {
-    highlight: "rgba(255, 211, 123, 0.7)", // Gold
-    midtone: "rgba(255, 194, 189, 0.7)", // Soft pink
-    lowlight: "rgba(206, 196, 255, 0.7)", // Lavender
+    highlight: "rgba(179, 229, 252, 0.7)", // Light blue (0xb3e5fc)
+    midtone: "rgba(225, 245, 254, 0.7)", // Lighter blue (0xe1f5fe)
+    lowlight: "rgba(255, 255, 255, 0.7)", // White (0xffffff)
   };
 
   // Scroll to top function

@@ -26,10 +26,10 @@ export default function VantaBackground({
           gyroControls: false,
           minHeight: 200.0,
           minWidth: 200.0,
-          highlightColor: 0xffd37b,
-          midtoneColor: 0xffc2bd,
-          lowlightColor: 0xcec4ff,
-          baseColor: 0xffffff,
+          highlightColor: 0xb3e5fc, // Light blue
+          midtoneColor: 0xe1f5fe, // Lighter blue
+          lowlightColor: 0xffffff, // White
+          baseColor: 0xffffff, // White
           blurFactor: 0.6,
           speed: 1.3,
           zoom: 1,
