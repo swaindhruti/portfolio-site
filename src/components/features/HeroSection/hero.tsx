@@ -61,7 +61,7 @@ const HeroSection = () => {
               className="absolute inset-0 flex items-center justify-center rounded-2xl"
               style={{
                 background: isHovered
-                  ? "linear-gradient(135deg, rgba(255,211,123,0.3), rgba(255,194,189,0.3), rgba(206,196,255,0.3))"
+                  ? "linear-gradient(135deg, rgba(179,229,252,0.3), rgba(225,245,254,0.3), rgba(179,229,252,0.3))"
                   : "transparent",
               }}
             >
@@ -75,7 +75,7 @@ const HeroSection = () => {
                 className="text-center px-6 py-3 backdrop-blur-sm bg-white/30 rounded-lg border border-white/50"
               >
                 <p className="text-black text-xl sm:text-2xl font-medium">
-                  Creative Developer
+                  Fun fact: I&apos;m a mining engineer
                 </p>
               </motion.div>
             </motion.div>
@@ -168,11 +168,13 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center md:justify-start mt-8 md:mt-12 space-y-4 sm:space-y-0 sm:space-x-4 md:space-x-12"
           >
             <Button className="bg-transparent text-black rounded-xl hover:bg-black hover:text-white text-xl md:text-2xl font-sans px-4 py-6 md:px-5 md:py-7 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out w-full sm:w-auto">
-              See My Work
-              <ArrowRight className="hover:translate-x-1 transition-transform" />
+              <div className="flex items-center gap-2 group">
+                <span>Contact Me</span>
+                <ArrowRight className="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
             </Button>
             <Button className="bg-black text-white rounded-xl hover:bg-transparent hover:text-black text-xl md:text-2xl font-sans px-4 py-6 md:px-5 md:py-7 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out w-full sm:w-auto">
-              Contact Me
+              See My Resume
             </Button>
           </motion.div>
           <motion.div

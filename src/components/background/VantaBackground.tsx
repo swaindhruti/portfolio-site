@@ -28,10 +28,10 @@ export default function VantaBackground({
           minWidth: 200.0,
           highlightColor: 0xb3e5fc, // Light blue
           midtoneColor: 0xe1f5fe, // Lighter blue
-          lowlightColor: 0xffffff, // White
+          lowlightColor: 0xb3e5fc, // Light blue (similar to highlight)
           baseColor: 0xffffff, // White
           blurFactor: 0.6,
-          speed: 1.3,
+          speed: 1.5,
           zoom: 1,
         })
       );

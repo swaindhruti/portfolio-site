@@ -35,11 +35,11 @@ const Navbar = () => {
 
   const navItems = [
     { label: "Home", href: "#" },
-    { label: "Work", href: "#" },
+    { label: "Projects", href: "#" },
+    { label: "Experience", href: "#" },
     { label: "Blogs", href: "#" },
     { label: "Community", href: "#" },
     { label: "Contact", href: "#" },
-    { label: "Resume", href: "#" },
   ];
 
   return (
@@ -47,7 +47,7 @@ const Navbar = () => {
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }} // Reduced delay and duration
+        transition={{ delay: 0.2, duration: 0.2, ease: "easeOut" }} // Reduced delay and duration
         className={`flex justify-between items-center fixed w-full z-20 pt-6 px-4 md:pt-10 md:px-8 pb-4 transition-all duration-500 ${
           scrolled ? "bg-white/20 backdrop-blur-md shadow-sm" : "bg-transparent"
         }`}
