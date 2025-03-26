@@ -74,7 +74,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="text-center px-6 py-3 backdrop-blur-sm bg-white/30 rounded-lg border border-white/50"
               >
-                <p className="text-black text-xl sm:text-2xl font-medium">
+                <p className="text-black text-xl sm:text-2xl font-medium font-sans tracking-wide">
                   Fun fact: I&apos;m a mining engineer
                 </p>
               </motion.div>

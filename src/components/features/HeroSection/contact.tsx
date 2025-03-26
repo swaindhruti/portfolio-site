@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Send } from "lucide-react";
+import { useRef } from "react";
 
 type FormData = {
   name: string;
@@ -17,6 +18,9 @@ type FormErrors = {
 };
 
 const ContactSection: React.FC = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -80,36 +84,65 @@ const ContactSection: React.FC = () => {
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   return (
-    <section className="min-h-screen py-16 px-4">
+    <section ref={sectionRef} className="min-h-screen py-16 px-4">
       <div className="max-w-3xl mx-auto">
         <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl text-black font-borel mb-4">
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl sm:text-5xl md:text-6xl text-black font-borel mb-4"
+          >
             Get in Touch
-          </h2>
-          <p className="text-xl text-gray-600 font-sans max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-600 font-sans max-w-2xl mx-auto"
+          >
             Have a question or want to work together? Drop me a message and
             I&apos;ll get back to you as soon as possible.
-          </p>
+          </motion.p>
         </motion.div>
 
         <motion.div
-          className="backdrop-blur-md bg-transparent rounded-2xl p-8 md:p-12 shadow-2xl border-2 border-black"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="bg-white/10 transition-all duration-300 ease-in-out border-2 border-black/10 backdrop-blur-md rounded-2xl p-8 md:p-12 shadow-2xl"
         >
           {isSubmitted ? (
             <motion.div
+              variants={itemVariants}
               className="text-center py-12"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              initial="hidden"
+              animate="visible"
             >
               <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-400/20">
                 <svg
@@ -133,13 +166,15 @@ const ContactSection: React.FC = () => {
               </p>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <motion.form
+              onSubmit={handleSubmit}
+              variants={containerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="space-y-6"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
+                <motion.div variants={itemVariants}>
                   <label
                     htmlFor="name"
                     className="block text-xl font-semibold tracking-wide text-black font-sans mb-2"
@@ -153,8 +188,8 @@ const ContactSection: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg bg-white/5 border-2 ${
-                      errors.name ? "border-red-400" : "border-black"
-                    } text-white placeholder-blue-200/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent backdrop-blur-sm`}
+                      errors.name ? "border-red-400" : "border-black/30"
+                    } text-black placeholder-gray-600 focus:outline-none text-lg font-sans tracking-wide backdrop-blur-sm focus:border-black`}
                     placeholder="Your name"
                   />
                   {errors.name && (
@@ -162,11 +197,7 @@ const ContactSection: React.FC = () => {
                   )}
                 </motion.div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
+                <motion.div variants={itemVariants}>
                   <label
                     htmlFor="email"
                     className="block text-xl font-semibold tracking-wide text-black font-sans mb-2"
@@ -180,8 +211,8 @@ const ContactSection: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg bg-white/5 border-2 ${
-                      errors.email ? "border-red-400" : "border-black"
-                    } text-white placeholder-blue-200/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent backdrop-blur-sm`}
+                      errors.email ? "border-red-400" : "border-black/30"
+                    } text-black placeholder-gray-600 tracking-wide font-sans text-lg focus:outline-none  backdrop-blur-sm focus:border-black`}
                     placeholder="Your email"
                   />
                   {errors.email && (
@@ -190,11 +221,7 @@ const ContactSection: React.FC = () => {
                 </motion.div>
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-              >
+              <motion.div variants={itemVariants}>
                 <label
                   htmlFor="message"
                   className="block text-xl font-semibold tracking-wide text-black font-sans mb-2"
@@ -208,8 +235,8 @@ const ContactSection: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 rounded-lg bg-white/5 border-2 ${
-                    errors.message ? "border-red-400" : "border-black"
-                  } text-white placeholder-blue-200/50 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-transparent backdrop-blur-sm`}
+                    errors.message ? "border-red-400" : "border-black/30"
+                  } text-black tracking-wide text-lg placeholder-gray-600 font-sans focus:outline-none  backdrop-blur-sm focus:border-black`}
                   placeholder="Your message"
                 ></textarea>
                 {errors.message && (
@@ -217,15 +244,10 @@ const ContactSection: React.FC = () => {
                 )}
               </motion.div>
 
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 }}
-              >
+              <motion.div variants={itemVariants} className="text-center">
                 <motion.button
                   type="submit"
-                  className="inline-flex items-center justify-center px-8 py-4 border-black hover:text-black border-2 rounded-xl text-white bg-black hover:bg-transparent font-semibold font-sans shadow-lg tracking-wide text-lg transition-all duration-200"
+                  className="inline-flex items-center justify-center px-8 py-4 border-black hover:text-black border-2 rounded-xl text-white bg-black hover:bg-transparent font-medium font-sans shadow-lg tracking-wide text-lg transition-all duration-200"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
@@ -262,7 +284,7 @@ const ContactSection: React.FC = () => {
                   )}
                 </motion.button>
               </motion.div>
-            </form>
+            </motion.form>
           )}
         </motion.div>
       </div>

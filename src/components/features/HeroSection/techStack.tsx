@@ -56,11 +56,39 @@ const techStacks = [
     name: "Vue.js",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
   },
+  {
+    name: "GraphQL",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+  },
+  {
+    name: "RedwoodJS",
+    logo: "https://avatars.githubusercontent.com/u/45050444?s=200&v=4",
+  },
+  {
+    name: "Next Auth",
+    logo: "https://next-auth.js.org/img/logo/logo-sm.png",
+  },
+  {
+    name: "Vite",
+    logo: "https://vitejs.dev/logo.svg",
+  },
+  {
+    name: "Docker",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  },
+  {
+    name: "Dart",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+  },
+  {
+    name: "Flutter",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+  },
 ];
 
 const TechStackSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-4  px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-gradient-to-b from-transparent to-white/5 mt-20">
+    <div className="flex flex-col items-center justify-center space-y-4  px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-transparent mt-20">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
