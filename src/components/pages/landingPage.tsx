@@ -1,8 +1,8 @@
-import HeroSection from "../features/HeroSection/hero";
-import ProjectSection from "../features/HeroSection/projects";
-import TechStackSection from "../features/HeroSection/techStack";
-import ContactSection from "../features/HeroSection/contact";
-import WorkExperienceSection from "../features/HeroSection/work";
+import HeroSection from "../features/landingPage/hero";
+import ProjectSection from "../features/landingPage/projects";
+import TechStackSection from "../features/landingPage/techStack";
+import ContactSection from "../features/landingPage/contact";
+import WorkExperienceSection from "../features/landingPage/work";
 
 const LandingPage = () => {
   return (

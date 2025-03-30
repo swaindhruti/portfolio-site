@@ -48,9 +48,9 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: "Home", href: "#" },
-    { label: "Projects", href: "#" },
-    { label: "Experience", href: "#" },
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Experience", href: "/experience" },
     { label: "Blogs", href: "#" },
     { label: "Community", href: "#" },
     { label: "Contact", href: "#" },
@@ -86,9 +86,14 @@ const Navbar = () => {
           <div className="hidden lg:flex space-x-2">
             {navItems.map((item) => (
               <Link href={item.href} key={item.label}>
-                <Button variant={"link"} className="text-2xl font-borel">
-                  {item.label}
-                </Button>
+                <span className="nav-item-wrapper relative py-3">
+                  <Button
+                    variant={"link"}
+                    className="text-2xl font-borel no-underline hover:no-underline"
+                  >
+                    {item.label}
+                  </Button>
+                </span>
               </Link>
             ))}
           </div>
