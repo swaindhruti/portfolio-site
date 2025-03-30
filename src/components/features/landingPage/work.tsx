@@ -179,7 +179,7 @@ const WorkExperienceSection = () => {
         initial={{ opacity: 0, scale: 0.8, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+        transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
       >
         <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-lg sm:text-xl md:text-2xl font-sans px-5 py-6 sm:px-5 sm:py-5 md:px-6 md:py-7 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
           Work Experience

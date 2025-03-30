@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ProjectCard from "@/components/shared/projectCard";
+import ProjectCard from "@/components/features/projectsPage/projectCard";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -94,10 +94,31 @@ const ProjectContainer = () => {
   const allProjectsShown = visibleProjects >= projects.length;
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-16 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-12 mt-28">
-      <h1 className="text-4xl lg:text-6xl font-borel text-center mb-8">
-        My Projects
-      </h1>
+    <div className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 md:space-y-12 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-12 mt-28">
+      <div className="space-y-4 sm:space-y-6 md:space-y-8">
+        <motion.h1
+          className="text-4xl lg:text-6xl font-borel text-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          My Projects
+        </motion.h1>
+
+        <motion.div
+          className="text-center max-w-3xl mx-auto text-gray-600 mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
+          <p className="text-lg">
+            Explore my portfolio of web development projects showcasing my
+            skills and expertise. Additionally, delve into my DevOps projects,
+            highlighting my experience in CI/CD pipelines, cloud infrastructure,
+            and automation tools.
+          </p>
+        </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-8 md:px-8 w-full">
         <AnimatePresence>

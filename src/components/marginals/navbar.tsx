@@ -51,7 +51,7 @@ const Navbar = () => {
     { label: "Home", href: "/" },
     { label: "Projects", href: "/projects" },
     { label: "Experience", href: "/experience" },
-    { label: "Blogs", href: "#" },
+    { label: "Blogs", href: "/blogs" },
     { label: "Community", href: "#" },
     { label: "Contact", href: "#" },
   ];
