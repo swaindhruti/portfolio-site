@@ -118,7 +118,7 @@ const ContactSection: React.FC = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl sm:text-5xl md:text-6xl text-black font-borel mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black font-borel mb-4"
           >
             Get in Touch
           </motion.h2>
@@ -247,7 +247,7 @@ const ContactSection: React.FC = () => {
               <motion.div variants={itemVariants} className="text-center">
                 <motion.button
                   type="submit"
-                  className="inline-flex items-center justify-center px-8 py-4 border-black hover:text-black border-2 rounded-xl text-white bg-black hover:bg-transparent font-medium font-sans shadow-lg tracking-wide text-lg transition-all duration-200"
+                  className="inline-flex items-center justify-center px-8 py-4 border-black hover:text-black border-2 rounded-xl text-white bg-black hover:bg-transparent font-medium font-sans shadow-lg tracking-wide text-xl transition-all duration-200"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}

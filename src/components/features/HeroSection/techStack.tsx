@@ -88,13 +88,13 @@ const techStacks = [
 
 const TechStackSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-4  px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-transparent mt-20">
+    <div className="flex flex-col items-center justify-center space-y-4  px-4 sm:px-6 md:px-8 py-8 md:py-12 bg-transparent mt-10 sm:mt-12">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="font-borel text-4xl sm:text-5xl md:text-6xl text-center mb-4"
+        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center mb-4"
       >
         Technology Stack
       </motion.h1>
@@ -103,7 +103,7 @@ const TechStackSection = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
         className="w-full max-w-screen-2xl"
       >
         <div className="py-6">
@@ -125,7 +125,7 @@ const TechStackSection = () => {
                       initial={{ opacity: 0, scale: 0.9, y: 10 }}
                       whileInView={{ opacity: 1, scale: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.4 }}
+                      transition={{ duration: 0.2, delay: 0.2 }}
                       className="h-full"
                     >
                       <Card className="bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/30 transition-all duration-300 ease-in-out flex flex-col overflow-hidden group border-2 border-black/10 hover:border-black h-40 hover:scale-105">
@@ -153,8 +153,8 @@ const TechStackSection = () => {
               ))}
             </CarouselContent>
             <div className="hidden sm:flex justify-center">
-              <CarouselPrevious className="mr-2" />
-              <CarouselNext className="ml-2" />
+              <CarouselPrevious className="mr-2 bg-white/60" />
+              <CarouselNext className="ml-2 bg-white/60" />
             </div>
           </Carousel>
         </div>

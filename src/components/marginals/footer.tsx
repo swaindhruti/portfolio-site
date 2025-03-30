@@ -1,7 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Heart, ChevronUp } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Heart,
+  ChevronUp,
+  Mail,
+  Send,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
@@ -69,31 +77,31 @@ const Footer = () => {
 
           {/* Middle section - Links */}
           <div className="md:w-1/3 flex flex-col items-center">
-            <h3 className="text-xl md:text-2xl font-medium mb-4">
+            <h3 className="text-xl md:text-2xl font-medium mb-4 font-sans">
               Quick Links
             </h3>
             <div className="flex flex-col gap-3 items-center">
               <a
                 href="#"
-                className="text-lg hover:underline transition-all duration-300"
+                className="text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
               >
                 Home
               </a>
               <a
                 href="#"
-                className="text-lg hover:underline transition-all duration-300"
+                className="text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
               >
                 About
               </a>
               <a
                 href="#"
-                className="text-lg hover:underline transition-all duration-300"
+                className="text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
               >
                 Projects
               </a>
               <a
                 href="#"
-                className="text-lg hover:underline transition-all duration-300"
+                className="text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
               >
                 Contact
               </a>
@@ -102,11 +110,12 @@ const Footer = () => {
 
           {/* Right section - Contact */}
           <div className="md:w-1/3 flex flex-col items-center md:items-end">
-            <h3 className="text-xl md:text-2xl font-medium mb-4">
+            <h3 className="text-xl md:text-2xl font-medium mb-4 font-sans">
               Get In Touch
             </h3>
-            <Button className="bg-black text-white rounded-xl hover:bg-transparent hover:text-black text-lg font-sans px-5 py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out mb-6">
+            <Button className="group bg-black text-white rounded-xl hover:bg-transparent hover:text-black text-lg font-sans px-5 py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out mb-6">
               Contact Me
+              <Send className="transform transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             <div className="flex gap-4 mt-2">
               <motion.a
@@ -114,7 +123,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-300"
+                transition={{ duration: 0.1 }}
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-200"
               >
                 <Github size={24} />
               </motion.a>
@@ -123,7 +133,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-300"
+                transition={{ duration: 0.1 }}
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-200"
               >
                 <Twitter size={24} />
               </motion.a>
@@ -132,9 +143,20 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-300"
+                transition={{ duration: 0.1 }}
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-200"
               >
                 <Linkedin size={24} />
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                transition={{ duration: 0.1 }}
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-200"
+              >
+                <Mail size={24} />
               </motion.a>
             </div>
           </div>
@@ -153,37 +175,6 @@ const Footer = () => {
             <Heart size={16} className="text-red-500" /> All rights reserved.
           </p>
         </motion.div>
-
-        {/* Floating particles for continuity with hero section */}
-        <div className="relative">
-          <motion.div
-            className="absolute w-6 h-6 rounded-full bg-black/10 blur-sm bottom-0 left-1/4"
-            animate={{
-              y: [-15, 0, -15],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div
-            className="absolute w-4 h-4 rounded-full bg-black/10 blur-sm bottom-8 right-1/4"
-            animate={{
-              y: [-10, 5, -10],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 2.5,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-              delay: 0.3,
-            }}
-          />
-        </div>
       </div>
     </footer>
   );

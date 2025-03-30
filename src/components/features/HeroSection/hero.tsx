@@ -34,7 +34,7 @@ const HeroSection = () => {
         {/* Photo and Quote Section (Top for mobile, Right for desktop) */}
         <div className="flex flex-col items-center md:order-2 w-full md:w-auto mt-16 md:mt-0">
           <motion.div
-            className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] mb-4 rounded-2xl overflow-hidden"
+            className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] mb-4 rounded-2xl overflow-hidden"
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             whileHover={{
@@ -148,7 +148,7 @@ const HeroSection = () => {
 
         {/* Text Content Section (Bottom for mobile, Left for desktop) */}
         <div className="max-w-4xl md:order-1 mt-8 md:mt-0 px-4 ">
-          <h1 className="font-borel text-4xl sm:text-5xl md:text-6xl lg:text-8xl leading-normal sm:leading-normal md:leading-normal lg:leading-snug text-center md:text-left">
+          <h1 className="font-borel text-4xl sm:text-5xl md:text-6xl xl:text-8xl leading-normal sm:leading-normal md:leading-normal xl:leading-[1.37] text-center md:text-left">
             Hi, I am Dhrutinandan
           </h1>
           <motion.h4
