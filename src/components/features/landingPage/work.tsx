@@ -88,22 +88,22 @@ const workExperiences = [
 
 const WorkExperienceSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 md:space-y-16 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-12">
+    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-8 sm:mt-10 md:mt-12">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center"
+        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-center"
       >
         Professional Journey
       </motion.h1>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         className="w-full max-w-screen-2xl"
       >
         <Carousel
@@ -117,7 +117,7 @@ const WorkExperienceSection = () => {
             {workExperiences.map((experience, index) => (
               <CarouselItem
                 key={index}
-                className="pl-2 md:pl-4 basis-full lg:basis-1/2 xl:basis-1/3"
+                className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 xl:basis-1/3"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -126,12 +126,12 @@ const WorkExperienceSection = () => {
                   transition={{ duration: 0.2, delay: 0.2 }}
                   className="h-full"
                 >
-                  <Card className="h-[350px] sm:h-[400px] md:h-[380px] bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/40 transition-all duration-300 ease-in-out flex flex-col overflow-hidden border-2 border-black/10 hover:border-black">
+                  <Card className="h-[360px] bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/40 transition-all duration-300 ease-in-out flex flex-col overflow-hidden border-2 border-black/10 hover:border-black mb-2">
                     <CardHeader className="p-3 sm:p-4">
-                      <CardTitle className="text-lg sm:text-xl md:text-2xl font-sans tracking-wide font-semibold">
+                      <CardTitle className="text-lg sm:text-xl md:text-xl lg:text-2xl font-sans tracking-wide font-semibold">
                         {experience.title}
                       </CardTitle>
-                      <p className="text-sm sm:text-lg text-gray-600 font-sans tracking-wide">
+                      <p className="text-sm sm:text-base md:text-lg text-gray-600 font-sans tracking-wide">
                         {experience.company}
                       </p>
                     </CardHeader>
@@ -155,8 +155,8 @@ const WorkExperienceSection = () => {
                         href={experience.link}
                         className="w-full flex justify-center"
                       >
-                        <Button className="w-full h-auto text-xs sm:text-sm md:text-base group relative overflow-hidden bg-black border-2 border-black text-white hover:backdrop-blur-lg hover:bg-white/10 hover:text-black transition-all duration-300 ease-in-out py-2 sm:py-3 px-2 sm:px-3 rounded-xl">
-                          <span className="flex items-center justify-center gap-1 sm:gap-2 text-lg xs:text-xl font-sans">
+                        <Button className="w-full h-auto text-xs sm:text-sm md:text-base group relative overflow-hidden bg-black border-2 border-black text-white hover:backdrop-blur-lg hover:bg-white/10 hover:text-black transition-all duration-300 ease-in-out py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl">
+                          <span className="flex items-center justify-center gap-1 sm:gap-2 text-base sm:text-lg font-sans">
                             {experience.duration}
                             <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                           </span>
@@ -168,7 +168,7 @@ const WorkExperienceSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden 2xl:flex justify-center">
+          <div className="hidden xl:flex justify-center mt-4">
             <CarouselPrevious className="mr-2 bg-white/60" />
             <CarouselNext className="ml-2 bg-white/60" />
           </div>
@@ -176,14 +176,15 @@ const WorkExperienceSection = () => {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 50 }}
+        initial={{ opacity: 0, scale: 0.8, y: 30 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
+        className="mt-2 sm:mt-4"
       >
-        <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-lg sm:text-xl md:text-2xl font-sans px-5 py-6 sm:px-5 sm:py-5 md:px-6 md:py-7 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
+        <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-base sm:text-lg md:text-xl lg:text-2xl font-sans px-4 py-5 sm:px-5 sm:py-6 md:px-6 md:py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
           Work Experience
-          <ArrowRight className="w-5 h-5 md:w-7 md:h-7 transform group-hover:translate-x-2 transition-transform duration-300" />
+          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transform group-hover:translate-x-2 transition-transform duration-300" />
         </Button>
       </motion.div>
     </div>

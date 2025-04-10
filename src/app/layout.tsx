@@ -39,15 +39,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${roboto.variable} ${robotoMono.variable} ${borel.variable}`}
+      className={`${roboto.variable} ${robotoMono.variable} ${borel.variable} overflow-x-hidden`}
     >
-      <body
-        className={roboto.className}
-        style={{ overflow: "auto", height: "100%" }}
-      >
+      <body className={`${roboto.className} overflow-x-hidden scrollbar-hide`}>
         <VantaBackground>
           <Navbar />
-          {children}
+          <main className="relative z-10">{children}</main>
           <Footer />
         </VantaBackground>
       </body>

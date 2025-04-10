@@ -16,10 +16,10 @@ export default function VantaBackground({
   const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!vantaEffect) {
+    if (!vantaEffect && vantaRef.current) {
       setVantaEffect(
         FOG({
-          el: vantaRef.current!,
+          el: vantaRef.current,
           THREE: THREE,
           mouseControls: true,
           touchControls: true,
@@ -31,11 +31,12 @@ export default function VantaBackground({
           lowlightColor: 0xb3e5fc, // Light blue (similar to highlight)
           baseColor: 0xffffff, // White
           blurFactor: 0.6,
-          speed: 2,
+          speed: 1.5, // Slightly reduced for better performance on laptops
           zoom: 1,
         })
       );
-      setTimeout(() => setIsLoaded(true), 100);
+      // Reduce fade-in time for better responsiveness
+      setTimeout(() => setIsLoaded(true), 75);
     }
     return () => {
       if (vantaEffect) vantaEffect.destroy();
@@ -45,11 +46,11 @@ export default function VantaBackground({
   return (
     <div className="w-full h-full">
       {/* Vanta background container - fixed position */}
-      <div ref={vantaRef} className="fixed inset-0 -z-10" />
+      <div ref={vantaRef} className="fixed inset-0 -z-10 w-full h-full" />
 
       {/* Content container - scrollable */}
       <div
-        className={`relative z-10 min-h-screen w-full overflow-y-auto transition-opacity duration-1000 ${
+        className={`relative z-10 duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >

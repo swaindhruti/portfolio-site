@@ -11,6 +11,7 @@ import {
 import ProjectCard from "@/components/features/projectsPage/projectCard";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -51,25 +52,50 @@ const projects = [
   },
 ];
 
+// Container animation variant
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Delay between each child animation
+      delayChildren: 0.3, // Delay before starting the first child animation
+    },
+  },
+};
+
+// Individual card animation variant
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 const ProjectSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-16 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-12 mt-10 sm:mt-0">
+    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-10 mt-6 sm:mt-8 md:mt-10">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center mt-12 xs:mt-0"
+        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-center mt-8 sm:mt-4 md:mt-0"
       >
         Selected Projects
       </motion.h1>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-        className="w-full max-w-screen-2xl"
+        variants={containerVariants}
+        className="w-full max-w-screen-2xl mt-2 sm:mt-4"
       >
         <Carousel
           className="w-full"
@@ -78,17 +104,19 @@ const ProjectSection = () => {
             loop: true,
           }}
         >
-          <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4 mb-2">
             {projects.map((project, index) => (
               <CarouselItem
                 key={index}
-                className="pl-1 sm:pl-2 md:pl-4 basis-full lg:basis-1/2 xl:basis-1/3"
+                className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 xl:basis-1/3"
               >
-                <ProjectCard project={project} />
+                <motion.div variants={cardVariants}>
+                  <ProjectCard project={project} />
+                </motion.div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden 2xl:flex md:justify-center">
+          <div className="hidden xl:flex justify-center mt-4">
             <CarouselPrevious className="mr-4 bg-white/60" />
             <CarouselNext className="ml-4 bg-white/60" />
           </div>
@@ -96,16 +124,18 @@ const ProjectSection = () => {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 50 }}
+        initial={{ opacity: 0, scale: 0.8, y: 30 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
+        transition={{ duration: 0.4, ease: "easeOut", delay: 0.8 }} // Increased delay to allow cards to animate first
         className="mt-4 sm:mt-6"
       >
-        <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-lg sm:text-xl md:text-2xl font-sans px-5 py-6 sm:px-5 sm:py-5 md:px-6 md:py-7 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
-          See All Projects
-          <ArrowRight className="w-5 h-5 md:w-7 md:h-7 transform group-hover:translate-x-2 transition-transform duration-300" />
-        </Button>
+        <Link href="/projects">
+          <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-base sm:text-lg md:text-xl lg:text-2xl font-sans px-4 py-5 sm:px-5 sm:py-5 md:px-6 md:py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
+            See All Projects
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transform group-hover:translate-x-2 transition-transform duration-300" />
+          </Button>
+        </Link>
       </motion.div>
     </div>
   );
