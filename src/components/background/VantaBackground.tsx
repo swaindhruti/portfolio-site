@@ -1,52 +1,35 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import FOG from "vanta/dist/vanta.fog.min";
-import * as THREE from "three";
+import { useEffect, useState } from "react";
 
-export default function VantaBackground({
+export default function StaticBackground({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [vantaEffect, setVantaEffect] = useState<ReturnType<typeof FOG> | null>(
-    null
-  );
   const [isLoaded, setIsLoaded] = useState(false);
-  const vantaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!vantaEffect && vantaRef.current) {
-      setVantaEffect(
-        FOG({
-          el: vantaRef.current,
-          THREE: THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          highlightColor: 0xb3e5fc, // Light blue
-          midtoneColor: 0xe1f5fe, // Lighter blue
-          lowlightColor: 0xb3e5fc, // Light blue (similar to highlight)
-          baseColor: 0xffffff, // White
-          blurFactor: 0.6,
-          speed: 1.5, // Slightly reduced for better performance on laptops
-          zoom: 1,
-        })
-      );
-      // Reduce fade-in time for better responsiveness
-      setTimeout(() => setIsLoaded(true), 75);
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
+    // Simple fade-in effect
+    setTimeout(() => setIsLoaded(true), 75);
+  }, []);
 
   return (
     <div className="w-full h-full">
-      {/* Vanta background container - fixed position */}
-      <div ref={vantaRef} className="fixed inset-0 -z-10 w-full h-full" />
+      {/* Static gradient background container - fixed position */}
+      <div className="fixed inset-0 -z-10 w-full h-full bg-gradient-to-br from-white via-blue-50 to-blue-100">
+        {/* Subtle noise texture overlay */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
+
+        {/* Subtle blue blur effect in the corner */}
+        <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-blue-200/30 blur-3xl"></div>
+        <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-blue-200/30 blur-3xl"></div>
+      </div>
 
       {/* Content container - scrollable */}
       <div

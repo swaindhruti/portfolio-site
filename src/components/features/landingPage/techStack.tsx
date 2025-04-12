@@ -10,81 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-
-const techStacks = [
-  {
-    name: "Express.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  },
-  {
-    name: "Hono",
-    logo: "https://hono.dev/images/logo.svg",
-  },
-  {
-    name: "Next.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-  },
-  {
-    name: "React",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  },
-  {
-    name: "MongoDB",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-  },
-  {
-    name: "Google Cloud",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
-  },
-  {
-    name: "Git",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  },
-  {
-    name: "GitHub",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-  },
-  {
-    name: "PostgreSQL",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-  },
-  {
-    name: "Prisma",
-    logo: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg",
-  },
-  {
-    name: "Vue.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
-  },
-  {
-    name: "GraphQL",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
-  },
-  {
-    name: "RedwoodJS",
-    logo: "https://avatars.githubusercontent.com/u/45050444?s=200&v=4",
-  },
-  {
-    name: "Next Auth",
-    logo: "https://next-auth.js.org/img/logo/logo-sm.png",
-  },
-  {
-    name: "Vite",
-    logo: "https://vitejs.dev/logo.svg",
-  },
-  {
-    name: "Docker",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-  },
-  {
-    name: "Dart",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
-  },
-  {
-    name: "Flutter",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
-  },
-];
+import { techStacks } from "@/config/techStack/Data";
 
 const TechStackSection = () => {
   return (
@@ -94,7 +20,7 @@ const TechStackSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-center mb-2 sm:mb-4"
+        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-center mb-2 "
       >
         Technology Stack
       </motion.h1>
@@ -104,7 +30,7 @@ const TechStackSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        className="w-full max-w-screen-2xl"
+        className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8  pr-4 sm:pr-6 md:pr-8"
       >
         <div className="py-4 sm:py-6">
           <Carousel
@@ -152,10 +78,9 @@ const TechStackSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="hidden xl:flex justify-center mt-4">
-              <CarouselPrevious className="mr-2 bg-white/60" />
-              <CarouselNext className="ml-2 bg-white/60" />
-            </div>
+            <CarouselPrevious className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
+
+            <CarouselNext className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
           </Carousel>
         </div>
       </motion.div>

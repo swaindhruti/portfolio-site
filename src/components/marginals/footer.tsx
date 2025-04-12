@@ -9,6 +9,7 @@ import {
   ChevronUp,
   Mail,
   Send,
+  RssIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
@@ -117,46 +118,49 @@ const Footer = () => {
               Contact Me
               <Send className="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
-            <div className="flex gap-3 sm:gap-4 mt-1 sm:mt-2">
+            <div className="flex gap-3 sm:gap-4 mt-1">
               <motion.a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
-                transition={{ duration: 0.1 }}
-                className="border-2 border-black p-1.5 sm:p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-100"
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
               >
-                <Github size={20} className="sm:w-6 sm:h-6" />
+                <Github size={22} className="md:w-[22px] md:h-[22px]" />
               </motion.a>
               <motion.a
-                href="https://twitter.com"
+                href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
-                transition={{ duration: 0.1 }}
-                className="border-2 border-black p-1.5 sm:p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-100"
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
               >
-                <Twitter size={20} className="sm:w-6 sm:h-6" />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                transition={{ duration: 0.1 }}
-                className="border-2 border-black p-1.5 sm:p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-100"
-              >
-                <Linkedin size={20} className="sm:w-6 sm:h-6" />
+                <Twitter size={22} className="md:w-[22px] md:h-[22px]" />
               </motion.a>
               <motion.a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 5 }}
-                transition={{ duration: 0.1 }}
-                className="border-2 border-black p-1.5 sm:p-2 rounded-xl hover:bg-black hover:text-white transition-all duration-100"
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
               >
-                <Mail size={20} className="sm:w-6 sm:h-6" />
+                <Linkedin size={22} className="md:w-[22px] md:h-[22px]" />
+              </motion.a>
+              <motion.a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
+              >
+                <RssIcon size={22} className="md:w-[22px] md:h-[22px]" />
+              </motion.a>
+              <motion.a
+                href="mailto:example@email.com"
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
+              >
+                <Mail size={22} className="md:w-[22px] md:h-[22px]" />
               </motion.a>
             </div>
           </div>

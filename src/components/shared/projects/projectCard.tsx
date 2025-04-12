@@ -31,7 +31,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
       transition={{ duration: 0.2, delay: 0.1 }}
       className="h-full"
     >
-      <Card className="bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/40 transition-all duration-300 ease-in-out flex flex-col border-2 border-black/10 hover:border-black overflow-hidden h-[400px] sm:h-[480px] lg:h-[500px]">
+      <Card className="bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/40 transition-all duration-300 ease-in-out flex flex-col border-2 border-black/10 hover:border-black overflow-hidden h-[440px] sm:h-[460px]">
         {/* Fixed height image container */}
         <div className="relative w-full h-[180px] sm:h-[200px] md:h-[220px] overflow-hidden flex-shrink-0">
           <Image
@@ -44,13 +44,13 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
         {/* Content area with fixed structure */}
         <div className="flex flex-col flex-grow overflow-hidden">
-          <CardHeader className="p-3 sm:p-4 md:p-5">
+          <CardHeader className="pl-3 sm:pl-4 md:pl-5 pb-3">
             <CardTitle className="text-base sm:text-lg md:text-xl font-sans line-clamp-2">
               {project.title}
             </CardTitle>
           </CardHeader>
 
-          <CardContent className="p-3 sm:p-4 md:p-5 pt-0 flex-grow overflow-y-auto">
+          <CardContent className="pl-3 sm:pl-4 md:pl-5 flex-grow overflow-y-auto">
             <CardDescription className="text-xs sm:text-sm md:text-base font-sans">
               {project.description}
             </CardDescription>

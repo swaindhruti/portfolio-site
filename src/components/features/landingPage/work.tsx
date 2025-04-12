@@ -104,7 +104,7 @@ const WorkExperienceSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        className="w-full max-w-screen-2xl"
+        className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8  pr-4 sm:pr-6 md:pr-8"
       >
         <Carousel
           className="w-full"
@@ -117,7 +117,7 @@ const WorkExperienceSection = () => {
             {workExperiences.map((experience, index) => (
               <CarouselItem
                 key={index}
-                className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 xl:basis-1/3"
+                className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -168,10 +168,11 @@ const WorkExperienceSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden xl:flex justify-center mt-4">
-            <CarouselPrevious className="mr-2 bg-white/60" />
-            <CarouselNext className="ml-2 bg-white/60" />
-          </div>
+
+          {/* Repositioned navigation buttons for better visibility on all screen sizes */}
+          <CarouselPrevious className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
+
+          <CarouselNext className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
         </Carousel>
       </motion.div>
 
@@ -182,10 +183,12 @@ const WorkExperienceSection = () => {
         transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 }}
         className="mt-2 sm:mt-4"
       >
-        <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-base sm:text-lg md:text-xl lg:text-2xl font-sans px-4 py-5 sm:px-5 sm:py-6 md:px-6 md:py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
-          Work Experience
-          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transform group-hover:translate-x-2 transition-transform duration-300" />
-        </Button>
+        <Link href="/experience">
+          <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-base sm:text-lg md:text-xl font-sans px-4 py-4 sm:px-5 sm:py-5 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
+            Work Experience
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-2 transition-transform duration-300" />
+          </Button>
+        </Link>
       </motion.div>
     </div>
   );

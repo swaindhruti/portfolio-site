@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import ProjectCard from "@/components/features/projectsPage/projectCard";
+import ProjectCard from "@/components/shared/projects/projectCard";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -79,7 +79,7 @@ const cardVariants = {
 
 const ProjectSection = () => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-10 mt-6 sm:mt-8 md:mt-10">
+    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 mt-6 sm:mt-8 md:mt-10">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ const ProjectSection = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={containerVariants}
-        className="w-full max-w-screen-2xl mt-2 sm:mt-4"
+        className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8  pr-4 sm:pr-6 md:pr-8 "
       >
         <Carousel
           className="w-full"
@@ -108,7 +108,7 @@ const ProjectSection = () => {
             {projects.map((project, index) => (
               <CarouselItem
                 key={index}
-                className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 xl:basis-1/3"
+                className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3"
               >
                 <motion.div variants={cardVariants}>
                   <ProjectCard project={project} />
@@ -116,10 +116,12 @@ const ProjectSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden xl:flex justify-center mt-4">
-            <CarouselPrevious className="mr-4 bg-white/60" />
-            <CarouselNext className="ml-4 bg-white/60" />
-          </div>
+
+          {/* Custom styled navigation buttons for better visibility */}
+
+          <CarouselPrevious className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
+
+          <CarouselNext className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
         </Carousel>
       </motion.div>
 
@@ -131,9 +133,9 @@ const ProjectSection = () => {
         className="mt-4 sm:mt-6"
       >
         <Link href="/projects">
-          <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-base sm:text-lg md:text-xl lg:text-2xl font-sans px-4 py-5 sm:px-5 sm:py-5 md:px-6 md:py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
+          <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-base sm:text-lg md:text-xl font-sans px-4 py-4 sm:px-5 sm:py-5 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
             See All Projects
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 transform group-hover:translate-x-2 transition-transform duration-300" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
         </Link>
       </motion.div>
