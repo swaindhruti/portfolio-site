@@ -40,39 +40,34 @@ function ExperienceContainer() {
 
   return (
     <div className="min-h-screen pt-14 sm:pt-16 md:pt-20 lg:pt-24">
-      <div className="max-w-5xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 lg:py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12">
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
           animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-center mb-8 sm:mb-10 md:mb-14 lg:mb-16"
+          className="mb-10 sm:mb-12 md:mb-16 lg:mb-20"
         >
-          <motion.h1
-            className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-2 sm:mb-3 md:mb-4 lg:mb-6"
-            initial={{ opacity: 0, y: 15 }}
-            animate={
-              headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }
-            }
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          >
-            Professional Journey
-          </motion.h1>
-          <motion.p
-            className="text-gray-600 font-sans text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={
-              headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }
-            }
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Explore my career path through the tech industry, showcasing growth,
-            achievements, and the evolution of my expertise.
-          </motion.p>
+          {/* Section title with neo-brutalist styling */}
+          <div className="flex flex-col items-center mb-8">
+            <div className="relative">
+              <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+              <motion.h1
+                className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold relative border-[3px] border-black bg-white px-6 py-3 text-center"
+                initial={{ opacity: 0, y: 15 }}
+                animate={
+                  headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }
+                }
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              >
+                PROFESSIONAL JOURNEY
+              </motion.h1>
+            </div>
+          </div>
         </motion.div>
 
         {/* Timeline Container with improved mobile responsiveness */}
-        <div className="relative pl-3 sm:pl-4 md:pl-6 lg:pl-8">
+        <div className="relative pl-4 sm:pl-6 md:pl-8 lg:pl-10">
           {workExperiences.map((experience, index) => (
             <ExperienceCard
               key={index}

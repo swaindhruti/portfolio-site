@@ -110,60 +110,57 @@ const BlogsContainer = () => {
 
   return (
     <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 px-3 sm:px-4 md:px-6 lg:px-8 py-6 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-6 sm:pb-8 md:pb-10 min-h-screen">
-      <motion.h1
-        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-borel text-center"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-      >
-        My Blog
-      </motion.h1>
-
-      <motion.div
-        className="text-center max-w-3xl mx-auto text-gray-600 mb-4 sm:mb-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-      >
-        <p className="text-sm sm:text-base md:text-lg mb-2 px-2">
-          Insights, tutorials, and thoughts on web development. Exploring the
-          latest trends and best practices in the world of coding.
-        </p>
-      </motion.div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full">
-        <AnimatePresence>
-          {blogs.slice(0, visibleBlogs).map((blog, index) => (
-            <motion.div
-              key={blog.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
-            >
-              <BlogCard blog={blog} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      {/* Neo-brutalist header */}
+      <div className="relative inline-block mb-6">
+        <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+        <motion.h1
+          className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          MY BLOG
+        </motion.h1>
       </div>
 
-      {/* Show More Button */}
+      {/* Blog grid - without outer container box */}
+      <div className="w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full">
+          <AnimatePresence>
+            {blogs.slice(0, visibleBlogs).map((blog, index) => (
+              <motion.div
+                key={blog.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
+              >
+                <BlogCard blog={blog} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Neo-brutalist Load More Button */}
       {!allBlogsShown && blogs.length > visibleBlogs && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="mt-6 sm:mt-8"
+          className="mt-10 sm:mt-12"
         >
-          <Button
-            onClick={loadMoreBlogs}
-            size="lg"
-            className="group bg-black backdrop-blur-lg hover:bg-white/30 hover:backdrop-blur-lg hover:text-black border-2 border-black transition-all duration-300 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-xl text-white font-sans flex items-center gap-2"
-          >
-            <span className="flex items-center gap-2 font-sans tracking-wide">
-              Load More
-              <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 transition-transform duration-300 group-hover:translate-y-1" />
-            </span>
-          </Button>
+          <div className="relative group">
+            <div className="absolute inset-0 bg-red-400 border-[3px] border-black translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-all duration-200"></div>
+            <Button
+              onClick={loadMoreBlogs}
+              className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-all duration-200 rounded-none"
+            >
+              <span className="flex items-center gap-2 font-bold">
+                LOAD MORE
+                <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-300 group-hover:translate-y-1" />
+              </span>
+            </Button>
+          </div>
         </motion.div>
       )}
     </div>

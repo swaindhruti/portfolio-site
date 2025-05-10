@@ -11,7 +11,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -21,7 +20,7 @@ const Navbar = () => {
   // Add scroll event listener with improved smoothness
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
+      const isScrolled = window.scrollY > 20;
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
       }
@@ -51,12 +50,12 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "Projects", href: "/projects" },
-    { label: "Experience", href: "/experience" },
-    { label: "Community", href: "/community" },
-    { label: "Blogs", href: "/blogs" },
-    { label: "Contact", href: "/contact" },
+    { label: "Home", href: "/", color: "bg-yellow-400" },
+    { label: "Projects", href: "/projects", color: "bg-blue-400" },
+    { label: "Experience", href: "/experience", color: "bg-red-400" },
+    { label: "Community", href: "/community", color: "bg-green-400" },
+    { label: "Blogs", href: "/blogs", color: "bg-purple-400" },
+    { label: "Contact", href: "/contact", color: "bg-pink-400" },
   ];
 
   return (
@@ -69,7 +68,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 lg:hidden"
+            className="fixed inset-0 bg-black/30 z-30 lg:hidden"
             onClick={() => setIsOpen(false)}
           />
         )}
@@ -79,107 +78,118 @@ const Navbar = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.2, ease: "easeOut" }}
-        className="fixed w-full z-40 transition-all duration-500"
+        className="fixed w-full z-40"
       >
         <motion.div
           animate={{
             backgroundColor: isOpen
               ? "rgba(255, 255, 255, 1)"
               : scrolled
-              ? "rgba(255, 255, 255, 0.2)"
+              ? "rgba(255, 255, 255, 0.98)"
               : "rgba(255, 255, 255, 0)",
+            borderBottom:
+              isOpen || scrolled ? "3px solid black" : "0px solid transparent",
             boxShadow:
-              isOpen || scrolled
-                ? "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)"
-                : "none",
-            backdropFilter: isOpen || scrolled ? "blur(8px)" : "none",
+              isOpen || scrolled ? "5px 5px 0 rgba(0, 0, 0, 1)" : "none",
           }}
           transition={{ duration: 0.3 }}
-          className="flex justify-between items-center pt-4 sm:pt-5 md:pt-6 px-3 sm:px-4 md:px-6 lg:px-8 pb-3 sm:pb-4"
+          className="flex justify-between items-center py-4 sm:py-5 px-4 sm:px-8 md:px-12 lg:px-16 mx-auto"
         >
           {/* Logo/Brand - Left Side */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <Button
-                variant={"link"}
-                className="text-xl sm:text-2xl md:text-3xl xl:text-3xl font-borel hover:no-underline mt-3 md:mt-4 pt-4"
-              >
-                Dhruti&apos;s Folio
-              </Button>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                <Button
+                  variant="ghost"
+                  className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-xl sm:text-2xl font-bold transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] px-5 py-2 h-auto"
+                >
+                  Dhruti&apos;s Folio
+                </Button>
+              </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation - Right Side (auto-pushed to right by justify-between) */}
-          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 justify-end">
+          {/* Desktop Navigation - Right Side */}
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-4 justify-end">
             {navItems.map((item) => (
               <Link href={item.href} key={item.label}>
-                <span
-                  className={`nav-item-wrapper relative py-2 sm:py-3 px-3 rounded-lg transition-colors duration-200 ${
-                    pathname === item.href ? "bg-black/5" : ""
-                  }`}
-                  onMouseEnter={() => setHoveredItem(item.label)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                >
+                <span className="relative group py-2 px-1">
+                  <div
+                    className={`absolute inset-0 ${
+                      pathname === item.href ? item.color : "bg-transparent"
+                    } 
+                    border-b-[3px] border-black ${
+                      pathname === item.href ? "opacity-100" : "opacity-0"
+                    } 
+                    transition-opacity group-hover:opacity-100`}
+                  ></div>
                   <Button
-                    variant={"link"}
-                    className={`text-base sm:text-lg md:text-xl xl:text-xl font-sans no-underline hover:no-underline tracking-wide text-black ${
-                      pathname === item.href ? "font-medium" : ""
-                    }`}
+                    variant="link"
+                    className="relative z-10 text-base xl:text-lg font-bold font-heading no-underline hover:no-underline tracking-wide text-black px-3 py-1 h-auto"
                   >
-                    {item.label}
+                    {item.label.toUpperCase()}
                   </Button>
-                  {hoveredItem === item.label && (
+                  {pathname === item.href && (
                     <motion.div
-                      initial={{ width: 0, opacity: 0 }}
-                      animate={{ width: "100%", opacity: 1 }}
-                      exit={{ width: 0, opacity: 0 }}
-                      className="absolute bottom-0 left-0 h-0.5 bg-black rounded-full"
-                      transition={{ duration: 0.2 }}
+                      className="absolute bottom-0 left-0 w-full h-1 bg-black"
+                      layoutId="navIndicator"
                     />
                   )}
                 </span>
               </Link>
             ))}
+
+            {/* CTA Button */}
+            <div className="relative group ml-4">
+              <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></div>
+              <Button className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-sm font-bold transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] px-6 py-2 h-auto">
+                RESUME
+              </Button>
+            </div>
           </div>
 
-          {/* Mobile Hamburger Button - Right Side - INCREASED SIZE */}
-          <motion.div
-            animate={{ rotate: isOpen ? 90 : 0 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden"
-          >
-            <Button
-              variant="link"
-              size="icon"
-              className="flex items-center justify-center p-0 h-auto z-50"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-            >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ opacity: 0, rotate: 90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: -90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </Button>
-          </motion.div>
+          {/* Mobile Hamburger Button - Right Side */}
+          <div className="lg:hidden">
+            <div className="relative group">
+              <div
+                className={`absolute inset-0 ${
+                  isOpen ? "bg-red-400" : "bg-green-400"
+                } border-[3px] border-black translate-x-2 translate-y-2 transition-transform`}
+              ></div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black flex items-center justify-center p-2 h-12 w-12"
+                onClick={toggleMenu}
+                aria-label="Toggle menu"
+              >
+                <AnimatePresence mode="wait">
+                  {isOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ opacity: 0, rotate: -90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: 90 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X className="w-6 h-6 sm:w-7 sm:h-7" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ opacity: 0, rotate: 90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: -90 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Menu className="w-6 h-6 sm:w-7 sm:h-7" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </Button>
+            </div>
+          </div>
         </motion.div>
 
         {/* Mobile Menu with fixed positioning */}
@@ -187,14 +197,14 @@ const Navbar = () => {
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "calc(100vh - 4rem)" }}
+              animate={{ opacity: 1, height: "100vh" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{
                 duration: 0.3,
                 opacity: { duration: 0.2 },
                 height: { duration: 0.3 },
               }}
-              className="lg:hidden bg-white fixed top-[calc(3.5rem+1px)] sm:top-[calc(4rem+1px)] md:top-[calc(5rem+1px)] inset-x-0 overflow-hidden z-40"
+              className="lg:hidden bg-white fixed top-[68px] sm:top-[76px] inset-x-0 overflow-hidden z-40 border-b-[3px] border-black"
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -203,7 +213,7 @@ const Navbar = () => {
                 transition={{ delay: 0.1, duration: 0.2 }}
                 className="flex items-center justify-center h-full py-10"
               >
-                <div className="flex flex-col space-y-6 sm:space-y-8 md:space-y-10 items-center justify-center w-full px-4">
+                <div className="flex flex-col space-y-6 sm:space-y-8 md:space-y-10 items-center justify-center w-full px-8 max-w-md mx-auto">
                   {navItems.map((item, index) => (
                     <motion.div
                       key={item.label}
@@ -213,19 +223,44 @@ const Navbar = () => {
                       className="w-full"
                     >
                       <Link href={item.href} onClick={() => setIsOpen(false)}>
-                        <Button
-                          variant="ghost"
-                          className={`w-full text-xl sm:text-2xl md:text-3xl font-sans tracking-wide rounded-xl ${
-                            pathname === item.href
-                              ? "bg-black/5 font-medium"
-                              : ""
-                          }`}
-                        >
-                          {item.label}
-                        </Button>
+                        <div className="relative group w-full">
+                          <div
+                            className={`absolute inset-0 ${
+                              item.color
+                            } border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 ${
+                              pathname === item.href
+                                ? "opacity-100"
+                                : "opacity-75"
+                            }`}
+                          ></div>
+                          <Button
+                            variant="ghost"
+                            className="relative w-full border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] py-3 h-auto"
+                          >
+                            {item.label.toUpperCase()}
+                          </Button>
+                        </div>
                       </Link>
                     </motion.div>
                   ))}
+
+                  {/* Mobile Resume Button */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: 0.1 + navItems.length * 0.1,
+                      duration: 0.3,
+                    }}
+                    className="w-full mt-4"
+                  >
+                    <div className="relative group w-full">
+                      <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-3 translate-y-3 transition-transform group-hover:translate-x-1.5 group-hover:translate-y-1.5"></div>
+                      <Button className="relative w-full border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1.5px] group-hover:translate-y-[-1.5px] py-3 h-auto">
+                        RESUME
+                      </Button>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </motion.div>

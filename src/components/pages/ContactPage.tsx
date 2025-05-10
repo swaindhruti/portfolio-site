@@ -4,10 +4,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ContactInfo from "@/components/shared/contacts/contactInfo";
 import ContactForm from "@/components/shared/contacts/contactForm";
-import {
-  containerVariants,
-  itemVariants,
-} from "@/components/shared/contacts/animationVariants";
+import { itemVariants } from "@/components/shared/contacts/animationVariants";
 
 const ContactPage = () => {
   const pageRef = useRef(null);
@@ -20,36 +17,46 @@ const ContactPage = () => {
       ref={pageRef}
       className="min-h-screen pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
     >
-      {/* Page Header */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate={isPageInView ? "visible" : "hidden"}
-        className="mb-10"
-      >
-        <motion.h1
-          variants={itemVariants}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center font-borel mb-3"
-        >
-          Get In Touch
-        </motion.h1>
-        <motion.p
-          variants={itemVariants}
-          className="text-base sm:text-lg md:text-xl text-center text-gray-600 font-sans max-w-2xl mx-auto"
-        >
-          I&apos;m always open to new opportunities, collaborations, and
-          conversations. Feel free to reach out through any of these channels.
-        </motion.p>
-      </motion.div>
+      {/* Neo-brutalist Page Header */}
+      <div className="text-center mb-12 md:mb-16">
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <motion.h1
+            variants={itemVariants}
+            initial="hidden"
+            animate={isPageInView ? "visible" : "hidden"}
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+          >
+            GET IN TOUCH
+          </motion.h1>
+        </div>
+      </div>
 
-      {/* Two-Column Layout for Contact Info and Form */}
+      {/* Neo-brutalist Two-Column Layout for Contact Info and Form */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12">
-        {/* Contact Information - Left Side */}
-        <ContactInfo isInView={isPageInView} />
+        {/* Contact Information - Left Side with Neo-brutalist styling */}
+        <div className="lg:col-span-2 relative">
+          <div className="absolute inset-0 bg-purple-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <div className="relative border-[3px] border-black bg-white p-4 sm:p-6">
+            <ContactInfo isInView={isPageInView} />
+          </div>
+        </div>
 
-        {/* Contact Form - Right Side */}
-        <div ref={formRef} className="lg:col-span-3">
-          <ContactForm isInView={isFormInView} />
+        {/* Contact Form - Right Side with Neo-brutalist styling */}
+        <div ref={formRef} className="lg:col-span-3 relative">
+          <div className="absolute inset-0 bg-green-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <div className="relative border-[3px] border-black bg-white p-4 sm:p-6">
+            <div className="absolute top-0 right-0 w-12 h-3 bg-blue-400 border-l-[3px] border-b-[3px] border-black"></div>
+            <ContactForm isInView={isFormInView} />
+          </div>
+        </div>
+      </div>
+
+      {/* Neo-brutalist decorative element */}
+      <div className="mt-12 md:mt-16 max-w-md mx-auto">
+        <div className="h-1 border-t-[3px] border-black relative">
+          <div className="absolute -top-1 left-0 w-4 h-4 bg-yellow-400 border-[2px] border-black transform -translate-y-1/2"></div>
+          <div className="absolute -top-1 right-0 w-4 h-4 bg-red-400 border-[2px] border-black transform -translate-y-1/2"></div>
         </div>
       </div>
     </main>

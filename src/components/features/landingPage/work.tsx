@@ -19,6 +19,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const workExperiences = [
   {
@@ -87,24 +88,47 @@ const workExperiences = [
 ];
 
 const WorkExperienceSection = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const [shadowValues, setShadowValues] = useState<
+    Array<{ x: number; y: number }>
+  >([]);
+
+  // Only run on client-side after hydration
+  useEffect(() => {
+    setIsMounted(true);
+
+    // Generate random shadow values once on client-side
+    const shadows = workExperiences.map(() => ({
+      x: Math.floor(Math.random() * 3) + 2,
+      y: Math.floor(Math.random() * 3) + 2,
+    }));
+
+    setShadowValues(shadows);
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-8 sm:mt-10 md:mt-12">
-      <motion.h1
+      {/* Neo-brutalist heading */}
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="font-borel text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl text-center"
+        className="relative"
       >
-        Professional Journey
-      </motion.h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-heading font-bold text-center relative inline-block">
+          Work Experience
+          <span className="block h-1 bg-black mt-2 sm:mt-3"></span>
+        </h1>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8  pr-4 sm:pr-6 md:pr-8"
+        className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8 pr-4 sm:pr-6 md:pr-8"
       >
         <Carousel
           className="w-full"
@@ -114,65 +138,138 @@ const WorkExperienceSection = () => {
           }}
         >
           <CarouselContent className="-ml-2 md:-ml-4">
-            {workExperiences.map((experience, index) => (
-              <CarouselItem
-                key={index}
-                className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3"
-              >
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.2, delay: 0.2 }}
-                  className="h-full"
+            {workExperiences.map((experience, index) => {
+              // Use fixed shadow values to prevent hydration mismatch
+              const defaultShadow = "3px 3px 0 0 #000";
+              const hoverShadow = "2px 2px 0 0 #000";
+
+              // Only use random shadows after client-side hydration
+              const cardShadow =
+                isMounted && shadowValues[index]
+                  ? hoveredIndex === index
+                    ? `${shadowValues[index].x - 1}px ${
+                        shadowValues[index].y - 1
+                      }px 0 0 #000`
+                    : `${shadowValues[index].x}px ${shadowValues[index].y}px 0 0 #000`
+                  : hoveredIndex === index
+                  ? hoverShadow
+                  : defaultShadow;
+
+              return (
+                <CarouselItem
+                  key={index}
+                  className="px-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3"
                 >
-                  <Card className="h-[360px] bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/40 transition-all duration-300 ease-in-out flex flex-col overflow-hidden border-2 border-black/10 hover:border-black mb-2">
-                    <CardHeader className="p-3 sm:p-4">
-                      <CardTitle className="text-lg sm:text-xl md:text-xl lg:text-2xl font-sans tracking-wide font-semibold">
-                        {experience.title}
-                      </CardTitle>
-                      <p className="text-sm sm:text-base md:text-lg text-gray-600 font-sans tracking-wide">
-                        {experience.company}
-                      </p>
-                    </CardHeader>
-                    <CardContent className="flex-1 p-3 sm:p-4">
-                      <CardDescription className="text-sm sm:text-base mb-3 text-gray-800 font-sans tracking-wide">
-                        {experience.description}
-                      </CardDescription>
-                      <div className="flex flex-wrap gap-1.5">
-                        {experience.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="bg-black/10 text-black text-xs sm:text-sm px-2 py-1 font-sans tracking-wide rounded-full"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </CardContent>
-                    <CardFooter className="p-3 sm:p-4 mt-auto flex justify-center">
-                      <Link
-                        href={experience.link}
-                        className="w-full flex justify-center"
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="h-full"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    <div className="h-full" style={{ boxShadow: cardShadow }}>
+                      <Card
+                        className={`
+                          h-[360px] 
+                          bg-white 
+                          rounded-none
+                          border-[3px]
+                          border-black
+                          flex flex-col 
+                          overflow-hidden
+                          transition-all
+                          duration-200
+                          transform 
+                          ${
+                            hoveredIndex === index
+                              ? "translate-y-[2px] translate-x-[2px]"
+                              : ""
+                          }
+                        `}
                       >
-                        <Button className="w-full h-auto text-xs sm:text-sm md:text-base group relative overflow-hidden bg-black border-2 border-black text-white hover:backdrop-blur-lg hover:bg-white/10 hover:text-black transition-all duration-300 ease-in-out py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl">
-                          <span className="flex items-center justify-center gap-1 sm:gap-2 text-base sm:text-lg font-sans">
-                            {experience.duration}
-                            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-                          </span>
-                        </Button>
-                      </Link>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              </CarouselItem>
-            ))}
+                        <CardHeader className="bg-yellow-300 border-b-[3px] border-black p-3 sm:p-4">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <CardTitle className="text-lg sm:text-xl md:text-xl lg:text-2xl font-heading font-bold text-black line-clamp-1">
+                                {experience.title}
+                              </CardTitle>
+                              <p className="text-sm sm:text-base md:text-lg text-black font-heading font-medium">
+                                {experience.company}
+                              </p>
+                            </div>
+                          </div>
+                        </CardHeader>
+
+                        <CardContent className="flex-1 p-3 sm:p-4">
+                          <CardDescription className="text-xs sm:text-sm mb-3 text-black font-code">
+                            {experience.description}
+                          </CardDescription>
+                          <div className="flex flex-wrap gap-1.5 mt-3">
+                            {experience.technologies.map((tech, techIndex) => (
+                              <span
+                                key={techIndex}
+                                className="bg-black text-white text-xs px-2 py-0.5 font-heading uppercase tracking-wide"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </CardContent>
+
+                        <CardFooter className="p-3 sm:p-4 mt-auto border-t-[3px] border-black">
+                          <Link
+                            href={experience.link}
+                            className="w-full relative group"
+                          >
+                            <Button
+                              className={`
+                                w-full
+                                bg-black 
+                                hover:bg-gray-800
+                                text-white 
+                                font-bold 
+                                border-[3px] 
+                                border-black 
+                                rounded-none 
+                                px-4 py-2
+                                transition-all
+                                transform
+                                active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_0px_#000]
+                                group-hover:translate-y-[2px] group-hover:translate-x-[2px] group-hover:shadow-[1px_1px_0px_0px_#000]
+                                shadow-[2px_2px_0px_0px_#000]
+                              `}
+                            >
+                              <span className="flex items-center justify-center gap-2 font-heading uppercase tracking-wide">
+                                {experience.duration}
+                                <ArrowRight className="w-4 h-4" />
+                              </span>
+                            </Button>
+                          </Link>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  </motion.div>
+                </CarouselItem>
+              );
+            })}
           </CarouselContent>
 
-          {/* Repositioned navigation buttons for better visibility on all screen sizes */}
-          <CarouselPrevious className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
+          {/* Neo-brutalist navigation buttons */}
+          <CarouselPrevious
+            className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
+              shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
+              hover:translate-y-[1px] hover:translate-x-[1px] transition-all
+          "
+          />
 
-          <CarouselNext className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
+          <CarouselNext
+            className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
+              shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
+              hover:translate-y-[1px] hover:translate-x-[1px] transition-all
+            "
+          />
         </Carousel>
       </motion.div>
     </div>

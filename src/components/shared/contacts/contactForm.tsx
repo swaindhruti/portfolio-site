@@ -30,6 +30,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ isInView }) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [activeField, setActiveField] = useState<string | null>(null);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -93,8 +94,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ isInView }) => {
     >
       <motion.div
         variants={itemVariants}
-        className="bg-white/10 transition-all duration-300 ease-in-out border-2 border-black/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 md:p-10 shadow-xl h-full"
+        className="bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] p-6 sm:p-8 md:p-10 relative"
       >
+        {/* Neo-brutalist accents */}
+        <div className="absolute top-0 right-0 w-32 h-3 bg-green-400 border-l-[3px] border-b-[3px] border-black"></div>
+        <div className="absolute bottom-0 left-0 w-24 h-3 bg-purple-400 border-r-[3px] border-t-[3px] border-black"></div>
+
         {isSubmitted ? (
           <SubmissionSuccess onReset={() => setIsSubmitted(false)} />
         ) : (
@@ -104,6 +109,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ isInView }) => {
             isSubmitting={isSubmitting}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            activeField={activeField}
+            setActiveField={setActiveField}
           />
         )}
       </motion.div>
@@ -120,38 +127,48 @@ const SubmissionSuccess: React.FC<SubmissionSuccessProps> = ({ onReset }) => {
   return (
     <motion.div
       variants={itemVariants}
-      className="text-center py-12 sm:py-16"
+      className="text-center py-8 sm:py-12"
       initial="hidden"
       animate="visible"
     >
-      <div className="mb-6 sm:mb-8 inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-400/20">
-        <svg
-          className="w-8 h-8 sm:w-10 sm:h-10 text-green-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 13l4 4L19 7"
-          />
-        </svg>
+      <div className="mb-8 relative inline-block">
+        <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-1 translate-y-1"></div>
+        <div className="w-20 h-20 border-[2px] border-black bg-white flex items-center justify-center relative">
+          <svg
+            className="w-10 h-10 text-black"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
       </div>
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
+
+      <h3 className="text-2xl sm:text-3xl font-bold font-heading mb-4 relative inline-block">
         Message Sent!
+        <div className="absolute -bottom-2 left-0 right-0 h-1 bg-black"></div>
       </h3>
-      <p className="text-base sm:text-lg text-gray-600 max-w-md mx-auto">
+
+      <p className="text-base sm:text-lg max-w-md mx-auto mb-8">
         Thank you for reaching out. I&apos;ll get back to you as soon as
         possible.
       </p>
-      <Button
-        onClick={onReset}
-        className="mt-6 sm:mt-8 bg-black text-white hover:bg-white/10 hover:text-black border-2 border-black transition-all duration-300"
-      >
-        Send Another Message
-      </Button>
+
+      <div className="relative inline-block">
+        <div className="absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1 translate-y-1 transition-transform hover:translate-x-0.5 hover:translate-y-0.5"></div>
+        <Button
+          onClick={onReset}
+          className="relative px-6 py-3 bg-white text-black border-[2px] border-black font-heading font-medium transition-transform hover:translate-x-[-0.5px] hover:translate-y-[-0.5px]"
+        >
+          Send Another Message
+        </Button>
+      </div>
     </motion.div>
   );
 };
@@ -161,6 +178,8 @@ interface FormProps {
   formData: FormData;
   errors: FormErrors;
   isSubmitting: boolean;
+  activeField: string | null;
+  setActiveField: (field: string | null) => void;
   handleChange: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -173,6 +192,8 @@ const Form: React.FC<FormProps> = ({
   isSubmitting,
   handleChange,
   handleSubmit,
+  activeField,
+  setActiveField,
 }) => {
   return (
     <motion.form
@@ -180,37 +201,51 @@ const Form: React.FC<FormProps> = ({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="space-y-5 sm:space-y-6 md:space-y-8"
+      className="space-y-6 sm:space-y-8"
     >
       <motion.h2
         variants={itemVariants}
-        className="text-xl sm:text-2xl md:text-3xl font-medium font-sans mb-6 sm:mb-8"
+        className="text-xl sm:text-2xl md:text-3xl font-heading font-bold mb-8 relative inline-block"
       >
         Send Me a Message
+        <div className="absolute -bottom-2 left-0 right-0 h-1 bg-black"></div>
       </motion.h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name Field */}
         <motion.div variants={itemVariants}>
           <label
             htmlFor="name"
-            className="block text-base sm:text-lg font-medium tracking-wide text-black font-sans mb-2"
+            className="block text-sm sm:text-base font-bold font-heading text-black mb-2"
           >
-            Name
+            NAME
           </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-lg bg-white/5 border-2 ${
-              errors.name ? "border-red-400" : "border-black/30"
-            } text-black placeholder-gray-500 focus:outline-none text-base sm:text-lg font-sans backdrop-blur-sm focus:border-black transition-colors duration-200`}
-            placeholder="Your name"
-          />
+          <div className="relative">
+            <div
+              className={`absolute inset-0 bg-yellow-400 border-[2px] border-black translate-x-1 translate-y-1 transition-all duration-200 ${
+                activeField === "name" ? "translate-x-0.5 translate-y-0.5" : ""
+              }`}
+            ></div>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              onFocus={() => setActiveField("name")}
+              onBlur={() => setActiveField(null)}
+              className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none relative transition-all duration-200 ${
+                activeField === "name"
+                  ? "translate-x-[-0.5px] translate-y-[-0.5px]"
+                  : ""
+              } ${errors.name ? "border-red-500 bg-red-50" : ""}`}
+              placeholder="Your name"
+            />
+          </div>
           {errors.name && (
-            <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+            <p className="mt-2 text-sm font-medium text-red-500">
+              {errors.name}
+            </p>
           )}
         </motion.div>
 
@@ -218,23 +253,36 @@ const Form: React.FC<FormProps> = ({
         <motion.div variants={itemVariants}>
           <label
             htmlFor="email"
-            className="block text-base sm:text-lg font-medium tracking-wide text-black font-sans mb-2"
+            className="block text-sm sm:text-base font-bold font-heading text-black mb-2"
           >
-            Email
+            EMAIL
           </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={`w-full px-4 py-3 rounded-lg bg-white/5 border-2 ${
-              errors.email ? "border-red-400" : "border-black/30"
-            } text-black placeholder-gray-500 tracking-wide font-sans text-base sm:text-lg focus:outline-none backdrop-blur-sm focus:border-black transition-colors duration-200`}
-            placeholder="Your email"
-          />
+          <div className="relative">
+            <div
+              className={`absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1 translate-y-1 transition-all duration-200 ${
+                activeField === "email" ? "translate-x-0.5 translate-y-0.5" : ""
+              }`}
+            ></div>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              onFocus={() => setActiveField("email")}
+              onBlur={() => setActiveField(null)}
+              className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none relative transition-all duration-200 ${
+                activeField === "email"
+                  ? "translate-x-[-0.5px] translate-y-[-0.5px]"
+                  : ""
+              } ${errors.email ? "border-red-500 bg-red-50" : ""}`}
+              placeholder="Your email"
+            />
+          </div>
           {errors.email && (
-            <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+            <p className="mt-2 text-sm font-medium text-red-500">
+              {errors.email}
+            </p>
           )}
         </motion.div>
       </div>
@@ -243,69 +291,63 @@ const Form: React.FC<FormProps> = ({
       <motion.div variants={itemVariants}>
         <label
           htmlFor="message"
-          className="block text-base sm:text-lg font-medium tracking-wide text-black font-sans mb-2"
+          className="block text-sm sm:text-base font-bold font-heading text-black mb-2"
         >
-          Message
+          MESSAGE
         </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={6}
-          value={formData.message}
-          onChange={handleChange}
-          className={`w-full px-4 py-3 rounded-lg bg-white/5 border-2 ${
-            errors.message ? "border-red-400" : "border-black/30"
-          } text-black tracking-wide text-base sm:text-lg placeholder-gray-500 font-sans focus:outline-none backdrop-blur-sm focus:border-black transition-colors duration-200`}
-          placeholder="Your message"
-        ></textarea>
+        <div className="relative">
+          <div
+            className={`absolute inset-0 bg-red-400 border-[2px] border-black translate-x-1 translate-y-1 transition-all duration-200 ${
+              activeField === "message" ? "translate-x-0.5 translate-y-0.5" : ""
+            }`}
+          ></div>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            onFocus={() => setActiveField("message")}
+            onBlur={() => setActiveField(null)}
+            className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none relative transition-all duration-200 ${
+              activeField === "message"
+                ? "translate-x-[-0.5px] translate-y-[-0.5px]"
+                : ""
+            } ${errors.message ? "border-red-500 bg-red-50" : ""}`}
+            placeholder="Your message"
+          ></textarea>
+        </div>
         {errors.message && (
-          <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+          <p className="mt-2 text-sm font-medium text-red-500">
+            {errors.message}
+          </p>
         )}
       </motion.div>
 
-      {/* Submit Button - FIXED: Now correctly centered */}
-      <motion.div
-        variants={itemVariants}
-        className="flex justify-center items-center mt-6"
-      >
-        <motion.button
-          type="submit"
-          className="flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-black hover:text-black border-2 rounded-xl text-white bg-black hover:bg-transparent font-medium font-sans shadow-lg tracking-wide text-base sm:text-lg transition-all duration-200"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <div className="flex items-center">
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              Sending...
-            </div>
-          ) : (
-            <div className="flex items-center">
-              Send Message
-              <Send className="ml-2 h-5 w-5" />
-            </div>
-          )}
-        </motion.button>
+      {/* Submit Button */}
+      <motion.div variants={itemVariants} className="flex justify-center mt-8">
+        <div className="relative">
+          <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-2 translate-y-2 transition-all duration-200 group-hover:translate-x-1 group-hover:translate-y-1"></div>
+          <motion.button
+            type="submit"
+            className="relative flex items-center justify-center px-8 py-3 border-[2px] border-black text-black bg-white font-bold font-heading group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-all duration-200"
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.99 }}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 border-t-2 border-r-2 border-black rounded-full animate-spin"></div>
+                <span>SENDING...</span>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <span>SEND MESSAGE</span>
+                <Send className="h-5 w-5" />
+              </div>
+            )}
+          </motion.button>
+        </div>
       </motion.div>
     </motion.form>
   );

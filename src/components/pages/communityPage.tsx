@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-import { Users, Calendar } from "lucide-react";
+import { Users, Calendar, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Custom Components
@@ -30,6 +30,7 @@ const CommunityPage = () => {
   const communityRef = useRef(null);
   const eventsRef = useRef(null);
   const statsRef = useRef(null);
+  const ctaRef = useRef(null);
 
   // Intersection observers
   const isCommunityInView = useInView(communityRef, {
@@ -39,17 +40,15 @@ const CommunityPage = () => {
   const isEventsInView = useInView(eventsRef, { once: true, amount: 0.1 });
 
   return (
-    <main className="pt-20 md:pt-24 lg:pt-28">
-      {/* Page Header */}
-      <div className="text-center mb-12 md:mb-16 lg:mb-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-borel mb-4 sm:mb-6">
-          Community Engagement
-        </h1>
-        <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-gray-700 font-sans">
-          I believe in the power of tech communities to drive innovation and
-          growth. Here&apos;s how I&apos;m contributing to the developer
-          ecosystem.
-        </p>
+    <main className=" pt-20 md:pt-24 lg:pt-44">
+      {/* Neo-brutalist Page Header */}
+      <div className="text-center px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <h1 className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black">
+            COMMUNITY ENGAGEMENT
+          </h1>
+        </div>
       </div>
 
       {/* SECTION 1: Communities I'm Part Of */}
@@ -79,9 +78,9 @@ const CommunityPage = () => {
         </CardGrid>
       </section>
 
-      {/* Divider */}
+      {/* Neo-brutalist Divider */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        <hr className="border-t border-gray-200" />
+        <div className="h-1 border-t-[3px] border-black"></div>
       </div>
 
       {/* SECTION 2: Events I've Been Part Of */}
@@ -113,7 +112,7 @@ const CommunityPage = () => {
         </CardGrid>
       </section>
 
-      {/* Community Stats */}
+      {/* Neo-brutalist Community Stats */}
       <section
         ref={statsRef}
         className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
@@ -125,27 +124,48 @@ const CommunityPage = () => {
               value={stat.value}
               label={stat.label}
               variants={itemVariants}
+              index={index}
             />
           ))}
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto text-center">
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-medium mb-4 sm:mb-6">
-          Want to collaborate?
-        </h3>
-        <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto mb-8">
-          Whether you&apos;re organizing a tech event, looking for a speaker, or
-          want to collaborate on a community project, I&apos;d love to hear from
-          you.
-        </p>
-        <Button
-          className="bg-black text-white hover:bg-transparent hover:text-black border-2 border-black px-6 py-2.5 sm:py-3 text-base sm:text-lg rounded-xl transition-all duration-300"
-          asChild
-        >
-          <a href="/contact">Get In Touch</a>
-        </Button>
+      {/* Neo-brutalist Call to Action */}
+      <section
+        ref={ctaRef}
+        className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto text-center"
+      >
+        <div className="max-w-3xl mx-auto">
+          <div className="relative mb-6 sm:mb-8 inline-block">
+            <div className="absolute inset-0 bg-purple-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+            <h3 className="relative border-[3px] border-black bg-white font-heading text-xl sm:text-2xl md:text-3xl font-bold px-6 py-3 text-black">
+              WANT TO COLLABORATE?
+            </h3>
+          </div>
+
+          <div className="relative mb-8 sm:mb-10">
+            <div className="absolute top-0 right-0 w-16 h-3 bg-green-400 border-l-[3px] border-b-[3px] border-black"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-3 bg-pink-400 border-r-[3px] border-t-[3px] border-black"></div>
+            <p className="text-black font-sans text-sm sm:text-base md:text-lg border-[3px] border-black bg-white p-4 sm:p-5 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+              Whether you&apos;re organizing a tech event, looking for a
+              speaker, or want to collaborate on a community project, I&apos;d
+              love to hear from you.
+            </p>
+          </div>
+
+          <div className="relative inline-block group">
+            <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-3 translate-y-3 transition-transform group-hover:translate-x-2 group-hover:translate-y-2"></div>
+            <Button
+              className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg font-bold px-8 py-3 h-auto flex items-center transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px]"
+              asChild
+            >
+              <a href="/contact">
+                GET IN TOUCH
+                <ExternalLink className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              </a>
+            </Button>
+          </div>
+        </div>
       </section>
     </main>
   );
