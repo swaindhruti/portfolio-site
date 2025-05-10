@@ -11,6 +11,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   // Close mobile menu when route changes
   useEffect(() => {
@@ -112,17 +113,28 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 justify-end">
             {navItems.map((item) => (
               <Link href={item.href} key={item.label}>
-                <span className="nav-item-wrapper relative py-2 sm:py-3">
+                <span
+                  className={`nav-item-wrapper relative py-2 sm:py-3 px-3 rounded-lg transition-colors duration-200 ${
+                    pathname === item.href ? "bg-black/5" : ""
+                  }`}
+                  onMouseEnter={() => setHoveredItem(item.label)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                >
                   <Button
                     variant={"link"}
-                    className={`text-base sm:text-lg md:text-xl xl:text-xl font-sans no-underline hover:no-underline tracking-wide text-black`}
+                    className={`text-base sm:text-lg md:text-xl xl:text-xl font-sans no-underline hover:no-underline tracking-wide text-black ${
+                      pathname === item.href ? "font-medium" : ""
+                    }`}
                   >
                     {item.label}
                   </Button>
-                  {pathname === item.href && (
+                  {hoveredItem === item.label && (
                     <motion.div
-                      className="absolute bottom-0 left-0 w-full h-0.5 bg-black rounded-full"
-                      layoutId="navIndicator"
+                      initial={{ width: 0, opacity: 0 }}
+                      animate={{ width: "100%", opacity: 1 }}
+                      exit={{ width: 0, opacity: 0 }}
+                      className="absolute bottom-0 left-0 h-0.5 bg-black rounded-full"
+                      transition={{ duration: 0.2 }}
                     />
                   )}
                 </span>

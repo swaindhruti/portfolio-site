@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -10,8 +9,6 @@ import {
 } from "@/components/ui/carousel";
 import ProjectCard from "@/components/shared/projects/projectCard";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const projects = [
   {
@@ -123,21 +120,6 @@ const ProjectSection = () => {
 
           <CarouselNext className="hover:border-2 bg-white/30 backdrop-blur-md border-black h-8 w-8 sm:h-10 sm:w-10" />
         </Carousel>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 30 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.4, ease: "easeOut", delay: 0.8 }} // Increased delay to allow cards to animate first
-        className="mt-4 sm:mt-6"
-      >
-        <Link href="/projects">
-          <Button className="group bg-transparent text-black hover:text-white rounded-xl hover:bg-black text-base sm:text-lg md:text-xl font-sans px-4 py-4 sm:px-5 sm:py-5 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out">
-            See All Projects
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-2 transition-transform duration-300" />
-          </Button>
-        </Link>
       </motion.div>
     </div>
   );

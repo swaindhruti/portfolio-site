@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import VantaBackground from "@/components/background/VantaBackground";
+import VantaBackground from "@/components/background/TextureBackground";
 import { Roboto, Roboto_Mono, Borel } from "next/font/google";
 import Navbar from "@/components/marginals/navbar";
 import Footer from "@/components/marginals/footer";
