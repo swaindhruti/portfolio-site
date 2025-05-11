@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   Carousel,
   CarouselContent,
@@ -11,26 +11,45 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { techStacks } from "@/config/techStack/Data";
-import { useState } from "react";
+import { useState, useRef } from "react";
+
+// Item variants for heading animation
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const TechStackSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-8 sm:mt-10 md:mt-12 relative">
-      {/* Neo-brutalist heading */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative"
-      >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-heading font-bold text-center relative inline-block">
-          Technology Stack
-          <span className="block h-1 bg-black mt-2 sm:mt-3"></span>
-        </h1>
-      </motion.div>
+    <div
+      ref={sectionRef}
+      className="flex flex-col items-center justify-center space-y-4 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-8 sm:mt-10 md:mt-12 relative"
+    >
+      {/* Neo-brutalist heading with highlighted box */}
+      <div className="text-center mb-8 md:mb-10">
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-orange-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <motion.h1
+            variants={itemVariants}
+            initial="hidden"
+            animate={isSectionInView ? "visible" : "hidden"}
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+          >
+            TECHNOLOGY STACK
+          </motion.h1>
+        </div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -110,8 +129,8 @@ const TechStackSection = () => {
                                     : index % 5 === 2
                                     ? "bg-red-400"
                                     : index % 5 === 3
-                                    ? "bg-green-400"
-                                    : "bg-purple-400"
+                                    ? "bg-purple-400"
+                                    : "bg-cyan-400"
                                 }
                               `}
                             ></div>
@@ -130,8 +149,8 @@ const TechStackSection = () => {
 
                           <div
                             className={`
-                              bg-black 
-                              text-white 
+                              
+                              text-black 
                               px-2 
                               py-0.5 
                               font-heading 
@@ -155,17 +174,17 @@ const TechStackSection = () => {
             </CarouselContent>
 
             {/* Neo-brutalist navigation buttons */}
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex justify-center gap-4">
               <CarouselPrevious
-                className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
+                className="bg-black text-white hover:bg-orange-300 border-[3px] border-black rounded-none h-10 w-10 
                   shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                  hover:translate-y-[1px] hover:translate-x-[1px] transition-all"
+                   transition-all duration-200"
               />
 
               <CarouselNext
-                className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
+                className="bg-black text-white hover:bg-orange-300 border-[3px] border-black rounded-none h-10 w-10 
                   shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                  hover:translate-y-[1px] hover:translate-x-[1px] transition-all"
+                  transition-all duration-200"
               />
             </div>
           </Carousel>

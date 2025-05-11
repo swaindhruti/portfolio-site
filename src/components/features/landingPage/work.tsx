@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,7 +19,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const workExperiences = [
   {
@@ -87,12 +87,28 @@ const workExperiences = [
   },
 ];
 
+// Item variants for heading animation
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 const WorkExperienceSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [shadowValues, setShadowValues] = useState<
     Array<{ x: number; y: number }>
   >([]);
+
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   // Only run on client-side after hydration
   useEffect(() => {
@@ -108,20 +124,24 @@ const WorkExperienceSection = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-8 sm:mt-10 md:mt-12">
-      {/* Neo-brutalist heading */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative"
-      >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-heading font-bold text-center relative inline-block">
-          Work Experience
-          <span className="block h-1 bg-black mt-2 sm:mt-3"></span>
-        </h1>
-      </motion.div>
+    <div
+      ref={sectionRef}
+      className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-8 sm:mt-10 md:mt-12"
+    >
+      {/* Neo-brutalist heading with highlighted box */}
+      <div className="text-center mb-8 md:mb-10">
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <motion.h1
+            variants={itemVariants}
+            initial="hidden"
+            animate={isSectionInView ? "visible" : "hidden"}
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+          >
+            WORK EXPERIENCE
+          </motion.h1>
+        </div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -258,17 +278,15 @@ const WorkExperienceSection = () => {
 
           {/* Neo-brutalist navigation buttons */}
           <CarouselPrevious
-            className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
-              shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-              hover:translate-y-[1px] hover:translate-x-[1px] transition-all
-          "
+            className="bg-black text-white hover:bg-yellow-300 border-[3px] border-black rounded-none h-10 w-10 
+                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
+                   transition-all duration-200"
           />
 
           <CarouselNext
-            className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
-              shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-              hover:translate-y-[1px] hover:translate-x-[1px] transition-all
-            "
+            className="bg-black text-white hover:bg-yellow-300 border-[3px] border-black rounded-none h-10 w-10 
+                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
+                  transition-all duration-200"
           />
         </Carousel>
       </motion.div>

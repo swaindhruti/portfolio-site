@@ -85,12 +85,11 @@ const Navbar = () => {
             backgroundColor: isOpen
               ? "rgba(255, 255, 255, 1)"
               : scrolled
-              ? "rgba(255, 255, 255, 0.98)"
+              ? "rgba(255, 255, 255, 1)"
               : "rgba(255, 255, 255, 0)",
             borderBottom:
               isOpen || scrolled ? "3px solid black" : "0px solid transparent",
-            boxShadow:
-              isOpen || scrolled ? "5px 5px 0 rgba(0, 0, 0, 1)" : "none",
+            boxShadow: isOpen || scrolled ? "0 5px 0 rgba(0, 0, 0, 1)" : "none",
           }}
           transition={{ duration: 0.3 }}
           className="flex justify-between items-center py-4 sm:py-5 px-4 sm:px-8 md:px-12 lg:px-16 mx-auto"

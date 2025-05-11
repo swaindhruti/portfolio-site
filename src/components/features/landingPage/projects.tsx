@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -8,7 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ProjectCard from "@/components/shared/projects/projectCard";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const projects = [
   {
@@ -74,23 +75,42 @@ const cardVariants = {
   },
 };
 
+// Item variants for heading animation
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 const ProjectSection = () => {
+  const sectionRef = useRef(null);
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
+
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10 mt-8 sm:mt-10 md:mt-12 relative">
+    <div
+      ref={sectionRef}
+      className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10 mt-8 sm:mt-10 md:mt-12 relative"
+    >
       {/* Neo-brutalist heading with highlighted box */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative mb-6 sm:mb-8 md:mb-10"
-      >
-        <div className="absolute -inset-3 -top-4 -z-10"></div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-heading font-bold text-center px-6 py-2">
-          Selected Projects
-          <span className="block h-1 bg-black mt-2 sm:mt-3"></span>
-        </h1>
-      </motion.div>
+      <div className="text-center mb-12 md:mb-16">
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-blue-500 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <motion.h1
+            variants={itemVariants}
+            initial="hidden"
+            animate={isSectionInView ? "visible" : "hidden"}
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+          >
+            SELECTED PROJECTS
+          </motion.h1>
+        </div>
+      </div>
 
       <motion.div
         initial="hidden"
@@ -122,17 +142,15 @@ const ProjectSection = () => {
             </CarouselContent>
 
             {/* Neo-brutalist navigation buttons */}
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex justify-center gap-6">
               <CarouselPrevious
-                className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                  hover:translate-y-[1px] hover:translate-x-[1px] transition-all"
+                className="bg-black text-white hover:bg-blue-300 border-[3px] border-black rounded-none h-10 w-10 
+                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000] transition-all duration-200"
               />
 
               <CarouselNext
-                className="bg-black text-white hover:bg-gray-800 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                  hover:translate-y-[1px] hover:translate-x-[1px] transition-all"
+                className="bg-black text-white hover:bg-blue-300 border-[3px] border-black rounded-none h-10 w-10 
+                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000] transition-all duration-200"
               />
             </div>
           </Carousel>

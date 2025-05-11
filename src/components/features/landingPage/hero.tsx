@@ -62,17 +62,33 @@ const HeroSection = () => {
       >
         {/* Text content container - centered */}
         <div className="w-full max-w-6xl flex flex-col items-center text-center">
-          {/* Name with subtle frame */}
+          {/* Name with neo-brutalist styling matching buttons */}
           <motion.div
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative mb-12"
+            className="relative mb-12 w-full max-w-2xl"
+            onMouseEnter={() => setHoveredButton("name")}
+            onMouseLeave={() => setHoveredButton(null)}
           >
-            <div className="absolute -left-2 -right-2 -top-2 bottom-0 bg-green-400 border-[3px] border-black -z-10"></div>
-            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-black px-8 py-5 bg-white border-[3px] border-black">
-              Hi, I&apos;m Dhrutinandan
-            </h1>
+            <div className="absolute inset-0 bg-green-400 border-[3px] border-black translate-x-2 translate-y-2 transition-transform duration-200"></div>
+            <div
+              className={`
+                relative 
+                bg-white
+                border-[3px]
+                border-black
+                px-8 
+                py-5
+                transition-all
+                duration-200
+                ${hoveredButton === "name" ? "translate-x-1 translate-y-1" : ""}
+              `}
+            >
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-black">
+                Hi, I&apos;m Dhrutinandan
+              </h1>
+            </div>
           </motion.div>
 
           {/* Description block */}

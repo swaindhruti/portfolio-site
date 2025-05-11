@@ -1,20 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 export default function NeoBrutalistBackground({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // Simple fade-in effect
-    setTimeout(() => setIsLoaded(true), 100);
-  }, []);
-
   return (
     <div className="w-full h-full">
       {/* Neo-brutalist background container - fixed position */}
@@ -37,7 +29,7 @@ export default function NeoBrutalistBackground({
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 0.2, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="absolute top-[5%] right-[5%] w-28 h-28 md:w-40 md:h-40 lg:w-52 lg:h-52 bg-yellow-300 border-[1px] border-black/30"
+            className="absolute top-[15%] right-[5%] w-28 h-28 md:w-40 md:h-40 lg:w-52 lg:h-52 bg-yellow-300 border-[1px] border-black/30"
           />
 
           {/* Red square in bottom-left */}
@@ -106,7 +98,7 @@ export default function NeoBrutalistBackground({
       {/* Content container with fade-in */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: isLoaded ? 1 : 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         className="relative z-10"
       >
