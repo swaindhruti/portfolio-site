@@ -39,10 +39,10 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
       animate={isInView ? "visible" : "hidden"}
       className="lg:col-span-2"
     >
-      <div className="bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] p-6 sm:p-8 md:p-10 relative">
+      <div className="bg-white border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] p-6 sm:p-8 md:p-10 relative rounded-md">
         {/* Neo-brutalist accent */}
-        <div className="absolute top-0 right-0 w-28 h-3 bg-yellow-400 border-l-[3px] border-b-[3px] border-black"></div>
-        <div className="absolute bottom-0 left-0 w-20 h-3 bg-blue-400 border-r-[3px] border-t-[3px] border-black"></div>
+        <div className="absolute top-0 right-0 w-28 h-3 bg-yellow-400 border-l-[3px] border-b-[3px] border-black rounded-bl-md"></div>
+        <div className="absolute bottom-0 left-0 w-20 h-3 bg-blue-400 border-r-[3px] border-t-[3px] border-black rounded-tr-md"></div>
 
         <motion.h2
           variants={itemVariants}
@@ -59,8 +59,8 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
             className="flex items-start space-x-5 group"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-red-400 border-[2px] border-black translate-x-1 translate-y-1"></div>
-              <div className="bg-white border-[2px] border-black p-3 relative">
+              <div className="absolute inset-0 bg-red-400 border-[2px] border-black translate-x-1 translate-y-1 rounded-md"></div>
+              <div className="bg-white border-[2px] border-black p-3 relative rounded-md">
                 <Mail size={24} className="text-black" />
               </div>
             </div>
@@ -81,11 +81,11 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
           {/* Phone */}
           <motion.div
             variants={itemVariants}
-            className="flex items-start space-x-5 group"
+            className="flex items-start space-x-5 group mt-4"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1 translate-y-1"></div>
-              <div className="bg-white border-[2px] border-black p-3 relative">
+              <div className="absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1 translate-y-1 rounded-md"></div>
+              <div className="bg-white border-[2px] border-black p-3 relative rounded-md">
                 <Phone size={24} className="text-black" />
               </div>
             </div>
@@ -121,10 +121,8 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
                   className="flex items-center space-x-5 group"
                 >
                   <div className="relative">
-                    <div
-                      className={`absolute inset-0 ${link.bgColor} border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5`}
-                    ></div>
-                    <div className="bg-white border-[2px] border-black p-3 relative transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px]">
+                    <div className={`absolute inset-0 ${link.bgColor} border-[2px] border-black translate-x-1 translate-y-1 transition-transform duration-150 rounded-md `}></div>
+                    <div className="bg-white border-[2px] border-black p-3 relative transition-transform duration-150 rounded-md g">
                       {link.icon}
                     </div>
                   </div>

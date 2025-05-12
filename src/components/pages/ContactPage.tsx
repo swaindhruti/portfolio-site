@@ -20,12 +20,12 @@ const ContactPage = () => {
       {/* Neo-brutalist Page Header */}
       <div className="text-center mb-12 md:mb-16">
         <div className="relative inline-block mb-6">
-          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
             animate={isPageInView ? "visible" : "hidden"}
-            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
           >
             GET IN TOUCH
           </motion.h1>
@@ -36,17 +36,17 @@ const ContactPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12">
         {/* Contact Information - Left Side with Neo-brutalist styling */}
         <div className="lg:col-span-2 relative">
-          <div className="absolute inset-0 bg-purple-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
-          <div className="relative border-[3px] border-black bg-white p-4 sm:p-6">
+          <div className="absolute inset-0 bg-purple-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
+          <div className="relative border-[3px] border-black bg-white p-4 sm:p-6 rounded-md">
             <ContactInfo isInView={isPageInView} />
           </div>
         </div>
 
         {/* Contact Form - Right Side with Neo-brutalist styling */}
         <div ref={formRef} className="lg:col-span-3 relative">
-          <div className="absolute inset-0 bg-green-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
-          <div className="relative border-[3px] border-black bg-white p-4 sm:p-6">
-            <div className="absolute top-0 right-0 w-12 h-3 bg-blue-400 border-l-[3px] border-b-[3px] border-black"></div>
+          <div className="absolute inset-0 bg-green-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
+          <div className="relative border-[3px] border-black bg-white p-4 sm:p-6 rounded-md">
+            <div className="absolute top-0 right-0 w-12 h-3 bg-blue-400 border-l-[3px] border-b-[3px] border-black rounded-bl-md"></div>
             <ContactForm isInView={isFormInView} />
           </div>
         </div>
@@ -55,8 +55,8 @@ const ContactPage = () => {
       {/* Neo-brutalist decorative element */}
       <div className="mt-12 md:mt-16 max-w-md mx-auto">
         <div className="h-1 border-t-[3px] border-black relative">
-          <div className="absolute -top-1 left-0 w-4 h-4 bg-yellow-400 border-[2px] border-black transform -translate-y-1/2"></div>
-          <div className="absolute -top-1 right-0 w-4 h-4 bg-red-400 border-[2px] border-black transform -translate-y-1/2"></div>
+          <div className="absolute -top-0.5 left-0 w-4 h-4 bg-yellow-400 border-[2px] border-black transform -translate-y-1/2"></div>
+          <div className="absolute -top-0.5 right-0 w-4 h-4 bg-red-400 border-[2px] border-black transform -translate-y-1/2"></div>
         </div>
       </div>
     </main>

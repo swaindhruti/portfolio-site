@@ -111,14 +111,16 @@ const ProjectContainer = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold relative inline-block">
-          Projects
-          <span className="block h-1 bg-black mt-2 sm:mt-3"></span>
-        </h1>
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-blue-500 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
+          <h1 className="relative text-3xl sm:text-4xl lg:text-5xl font-heading font-bold z-10 bg-white border-[3px] border-black px-6 py-3 rounded-md">
+            Projects
+          </h1>
+        </div>
       </motion.div>
 
       {/* Project grid with faster staggered animation */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 md:gap-10 w-full px-2 sm:px-4 md:px-6">
+      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8 md:gap-10 w-full px-2 sm:px-4 md:px-6">
         <AnimatePresence mode="sync">
           {projects.slice(0, visibleProjects).map((project, index) => (
             <motion.div
@@ -176,10 +178,9 @@ const ProjectContainer = () => {
                 transition-all
                 duration-200
                 ${isLoading ? "opacity-80 cursor-not-allowed" : ""}
-                ${
-                  isButtonPressed
-                    ? "translate-y-[2px] translate-x-[2px] shadow-[1px_1px_0px_0px_#000]"
-                    : isButtonHovered
+                ${isButtonPressed
+                  ? "translate-y-[2px] translate-x-[2px] shadow-[1px_1px_0px_0px_#000]"
+                  : isButtonHovered
                     ? "translate-y-[-2px] translate-x-[-2px] shadow-[3px_3px_0px_0px_#000]"
                     : "shadow-[2px_2px_0px_0px_#000]"
                 }

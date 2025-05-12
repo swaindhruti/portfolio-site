@@ -108,7 +108,9 @@ const WorkExperienceSection = () => {
   >([]);
 
   const sectionRef = useRef(null);
+  const carouselRef = useRef(null);
   const isSectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const isCarouselInView = useInView(carouselRef, { once: true, amount: 0.2 });
 
   // Only run on client-side after hydration
   useEffect(() => {
@@ -123,6 +125,34 @@ const WorkExperienceSection = () => {
     setShadowValues(shadows);
   }, []);
 
+  // Card entry animation variants
+  const cardContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      scale: 0.9,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
   return (
     <div
       ref={sectionRef}
@@ -130,13 +160,13 @@ const WorkExperienceSection = () => {
     >
       {/* Neo-brutalist heading with highlighted box */}
       <div className="text-center mb-8 md:mb-10">
-        <div className="relative inline-block mb-6">
-          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+        <div className="relative inline-block mb-7">
+          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
             animate={isSectionInView ? "visible" : "hidden"}
-            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
           >
             WORK EXPERIENCE
           </motion.h1>
@@ -144,10 +174,10 @@ const WorkExperienceSection = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        ref={carouselRef}
+        initial="hidden"
+        animate={isCarouselInView ? "visible" : "hidden"}
+        variants={cardContainerVariants}
         className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8 pr-4 sm:pr-6 md:pr-8"
       >
         <Carousel
@@ -178,23 +208,23 @@ const WorkExperienceSection = () => {
               return (
                 <CarouselItem
                   key={index}
-                  className="px-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3"
+                  className="px-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 pb-4"
                 >
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    variants={cardVariants}
                     className="h-full"
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    <div className="h-full" style={{ boxShadow: cardShadow }}>
+                    <div
+                      className="h-full rounded-md"
+                      style={{ boxShadow: cardShadow }}
+                    >
                       <Card
                         className={`
                           h-[360px] 
                           bg-white 
-                          rounded-none
+                          rounded-md
                           border-[3px]
                           border-black
                           flex flex-col 
@@ -209,6 +239,7 @@ const WorkExperienceSection = () => {
                           }
                         `}
                       >
+                        {/* Rest of the card content */}
                         <CardHeader className="bg-yellow-300 border-b-[3px] border-black p-3 sm:p-4">
                           <div className="flex justify-between items-start">
                             <div>
@@ -230,7 +261,7 @@ const WorkExperienceSection = () => {
                             {experience.technologies.map((tech, techIndex) => (
                               <span
                                 key={techIndex}
-                                className="bg-black text-white text-xs px-2 py-0.5 font-heading uppercase tracking-wide"
+                                className="bg-black text-white text-xs px-2 py-1 font-heading uppercase tracking-wider  rounded-md"
                               >
                                 {tech}
                               </span>
@@ -247,14 +278,16 @@ const WorkExperienceSection = () => {
                               className={`
                                 w-full
                                 bg-black 
-                                hover:bg-gray-800
+                                hover:bg-yellow-300
+                                hover:text-black
                                 text-white 
                                 font-bold 
                                 border-[3px] 
                                 border-black 
-                                rounded-none 
+                                rounded-md 
                                 px-4 py-2
                                 transition-all
+                                duration-200
                                 transform
                                 active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_0px_#000]
                                 group-hover:translate-y-[2px] group-hover:translate-x-[2px] group-hover:shadow-[1px_1px_0px_0px_#000]
@@ -277,16 +310,15 @@ const WorkExperienceSection = () => {
           </CarouselContent>
 
           {/* Neo-brutalist navigation buttons */}
+
           <CarouselPrevious
-            className="bg-black text-white hover:bg-yellow-300 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                   transition-all duration-200"
+            className="bg-yellow-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                   transition-all duration-200 hidden sm:flex"
           />
 
           <CarouselNext
-            className="bg-black text-white hover:bg-yellow-300 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                  transition-all duration-200"
+            className="bg-yellow-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                   transition-all duration-200 hidden sm:flex"
           />
         </Carousel>
       </motion.div>

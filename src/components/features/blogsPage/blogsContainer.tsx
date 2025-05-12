@@ -109,12 +109,12 @@ const BlogsContainer = () => {
   const allBlogsShown = visibleBlogs >= blogs.length;
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 px-3 sm:px-4 md:px-6 lg:px-8 py-6 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-6 sm:pb-8 md:pb-10 min-h-screen">
+    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-16 px-3 sm:px-4 md:px-6 lg:px-8 py-6 pt-24 sm:pt-28 pb-6 sm:pb-12 md:pb-20 min-h-screen">
       {/* Neo-brutalist header */}
       <div className="relative inline-block mb-6">
-        <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+        <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
         <motion.h1
-          className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+          className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
@@ -133,6 +133,7 @@ const BlogsContainer = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: (index % 4) * 0.1 }}
+                className="h-full"
               >
                 <BlogCard blog={blog} />
               </motion.div>
@@ -150,10 +151,10 @@ const BlogsContainer = () => {
           className="mt-10 sm:mt-12"
         >
           <div className="relative group">
-            <div className="absolute inset-0 bg-red-400 border-[3px] border-black translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-all duration-200"></div>
+            <div className="absolute inset-0 bg-red-400 border-[3px] border-black translate-x-2 translate-y-2 group-hover:translate-x-1 group-hover:translate-y-1 transition-all duration-200 rounded-md"></div>
             <Button
               onClick={loadMoreBlogs}
-              className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-all duration-200 rounded-none"
+              className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-5 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-all duration-200 rounded-md"
             >
               <span className="flex items-center gap-2 font-bold">
                 LOAD MORE

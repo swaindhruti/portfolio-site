@@ -39,17 +39,17 @@ export default function SectionHeader({
       <div className="relative inline-block">
         {/* Background accent */}
         <div
-          className={`absolute inset-0 ${accentColor} border-[3px] border-black translate-x-2 translate-y-2`}
+          className={`absolute inset-0 ${accentColor} border-[3px] border-black translate-x-2 translate-y-2 rounded-md`}
         ></div>
 
         {/* Main container */}
-        <div className="relative border-[3px] border-black bg-white flex items-center py-2 px-4 md:py-3 md:px-5">
+        <div className="relative border-[3px] border-black bg-white flex items-center py-2 px-4 md:py-3 md:px-5 rounded-md">
           {/* Icon with background */}
           <div className="relative mr-3 md:mr-4">
             <div
-              className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1`}
+              className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1 rounded-md`}
             ></div>
-            <div className="relative border-[2px] border-black bg-white p-1.5 md:p-2">
+            <div className="relative border-[2px] border-black bg-white p-1.5 md:p-2 rounded-md">
               <Icon className="w-5 h-5 md:w-6 md:h-6 text-black" />
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function SectionHeader({
           {/* Header text */}
           <motion.h2
             variants={itemVariants}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold font-heading text-black uppercase"
+            className="text-xl sm:text-3xl md:text-4xl font-bold font-heading text-black uppercase"
           >
             {title}
           </motion.h2>

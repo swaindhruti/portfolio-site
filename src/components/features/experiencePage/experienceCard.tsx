@@ -60,13 +60,13 @@ const ExperienceCard: React.FC<{
       {/* Timeline dot and line */}
       <div className="absolute left-0 top-0 h-full">
         <motion.div
-          className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${accentColor} border-[2px] border-black relative z-10`}
+          className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${accentColor} border-[2px] border-black relative z-10 rounded-md`}
           initial={{ scale: 0 }}
           animate={isInView ? { scale: 1 } : { scale: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
         >
           <motion.div
-            className="absolute w-full h-full bg-black/50"
+            className="absolute w-full h-full rounded-md"
             style={{
               scale: dotScale,
             }}
@@ -98,8 +98,8 @@ const ExperienceCard: React.FC<{
             delay: index * 0.1,
             ease: "easeOut",
           }}
-          className="relative bg-white border-[3px] border-black shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] 
-                     p-4 sm:p-6 md:p-8 transition-all duration-300 ease-out h-full"
+          className="relative bg-white border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] 
+                     p-4 sm:p-6 md:p-8 transition-all duration-300 ease-out h-full rounded-md"
           style={{
             transformOrigin: "left center",
           }}
@@ -110,10 +110,10 @@ const ExperienceCard: React.FC<{
         >
           {/* Neo-brutalist corner accent */}
           <div
-            className={`absolute top-0 right-0 w-16 h-3 ${accentColor} border-l-[3px] border-b-[3px] border-black`}
+            className={`absolute top-0 right-0 w-16 h-3 ${accentColor} border-l-[3px] border-b-[3px] border-black rounded-bl-md`}
           ></div>
           <div
-            className={`absolute bottom-0 left-0 w-12 h-3 ${accentColor} border-r-[3px] border-t-[3px] border-black`}
+            className={`absolute bottom-0 left-0 w-12 h-3 ${accentColor} border-r-[3px] border-t-[3px] border-black rounded-tr-md`}
           ></div>
 
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-6 mb-5 sm:mb-6 md:mb-7">
@@ -146,9 +146,9 @@ const ExperienceCard: React.FC<{
               className="relative self-start"
             >
               <div
-                className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1`}
+                className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1 rounded-md`}
               ></div>
-              <span className="relative bg-white border-[2px] border-black px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 font-bold font-heading text-sm sm:text-base md:text-lg block">
+              <span className="relative bg-white border-[2px] border-black px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 font-bold font-heading text-sm sm:text-base md:text-lg block rounded-md">
                 {experience.duration}
               </span>
             </motion.div>
@@ -164,15 +164,15 @@ const ExperienceCard: React.FC<{
           </motion.p>
 
           {/* Technologies section */}
-          <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
+          <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 pb-3 sm:pb-0">
             {experience.technologies.map((tech, i) => (
               <div key={i} className="relative group">
                 <div
                   className={`absolute inset-0 ${
                     colors[(i + index) % colors.length]
-                  } border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5`}
+                  } border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 rounded-md`}
                 ></div>
-                <span className="relative block bg-white border-[2px] border-black px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-1.5 text-xs sm:text-sm md:text-base font-medium font-sans transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px]">
+                <span className="relative block bg-white border-[2px] border-black px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-1.5 text-xs sm:text-sm md:text-base font-medium font-sans transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] rounded-md">
                   {tech}
                 </span>
               </div>

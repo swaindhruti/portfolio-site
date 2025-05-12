@@ -88,20 +88,22 @@ const Navbar = () => {
               ? "rgba(255, 255, 255, 1)"
               : "rgba(255, 255, 255, 0)",
             borderBottom:
-              isOpen || scrolled ? "3px solid black" : "0px solid transparent",
+              isOpen || scrolled
+                ? "1.5px solid black"
+                : "0px solid transparent",
             boxShadow: isOpen || scrolled ? "0 5px 0 rgba(0, 0, 0, 1)" : "none",
           }}
           transition={{ duration: 0.3 }}
-          className="flex justify-between items-center py-4 sm:py-5 px-4 sm:px-8 md:px-12 lg:px-16 mx-auto"
+          className="flex justify-between items-center py-3 sm:py-4 md:py-5 px-3 sm:px-6 md:px-8 lg:px-16 mx-auto"
         >
-          {/* Logo/Brand - Left Side */}
+          {/* Logo/Brand - Left Side - Smaller on mobile */}
           <div className="flex-shrink-0">
             <Link href="/">
               <div className="relative group">
-                <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></div>
+                <div className="absolute inset-0 bg-yellow-400 border-[2px] sm:border-[3px] border-black translate-x-1 translate-y-1 sm:translate-x-1.5 sm:translate-y-1.5 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 sm:group-hover:translate-x-1 sm:group-hover:translate-y-1 rounded-md"></div>
                 <Button
                   variant="ghost"
-                  className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-xl sm:text-2xl font-bold transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] px-5 py-2 h-auto"
+                  className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-lg sm:text-xl md:text-2xl font-bold transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] px-3 sm:px-4 md:px-5 py-1 sm:py-2 h-auto rounded-md"
                 >
                   Dhruti&apos;s Folio
                 </Button>
@@ -121,17 +123,17 @@ const Navbar = () => {
                     border-b-[3px] border-black ${
                       pathname === item.href ? "opacity-100" : "opacity-0"
                     } 
-                    transition-opacity group-hover:opacity-100`}
+                    transition-opacity group-hover:opacity-100 rounded-t-md`}
                   ></div>
                   <Button
                     variant="link"
-                    className="relative z-10 text-base xl:text-lg font-bold font-heading no-underline hover:no-underline tracking-wide text-black px-3 py-1 h-auto"
+                    className="relative z-10 text-base xl:text-lg font-bold font-heading no-underline hover:no-underline tracking-wide text-black px-3 py-1 h-auto rounded-md"
                   >
                     {item.label.toUpperCase()}
                   </Button>
                   {pathname === item.href && (
                     <motion.div
-                      className="absolute bottom-0 left-0 w-full h-1 bg-black"
+                      className="absolute bottom-0 left-0 w-full h-1 bg-black rounded-md"
                       layoutId="navIndicator"
                     />
                   )}
@@ -141,25 +143,25 @@ const Navbar = () => {
 
             {/* CTA Button */}
             <div className="relative group ml-4">
-              <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></div>
-              <Button className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-sm font-bold transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] px-6 py-2 h-auto">
+              <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></div>
+              <Button className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-lg font-bold transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] px-6 py-2 h-auto rounded-md">
                 RESUME
               </Button>
             </div>
           </div>
 
-          {/* Mobile Hamburger Button - Right Side */}
+          {/* Mobile Hamburger Button - Right Side - Smaller on mobile */}
           <div className="lg:hidden">
             <div className="relative group">
               <div
                 className={`absolute inset-0 ${
                   isOpen ? "bg-red-400" : "bg-green-400"
-                } border-[3px] border-black translate-x-2 translate-y-2 transition-transform`}
+                } border-[2px] sm:border-[3px] border-black translate-x-1 translate-y-1 sm:translate-x-1.5 sm:translate-y-1.5 transition-transform rounded-md`}
               ></div>
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black flex items-center justify-center p-2 h-12 w-12"
+                className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black flex items-center justify-center p-1.5 sm:p-2 h-10 w-10 sm:h-12 sm:w-12 rounded-md"
                 onClick={toggleMenu}
                 aria-label="Toggle menu"
               >
@@ -172,7 +174,7 @@ const Navbar = () => {
                       exit={{ opacity: 0, rotate: 90 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <X className="w-6 h-6 sm:w-7 sm:h-7" />
+                      <X className="w-5 h-5 sm:w-6 sm:h-6" />
                     </motion.div>
                   ) : (
                     <motion.div
@@ -182,7 +184,7 @@ const Navbar = () => {
                       exit={{ opacity: 0, rotate: -90 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu className="w-6 h-6 sm:w-7 sm:h-7" />
+                      <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -191,7 +193,7 @@ const Navbar = () => {
           </div>
         </motion.div>
 
-        {/* Mobile Menu with fixed positioning */}
+        {/* Mobile Menu with fixed positioning - Optimized for smaller screens */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -203,30 +205,33 @@ const Navbar = () => {
                 opacity: { duration: 0.2 },
                 height: { duration: 0.3 },
               }}
-              className="lg:hidden bg-white fixed top-[68px] sm:top-[76px] inset-x-0 overflow-hidden z-40 border-b-[3px] border-black"
+              className="lg:hidden bg-white fixed top-[58px] sm:top-[68px] inset-x-0 overflow-auto z-40 border-b-[1px] border-black"
+              style={{
+                maxHeight: "calc(100vh - 58px)", // Adjusted for mobile header height
+              }}
             >
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.1, duration: 0.2 }}
-                className="flex items-center justify-center h-full py-10"
+                className="flex items-center justify-center py-16"
               >
-                <div className="flex flex-col space-y-6 sm:space-y-8 md:space-y-10 items-center justify-center w-full px-8 max-w-md mx-auto">
+                <div className="flex flex-col space-y-6 items-center justify-center w-full px-4 xs:px-6 sm:px-8 max-w-md mx-auto align-items">
                   {navItems.map((item, index) => (
                     <motion.div
                       key={item.label}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 + index * 0.1, duration: 0.3 }}
-                      className="w-full"
+                      transition={{ delay: 0.1 + index * 0.08, duration: 0.3 }}
+                      className="w-5/6"
                     >
                       <Link href={item.href} onClick={() => setIsOpen(false)}>
-                        <div className="relative group w-full">
+                        <div className="relative group w-full ">
                           <div
                             className={`absolute inset-0 ${
                               item.color
-                            } border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 ${
+                            } border-[2px] sm:border-[3px] border-black translate-x-1.5 translate-y-1.5 sm:translate-x-2 rounded-md sm:translate-y-2 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 sm:group-hover:translate-x-1 sm:group-hover:translate-y-1 ${
                               pathname === item.href
                                 ? "opacity-100"
                                 : "opacity-75"
@@ -234,7 +239,7 @@ const Navbar = () => {
                           ></div>
                           <Button
                             variant="ghost"
-                            className="relative w-full border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] py-3 h-auto"
+                            className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-lg xs:text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] py-1.5 xs:py-2 sm:py-3 h-auto rounded-md"
                           >
                             {item.label.toUpperCase()}
                           </Button>
@@ -243,19 +248,19 @@ const Navbar = () => {
                     </motion.div>
                   ))}
 
-                  {/* Mobile Resume Button */}
+                  {/* Mobile Resume Button - Smaller for mobile */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
-                      delay: 0.1 + navItems.length * 0.1,
+                      delay: 0.1 + navItems.length * 0.08,
                       duration: 0.3,
                     }}
-                    className="w-full mt-4"
+                    className="w-full mt-2 sm:mt-4 items-center flex flex-col justify-center align-items"
                   >
-                    <div className="relative group w-full">
-                      <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-3 translate-y-3 transition-transform group-hover:translate-x-1.5 group-hover:translate-y-1.5"></div>
-                      <Button className="relative w-full border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1.5px] group-hover:translate-y-[-1.5px] py-3 h-auto">
+                    <div className="relative group w-5/6">
+                      <div className="absolute inset-0 bg-blue-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 translate-y-1.5 rounded-md sm:translate-x-3 sm:translate-y-3 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 sm:group-hover:translate-x-1.5 sm:group-hover:translate-y-1.5"></div>
+                      <Button className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-lg xs:text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] sm:group-hover:translate-x-[-1.5px] sm:group-hover:translate-y-[-1.5px] py-1.5 xs:py-2 sm:py-3 h-auto rounded-md">
                         RESUME
                       </Button>
                     </div>

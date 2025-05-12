@@ -98,14 +98,14 @@ const ProjectSection = () => {
       className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10 mt-8 sm:mt-10 md:mt-12 relative"
     >
       {/* Neo-brutalist heading with highlighted box */}
-      <div className="text-center mb-12 md:mb-16">
+      <div className="text-center mb-8 md:mb-16">
         <div className="relative inline-block mb-6">
-          <div className="absolute inset-0 bg-blue-500 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <div className="absolute inset-0 bg-blue-500 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
             animate={isSectionInView ? "visible" : "hidden"}
-            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
           >
             SELECTED PROJECTS
           </motion.h1>
@@ -128,7 +128,7 @@ const ProjectSection = () => {
               loop: true,
             }}
           >
-            <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4 mb-2">
+            <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4 mb-2 pt-4">
               {projects.map((project, index) => (
                 <CarouselItem
                   key={index}
@@ -144,13 +144,13 @@ const ProjectSection = () => {
             {/* Neo-brutalist navigation buttons */}
             <div className="flex justify-center gap-6">
               <CarouselPrevious
-                className="bg-black text-white hover:bg-blue-300 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000] transition-all duration-200"
+                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                   transition-all duration-200 hidden sm:flex"
               />
 
               <CarouselNext
-                className="bg-black text-white hover:bg-blue-300 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000] transition-all duration-200"
+                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                   transition-all duration-200 hidden sm:flex"
               />
             </div>
           </Carousel>

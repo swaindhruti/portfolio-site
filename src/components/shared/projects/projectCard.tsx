@@ -26,19 +26,18 @@ interface Project {
 const ProjectCard = ({ project }: { project: Project }) => {
   // Client-side only state to prevent hydration mismatch
   const [isHovered, setIsHovered] = useState(false);
-  const [isCardPressed, setIsCardPressed] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [cardProps, setCardProps] = useState({
-    shadowOffsetX: 5,
-    shadowOffsetY: 5,
+    shadowOffsetX: 3,
+    shadowOffsetY: 3,
   });
 
   // Generate random properties only after component mounts on client
   useEffect(() => {
     setIsMounted(true);
     setCardProps({
-      shadowOffsetX: Math.floor(Math.random() * 5) + 5,
-      shadowOffsetY: Math.floor(Math.random() * 5) + 5,
+      shadowOffsetX: Math.floor(Math.random() * 2) + 2, // Reduced from 5+5 to 2+2
+      shadowOffsetY: Math.floor(Math.random() * 2) + 2, // Reduced from 5+5 to 2+2
     });
   }, []);
 
@@ -66,37 +65,25 @@ const ProjectCard = ({ project }: { project: Project }) => {
       className="h-full w-full"
       style={{ perspective: "1000px" }}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        setIsCardPressed(false);
-      }}
-      onMouseDown={() => setIsCardPressed(true)}
-      onMouseUp={() => setIsCardPressed(false)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
         animate={{
-          y: isCardPressed ? 2 : isHovered ? -5 : 0,
-          x: isCardPressed ? 2 : 0,
+          y: isHovered ? -5 : 0,
         }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
         style={{
-          boxShadow: isCardPressed
-            ? `${cardProps.shadowOffsetX - 2}px ${
-                cardProps.shadowOffsetY - 2
-              }px 0px 0px #000`
-            : isHovered
-            ? `${cardProps.shadowOffsetX + 2}px ${
-                cardProps.shadowOffsetY + 2
-              }px 0px 0px #000`
+          boxShadow: isHovered
+            ? `${cardProps.shadowOffsetX + 1}px ${cardProps.shadowOffsetY + 1}px 0px 0px #000`
             : `${cardProps.shadowOffsetX}px ${cardProps.shadowOffsetY}px 0px 0px #000`,
         }}
-        className="h-full w-full"
+        className="h-full w-full rounded-md"
       >
         <Card
           className={`
           bg-white 
           border-[3px] border-black 
-          rounded-none 
+          rounded-md 
           flex flex-col 
           overflow-hidden 
           h-[440px] sm:h-[460px]
@@ -144,13 +131,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     font-bold 
                     border-[3px] 
                     border-black 
-                    rounded-none 
+                    rounded-md 
                     px-4 py-2
                     transition-all
-                    transform
-                    active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_0px_#000]
-                    group-hover:translate-y-[-2px] group-hover:translate-x-[-2px] group-hover:shadow-[4px_4px_0px_0px_#000]
-                    shadow-[2px_2px_0px_0px_#000]
+                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[2px_2px_0px_0px_#000]
+                    shadow-[1px_1px_0px_0px_#000]
                   `}
                 >
                   <span className="flex items-center justify-center gap-2 font-heading uppercase tracking-wide">
@@ -169,13 +154,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     font-bold 
                     border-[3px] 
                     border-black 
-                    rounded-none 
+                    rounded-md 
                     px-4 py-2
                     transition-all
-                    transform
-                    active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_0px_#000]
-                    group-hover:translate-y-[-2px] group-hover:translate-x-[-2px] group-hover:shadow-[4px_4px_0px_0px_#000]
-                    shadow-[2px_2px_0px_0px_#000]
+                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[2px_2px_0px_0px_#000]
+                    shadow-[1px_1px_0px_0px_#000]
                   `}
                 >
                   <span className="flex items-center justify-center gap-2 font-heading uppercase tracking-wide">

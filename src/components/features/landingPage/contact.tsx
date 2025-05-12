@@ -16,17 +16,17 @@ const ContactSection: React.FC = () => {
     <div
       id="contact"
       ref={pageRef}
-      className="min-h-screen pt-20 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
+      className="min-h-screen pt-16 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
     >
       {/* Neo-brutalist Page Header */}
       <div className="text-center mb-12 md:mb-16">
         <div className="relative inline-block mb-6">
-          <div className="absolute inset-0 bg-emerald-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <div className="absolute inset-0 bg-emerald-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
             animate={isPageInView ? "visible" : "hidden"}
-            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
           >
             LET&apos;S CONNECT
           </motion.h1>

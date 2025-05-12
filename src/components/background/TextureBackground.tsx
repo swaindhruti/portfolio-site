@@ -51,7 +51,7 @@ export default function NeoBrutalistBackground({
             className="absolute top-[60%] right-[15%] w-24 h-24 md:w-28 md:h-28 lg:w-36 lg:h-36 bg-blue-200 border-[1px] border-black/30"
           />
 
-          {/* NEW: Green circle in mid-left */}
+          {/* Green circle in mid-left */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 0.15, y: 0 }}
@@ -59,7 +59,7 @@ export default function NeoBrutalistBackground({
             className="absolute top-[45%] left-[8%] w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 rounded-full bg-green-200 border-[1px] border-black/30"
           />
 
-          {/* NEW: Purple triangle shape using CSS */}
+          {/* Purple triangle shape using CSS */}
           <motion.div
             initial={{ opacity: 0, rotate: 45 }}
             animate={{ opacity: 0.15, rotate: 0 }}
@@ -67,31 +67,81 @@ export default function NeoBrutalistBackground({
             className="absolute top-[15%] left-[35%] w-0 h-0 border-l-[25px] md:border-l-[35px] lg:border-l-[45px] border-l-transparent border-b-[50px] md:border-b-[70px] lg:border-b-[90px] border-b-purple-200 border-r-[25px] md:border-r-[35px] lg:border-r-[45px] border-r-transparent"
           />
 
-          {/* NEW: Orange rectangle in bottom-right */}
+          {/* Orange rectangle in bottom-right */}
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={{ opacity: 0.15, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="absolute bottom-[20%] right-[30%] w-16 h-24 md:w-20 md:h-32 lg:w-24 lg:h-40 bg-orange-200 border-[1px] border-black/30 transform -rotate-6"
+            className="absolute bottom-[20%] right-[30%] w-16 h-24 md:w-20 md:h-32 lg:w-24 lg:h-40 bg-orange-200 border-[1px] border-black/30 transform"
           />
 
-          {/* NEW: Small cyan square top-center */}
+          {/* Small cyan square top-center */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 0.15, y: 0 }}
             transition={{ duration: 0.4, delay: 0.7 }}
-            className="absolute top-[12%] left-[48%] w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-cyan-200 border-[1px] border-black/30 transform rotate-45"
+            className="absolute top-[12%] left-[48%] w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-cyan-200 border-[1px] border-black/30 transform"
           />
 
-          {/* NEW: Dotted pattern - small dots */}
-          <div
-            className="absolute top-[75%] left-[25%] right-[40%] h-24 opacity-10"
+          {/* NEW: Zigzag shape (drawn with border) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 0.2, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="absolute top-[75%] left-[22%] w-32 md:w-40 lg:w-48 h-6 md:h-8 lg:h-10"
             style={{
-              backgroundImage:
-                "radial-gradient(circle, black 1px, transparent 1px)",
-              backgroundSize: "10px 10px",
+              backgroundImage: "linear-gradient(45deg, transparent 33.333%, #a855f7 33.333%, #a855f7 66.667%, transparent 66.667%)",
+              backgroundSize: "24px 12px",
+              backgroundRepeat: "repeat-x"
             }}
-          ></div>
+          />
+
+          {/* NEW: Half-circle shape */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 0.15, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.45 }}
+            className="absolute top-[22%] left-[15%] w-32 md:w-40 lg:w-48 h-16 md:h-20 lg:h-24 bg-teal-200 border-[1px] border-black/30 rounded-tl-full rounded-tr-full"
+          />
+
+          {/* NEW: Cross-hatch pattern */}
+          <motion.div
+            initial={{ opacity: 0, rotate: -10 }}
+            animate={{ opacity: 0.1, rotate: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="absolute bottom-[35%] left-[35%] w-28 h-28 md:w-36 md:h-36 lg:w-44 lg:h-44"
+            style={{
+              backgroundImage: `
+                linear-gradient(45deg, #f87171 25%, transparent 25%),
+                linear-gradient(-45deg, #f87171 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #f87171 75%),
+                linear-gradient(-45deg, transparent 75%, #f87171 75%)
+              `,
+              backgroundSize: '20px 20px',
+              backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+            }}
+          />
+
+          {/* NEW: Dotted circle */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 0.2, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.65 }}
+            className="absolute bottom-[5%] right-[5%] w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full"
+            style={{
+              background: 'radial-gradient(circle, #38bdf8 25%, transparent 25%)',
+              backgroundSize: '12px 12px',
+            }}
+          />
+
+          {/* NEW: Diamond shape using rotated square */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 0.2, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="absolute bottom-[15%] left-[42%] w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 bg-pink-200 border-[1px] border-black/30 transform"
+          />
+
         </div>
       </div>
 

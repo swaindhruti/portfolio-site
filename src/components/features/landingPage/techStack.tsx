@@ -29,7 +29,43 @@ const itemVariants = {
 const TechStackSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef(null);
+  const carouselRef = useRef(null);
   const isSectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const isCarouselInView = useInView(carouselRef, { once: true, amount: 0.2 });
+
+  // Card container animation variants
+  const cardContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  // Individual card animation variants
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+      scale: 0.8,
+      rotateY: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotateY: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 1,
+      },
+    },
+  };
 
   return (
     <div
@@ -39,12 +75,12 @@ const TechStackSection = () => {
       {/* Neo-brutalist heading with highlighted box */}
       <div className="text-center mb-8 md:mb-10">
         <div className="relative inline-block mb-6">
-          <div className="absolute inset-0 bg-orange-400 border-[3px] border-black translate-x-2 translate-y-2"></div>
+          <div className="absolute inset-0 bg-orange-400 border-[3px] border-black rounded-md translate-x-2 translate-y-2"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
             animate={isSectionInView ? "visible" : "hidden"}
-            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
+            className="relative border-[3px] border-black bg-white rounded-md font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black"
           >
             TECHNOLOGY STACK
           </motion.h1>
@@ -52,10 +88,10 @@ const TechStackSection = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        ref={carouselRef}
+        initial="hidden"
+        animate={isCarouselInView ? "visible" : "hidden"}
+        variants={cardContainerVariants}
         className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8 pr-4 sm:pr-6 md:pr-8"
       >
         <div className="py-4 sm:py-6 pl-1 pr-1">
@@ -74,19 +110,16 @@ const TechStackSection = () => {
                 >
                   <div className="p-1 sm:p-2">
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.2, delay: index * 0.03 }}
+                      variants={cardVariants}
                       className="h-full"
                       onMouseEnter={() => setHoveredIndex(index)}
                       onMouseLeave={() => setHoveredIndex(null)}
                     >
                       <Card
                         className={`
-                          rounded-none 
                           border-[2px] 
                           border-black 
+                          rounded-md
                           bg-white 
                           hover:bg-gray-50
                           h-32 sm:h-36 md:h-40
@@ -116,7 +149,7 @@ const TechStackSection = () => {
                               className={`
                                 absolute 
                                 inset-0 
-                                rounded-none 
+                                rounded-md 
                                 border-[2px] 
                                 border-black
                                 transition-all
@@ -149,7 +182,6 @@ const TechStackSection = () => {
 
                           <div
                             className={`
-                              
                               text-black 
                               px-2 
                               py-0.5 
@@ -174,17 +206,15 @@ const TechStackSection = () => {
             </CarouselContent>
 
             {/* Neo-brutalist navigation buttons */}
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-6">
               <CarouselPrevious
-                className="bg-black text-white hover:bg-orange-300 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                   transition-all duration-200"
+                className="bg-orange-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                   transition-all duration-200 hidden sm:flex"
               />
 
               <CarouselNext
-                className="bg-black text-white hover:bg-orange-300 border-[3px] border-black rounded-none h-10 w-10 
-                  shadow-[2px_2px_0px_0px_#000] hover:shadow-[1px_1px_0px_0px_#000]
-                  transition-all duration-200"
+                className="bg-orange-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                   transition-all duration-200 hidden sm:flex"
               />
             </div>
           </Carousel>
