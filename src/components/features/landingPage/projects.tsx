@@ -95,17 +95,17 @@ const ProjectSection = () => {
   return (
     <div
       ref={sectionRef}
-      className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10 mt-8 sm:mt-10 md:mt-12 relative"
+      className="flex flex-col items-center justify-center space-y-3 sm:space-y-4 md:space-y-6 px-3 sm:px-4 md:px-6 py-6 md:py-8 mt-6 sm:mt-8 md:mt-10 relative"
     >
       {/* Neo-brutalist heading with highlighted box */}
-      <div className="text-center mb-8 md:mb-16">
-        <div className="relative inline-block mb-6">
-          <div className="absolute inset-0 bg-blue-500 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
+      <div className="text-center mb-6 sm:mb-8 md:mb-10">
+        <div className="relative inline-block mb-4 sm:mb-5">
+          <div className="absolute inset-0 bg-blue-500 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
             animate={isSectionInView ? "visible" : "hidden"}
-            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
+            className="relative border-[2px] sm:border-[3px] border-black bg-white font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold px-4 sm:px-6 py-2 sm:py-3 text-black rounded-md"
           >
             SELECTED PROJECTS
           </motion.h1>
@@ -117,7 +117,7 @@ const ProjectSection = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={containerVariants}
-        className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8 pr-4 sm:pr-6 md:pr-8"
+        className="w-full max-w-screen-xl mt-1 sm:mt-2 md:mt-3 relative px-2 sm:px-4 md:px-6 lg:px-8"
       >
         {/* Border container */}
         <div className="pl-1 pr-1 py-2">
@@ -128,11 +128,11 @@ const ProjectSection = () => {
               loop: true,
             }}
           >
-            <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4 mb-2 pt-4">
+            <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-3 mb-2 pt-2 sm:pt-3 ">
               {projects.map((project, index) => (
                 <CarouselItem
                   key={index}
-                  className="pl-1 sm:pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 px-2"
+                  className="pl-1 sm:pl-2 md:pl-3 basis-full sm:basis-1/2 lg:basis-1/3 px-1 sm:px-2"
                 >
                   <motion.div variants={cardVariants}>
                     <ProjectCard project={project} />
@@ -142,14 +142,14 @@ const ProjectSection = () => {
             </CarouselContent>
 
             {/* Neo-brutalist navigation buttons */}
-            <div className="flex justify-center gap-6">
+            <div className="flex justify-center gap-4 sm:gap-5 md:gap-6 mt-3 sm:mt-4">
               <CarouselPrevious
-                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
                    transition-all duration-200 hidden sm:flex"
               />
 
               <CarouselNext
-                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
+                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
                    transition-all duration-200 hidden sm:flex"
               />
             </div>

@@ -83,7 +83,7 @@ const projects = [
 
 const ProjectContainer = () => {
   // Initially show 4 projects, or fewer if on smaller screens
-  const [visibleProjects, setVisibleProjects] = useState(4);
+  const [visibleProjects, setVisibleProjects] = useState(3);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [isButtonPressed, setIsButtonPressed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -94,7 +94,7 @@ const ProjectContainer = () => {
 
     // Use setTimeout to simulate loading and reduce the delay perception
     setTimeout(() => {
-      setVisibleProjects((prev) => Math.min(prev + 4, projects.length));
+      setVisibleProjects((prev) => Math.min(prev + 3, projects.length));
       setIsLoading(false);
     }, 100);
   };
@@ -103,10 +103,10 @@ const ProjectContainer = () => {
   const allProjectsShown = visibleProjects >= projects.length;
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10 mt-20 sm:mt-24 md:mt-28">
+    <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-3 sm:px-4 md:px-6 lg:px-8 py-6 md:py-8 lg:py-10 mt-24 md:mt-28 mb-8 md:mb-10">
       {/* Centered header with underline */}
       <motion.div
-        className="w-full text-center mb-10 sm:mb-14 md:mb-16"
+        className="w-full text-center mb-10 "
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -120,7 +120,7 @@ const ProjectContainer = () => {
       </motion.div>
 
       {/* Project grid with faster staggered animation */}
-      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8 md:gap-10 w-full px-2 sm:px-4 md:px-6">
+      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8 md:gap-10 w-full px-2 sm:px-4 md:px-6 ">
         <AnimatePresence mode="sync">
           {projects.slice(0, visibleProjects).map((project, index) => (
             <motion.div
@@ -167,20 +167,22 @@ const ProjectContainer = () => {
                 hover:bg-blue-600
                 text-white 
                 font-bold
+                mt-8
                 border-[3px]
                 border-black 
                 rounded-none 
                 px-6 sm:px-8
-                py-2 sm:py-2.5
+                py-2 sm:py-6
                 text-base sm:text-lg
                 font-heading
                 tracking-wide
                 transition-all
                 duration-200
                 ${isLoading ? "opacity-80 cursor-not-allowed" : ""}
-                ${isButtonPressed
-                  ? "translate-y-[2px] translate-x-[2px] shadow-[1px_1px_0px_0px_#000]"
-                  : isButtonHovered
+                ${
+                  isButtonPressed
+                    ? "translate-y-[2px] translate-x-[2px] shadow-[1px_1px_0px_0px_#000]"
+                    : isButtonHovered
                     ? "translate-y-[-2px] translate-x-[-2px] shadow-[3px_3px_0px_0px_#000]"
                     : "shadow-[2px_2px_0px_0px_#000]"
                 }

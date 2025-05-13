@@ -40,11 +40,11 @@ const CommunityPage = () => {
   const isEventsInView = useInView(eventsRef, { once: true, amount: 0.1 });
 
   return (
-    <main className="pt-24 md:pt-32 lg:pt-48">
+    <main className="pt-28 md:pt-36">
       {/* Neo-brutalist Page Header */}
       <div className="text-center px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
-        <div className="relative inline-block mb-8">
-          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
+        <div className="relative inline-block">
+          <div className="absolute inset-0 bg-green-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
           <h1 className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md">
             COMMUNITY ENGAGEMENT
           </h1>
@@ -54,7 +54,7 @@ const CommunityPage = () => {
       {/* SECTION 1: Communities I'm Part Of */}
       <section
         ref={communityRef}
-        className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
+        className="py-12 md:py-16 lg:py-20 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto justify-center flex flex-col items-center"
       >
         <SectionHeader
           icon={Users}
@@ -86,7 +86,7 @@ const CommunityPage = () => {
       {/* SECTION 2: Events I've Been Part Of */}
       <section
         ref={eventsRef}
-        className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
+        className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto justify-center flex flex-col items-center"
       >
         <SectionHeader
           icon={Calendar}
@@ -133,10 +133,10 @@ const CommunityPage = () => {
       {/* Neo-brutalist Call to Action */}
       <section
         ref={ctaRef}
-        className="py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto text-center"
+        className="py-12 md:py-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto text-center"
       >
         <div className="max-w-3xl mx-auto">
-          <div className="relative mb-6 sm:mb-8 inline-block">
+          <div className="relative mb-6 sm:mb-10 inline-block">
             <div className="absolute inset-0 bg-purple-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
             <h3 className="relative border-[3px] border-black bg-white font-heading text-xl sm:text-2xl md:text-3xl font-bold px-6 py-3 text-black rounded-md">
               WANT TO COLLABORATE?

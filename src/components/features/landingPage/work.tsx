@@ -118,8 +118,8 @@ const WorkExperienceSection = () => {
 
     // Generate random shadow values once on client-side
     const shadows = workExperiences.map(() => ({
-      x: Math.floor(Math.random() * 3) + 2,
-      y: Math.floor(Math.random() * 3) + 2,
+      x: Math.floor(Math.random() * 2) + 2, // Reduced from 3+2 to 2+2
+      y: Math.floor(Math.random() * 2) + 2, // Reduced from 3+2 to 2+2
     }));
 
     setShadowValues(shadows);
@@ -148,7 +148,7 @@ const WorkExperienceSection = () => {
       y: 0,
       scale: 1,
       transition: {
-        duration: 1,
+        duration: 0.8, // Reduced from 1 to 0.8
       },
     },
   };
@@ -156,17 +156,17 @@ const WorkExperienceSection = () => {
   return (
     <div
       ref={sectionRef}
-      className="flex flex-col items-center justify-center space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10 px-4 sm:px-6 md:px-8 py-6 md:py-10 mt-8 sm:mt-10 md:mt-12"
+      className="flex flex-col items-center justify-center space-y-3 sm:space-y-4 md:space-y-6 px-4 sm:px-6 md:px-8 py-6 md:py-8 mt-6 sm:mt-8 md:mt-10 relative"
     >
       {/* Neo-brutalist heading with highlighted box */}
-      <div className="text-center mb-8 md:mb-10">
-        <div className="relative inline-block mb-7">
-          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
+      <div className="text-center mb-6 sm:mb-8 md:mb-10">
+        <div className="relative inline-block mb-4 sm:mb-5">
+          <div className="absolute inset-0 bg-yellow-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
             animate={isSectionInView ? "visible" : "hidden"}
-            className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
+            className="relative border-[2px] sm:border-[3px] border-black bg-white font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold px-4 sm:px-6 py-2 sm:py-3 text-black rounded-md"
           >
             WORK EXPERIENCE
           </motion.h1>
@@ -178,7 +178,7 @@ const WorkExperienceSection = () => {
         initial="hidden"
         animate={isCarouselInView ? "visible" : "hidden"}
         variants={cardContainerVariants}
-        className="w-full max-w-screen-xl mt-2 sm:mt-4 relative pl-4 sm:pl-6 md:pl-8 pr-4 sm:pr-6 md:pr-8"
+        className="w-full max-w-screen-xl mt-1 sm:mt-2 md:mt-3 relative px-2 sm:px-4 md:px-6 lg:px-8"
       >
         <Carousel
           className="w-full"
@@ -187,11 +187,11 @@ const WorkExperienceSection = () => {
             loop: true,
           }}
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-2 md:-ml-3">
             {workExperiences.map((experience, index) => {
               // Use fixed shadow values to prevent hydration mismatch
-              const defaultShadow = "3px 3px 0 0 #000";
-              const hoverShadow = "2px 2px 0 0 #000";
+              const defaultShadow = "2px 2px 0 0 #000";
+              const hoverShadow = "1px 1px 0 0 #000";
 
               // Only use random shadows after client-side hydration
               const cardShadow =
@@ -208,7 +208,7 @@ const WorkExperienceSection = () => {
               return (
                 <CarouselItem
                   key={index}
-                  className="px-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 pb-4"
+                  className="px-2 md:pl-3 basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 pb-3 sm:pb-4"
                 >
                   <motion.div
                     variants={cardVariants}
@@ -222,10 +222,10 @@ const WorkExperienceSection = () => {
                     >
                       <Card
                         className={`
-                          h-[360px] 
+                          h-[320px] sm:h-[340px] md:h-[350px] 
                           bg-white 
                           rounded-md
-                          border-[3px]
+                          border-[2px] sm:border-[3px]
                           border-black
                           flex flex-col 
                           overflow-hidden
@@ -234,19 +234,19 @@ const WorkExperienceSection = () => {
                           transform 
                           ${
                             hoveredIndex === index
-                              ? "translate-y-[2px] translate-x-[2px]"
+                              ? "translate-y-[1px] translate-x-[1px] sm:translate-y-[2px] sm:translate-x-[2px]"
                               : ""
                           }
                         `}
                       >
                         {/* Rest of the card content */}
-                        <CardHeader className="bg-yellow-300 border-b-[3px] border-black p-3 sm:p-4">
+                        <CardHeader className="bg-yellow-300 border-b-[2px] sm:border-b-[3px] border-black p-3 sm:p-4">
                           <div className="flex justify-between items-start">
                             <div>
-                              <CardTitle className="text-lg sm:text-xl md:text-xl lg:text-2xl font-heading font-bold text-black line-clamp-1">
+                              <CardTitle className="text-base sm:text-lg md:text-xl font-heading font-bold text-black line-clamp-1">
                                 {experience.title}
                               </CardTitle>
-                              <p className="text-sm sm:text-base md:text-lg text-black font-heading font-medium">
+                              <p className="text-xs sm:text-sm md:text-base text-black font-heading font-medium">
                                 {experience.company}
                               </p>
                             </div>
@@ -254,14 +254,14 @@ const WorkExperienceSection = () => {
                         </CardHeader>
 
                         <CardContent className="flex-1 p-3 sm:p-4">
-                          <CardDescription className="text-xs sm:text-sm mb-3 text-black font-code">
+                          <CardDescription className="text-xs sm:text-sm mb-2 sm:mb-3 text-black font-code">
                             {experience.description}
                           </CardDescription>
-                          <div className="flex flex-wrap gap-1.5 mt-3">
+                          <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-2 sm:mt-3">
                             {experience.technologies.map((tech, techIndex) => (
                               <span
                                 key={techIndex}
-                                className="bg-black text-white text-xs px-2 py-1 font-heading uppercase tracking-wider  rounded-md"
+                                className="bg-black text-white text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 font-heading uppercase tracking-wider rounded-md"
                               >
                                 {tech}
                               </span>
@@ -269,7 +269,7 @@ const WorkExperienceSection = () => {
                           </div>
                         </CardContent>
 
-                        <CardFooter className="p-3 sm:p-4 mt-auto border-t-[3px] border-black">
+                        <CardFooter className="p-3 sm:p-4 mt-auto border-t-[2px] sm:border-t-[3px] border-black">
                           <Link
                             href={experience.link}
                             className="w-full relative group"
@@ -282,21 +282,22 @@ const WorkExperienceSection = () => {
                                 hover:text-black
                                 text-white 
                                 font-bold 
-                                border-[3px] 
+                                border-[2px] sm:border-[3px]
                                 border-black 
                                 rounded-md 
-                                px-4 py-2
+                                px-3 sm:px-4 py-1.5 sm:py-2
+                                text-xs sm:text-sm
                                 transition-all
                                 duration-200
                                 transform
-                                active:translate-y-[2px] active:translate-x-[2px] active:shadow-[1px_1px_0px_0px_#000]
-                                group-hover:translate-y-[2px] group-hover:translate-x-[2px] group-hover:shadow-[1px_1px_0px_0px_#000]
-                                shadow-[2px_2px_0px_0px_#000]
+                                active:translate-y-[1px] active:translate-x-[1px] active:shadow-[0.5px_0.5px_0px_0px_#000] sm:active:shadow-[1px_1px_0px_0px_#000]
+                                group-hover:translate-y-[1px] group-hover:translate-x-[1px] group-hover:shadow-[0.5px_0.5px_0px_0px_#000] sm:group-hover:shadow-[1px_1px_0px_0px_#000]
+                                shadow-[1px_1px_0px_0px_#000] sm:shadow-[2px_2px_0px_0px_#000]
                               `}
                             >
-                              <span className="flex items-center justify-center gap-2 font-heading uppercase tracking-wide">
+                              <span className="flex items-center justify-center gap-1 sm:gap-2 font-heading uppercase tracking-wide">
                                 {experience.duration}
-                                <ArrowRight className="w-4 h-4" />
+                                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                               </span>
                             </Button>
                           </Link>
@@ -310,16 +311,17 @@ const WorkExperienceSection = () => {
           </CarouselContent>
 
           {/* Neo-brutalist navigation buttons */}
+          <div className="flex justify-center gap-4 sm:gap-6 mt-3 sm:mt-4">
+            <CarouselPrevious
+              className="bg-yellow-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
+                 transition-all duration-200 hidden sm:flex"
+            />
 
-          <CarouselPrevious
-            className="bg-yellow-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
-                   transition-all duration-200 hidden sm:flex"
-          />
-
-          <CarouselNext
-            className="bg-yellow-400 text-black hover:bg-black hover:text-white border-[3px] border-black rounded-md h-10 w-10 
-                   transition-all duration-200 hidden sm:flex"
-          />
+            <CarouselNext
+              className="bg-yellow-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
+                 transition-all duration-200 hidden sm:flex"
+            />
+          </div>
         </Carousel>
       </motion.div>
     </div>

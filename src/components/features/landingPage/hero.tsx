@@ -58,16 +58,16 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="flex flex-col items-center justify-center w-full min-h-screen px-4 sm:px-8 md:px-12 py-16"
+        className="flex flex-col items-center justify-center w-full min-h-screen px-4 sm:px-8 md:px-12 py-12 md:py-16 pt-20"
       >
         {/* Text content container - centered */}
-        <div className="w-full max-w-6xl flex flex-col items-center text-center pb-12 sm:pb-10">
+        <div className="w-full max-w-5xl flex flex-col items-center text-center pb-8 sm:pb-10 pt-12">
           {/* Name with neo-brutalist styling matching buttons */}
           <motion.div
             initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="relative mb-8 sm:mb-10 md:mb-12 w-full max-w-2xl"
+            className="relative mb-6 sm:mb-8 md:mb-10 w-full max-w-xl lg:max-w-2xl"
             onMouseEnter={() => setHoveredButton("name")}
             onMouseLeave={() => setHoveredButton(null)}
           >
@@ -81,17 +81,17 @@ const HeroSection = () => {
                 border-black
                 rounded-md
                 px-4
-                sm:px-6
-                md:px-8 
-                py-3
-                sm:py-4
-                md:py-5
+                sm:px-5
+                md:px-7 
+                py-2.5
+                sm:py-3
+                md:py-4
                 transition-all
                 duration-200
                 ${hoveredButton === "name" ? "translate-x-1 translate-y-1" : ""}
               `}
             >
-              <h1 className="font-heading text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black">
+              <h1 className="font-heading text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black">
                 Hi, I&apos;m Dhrutinandan
               </h1>
             </div>
@@ -102,9 +102,9 @@ const HeroSection = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="relative mb-8 sm:mb-10 md:mb-12 w-full max-w-full"
+            className="relative mb-6 sm:mb-8 md:mb-10 w-full max-w-full"
           >
-            <h4 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl font-code leading-relaxed text-black px-2 xs:px-4 sm:px-6 py-2 sm:py-3 md:py-4">
+            <h4 className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-code leading-relaxed text-black px-2 xs:px-3 sm:px-4 py-1.5 sm:py-2 md:py-3">
               I&apos;m a Full Stack Developer passionate about creating
               user-centered applications. I transform ideas into elegant,
               functional web experiences.
@@ -116,7 +116,7 @@ const HeroSection = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-8 sm:mb-10 md:mb-12 w-full max-w-lg justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10 w-full max-w-md justify-center"
           >
             {/* Contact button */}
             <div
@@ -127,29 +127,29 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-yellow-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md"></div>
               <Button
                 className={`
-                  relative
-                  bg-white 
-                  hover:bg-white
-                  text-black 
-                  border-[2px]
-                  sm:border-[3px] 
-                  border-black 
-                  rounded-md 
-                  text-sm
-                  xs:text-base
-                  sm:text-lg 
-                  font-heading 
-                  font-bold
-                  uppercase 
-                  tracking-wide
-                  px-4 
-                  sm:px-6 
-                  py-3
-                  sm:py-4
-                  md:py-6
-                  h-auto
-                  w-full
-                  transition-all 
+                  bg-white  
+                  relative 
+                  hover:bg-white 
+                  text-black  
+                  border-[2px] 
+                  sm:border-[3px]  
+                  border-black  
+                  rounded-md  
+                  text-xs 
+                  xs:text-sm 
+                  sm:text-base  
+                  font-heading  
+                  font-bold 
+                  uppercase  
+                  tracking-wide 
+                  px-3  
+                  sm:px-4  
+                  py-2 
+                  sm:py-2.5 
+                  md:py-3.5 
+                  h-auto 
+                  w-full 
+                  transition-all  
                   duration-200
                   ${
                     hoveredButton === "contact"
@@ -158,10 +158,10 @@ const HeroSection = () => {
                   }
                 `}
               >
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-1.5">
                   Contact Me
                   <ArrowRight
-                    className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 ${
+                    className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 ${
                       hoveredButton === "contact" ? "translate-x-1" : ""
                     }`}
                   />
@@ -178,29 +178,29 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-black border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md"></div>
               <Button
                 className={`
-                  relative
-                  bg-white
-                  hover:bg-white
-                  text-black
-                  border-[2px]
-                  sm:border-[3px] 
-                  border-black 
-                  rounded-md 
-                  text-sm
-                  xs:text-base
-                  sm:text-lg 
-                  font-heading 
-                  font-bold
-                  uppercase 
-                  tracking-wide
-                  px-4
-                  sm:px-6
-                  py-3
-                  sm:py-4
-                  md:py-6
-                  h-auto
-                  w-full
-                  transition-all 
+                  relative 
+                  bg-white 
+                  hover:bg-white 
+                  text-black 
+                  border-[2px] 
+                  sm:border-[3px]  
+                  border-black  
+                  rounded-md  
+                  text-xs 
+                  xs:text-sm 
+                  sm:text-base  
+                  font-heading  
+                  font-bold 
+                  uppercase  
+                  tracking-wide 
+                  px-3 
+                  sm:px-4 
+                  py-2 
+                  sm:py-2.5 
+                  md:py-3.5 
+                  h-auto 
+                  w-full 
+                  transition-all  
                   duration-200
                   ${
                     hoveredButton === "resume"
@@ -219,7 +219,7 @@ const HeroSection = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex justify-center flex-wrap gap-3 sm:gap-4 md:gap-6"
+            className="flex justify-center flex-wrap gap-2 sm:gap-3 md:gap-4"
           >
             {socialIcons.map((item, index) => (
               <motion.a
@@ -232,31 +232,46 @@ const HeroSection = () => {
                 onMouseLeave={() => setHoveredIcon(null)}
               >
                 <div
-                  className={`absolute inset-0 ${
-                    item.color
-                  } border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md ${
-                    hoveredIcon === index ? "translate-x-1 translate-y-1" : ""
-                  }`}
+                  className={`
+                    absolute 
+                    inset-0 
+                    ${item.color} 
+                    border-[2px] 
+                    border-black 
+                    translate-x-1 
+                    sm:translate-x-1.5 
+                    translate-y-1 
+                    sm:translate-y-1.5 
+                    transition-transform 
+                    duration-200 
+                    rounded-md 
+                    ${
+                      hoveredIcon === index
+                        ? "translate-x-0.5 translate-y-0.5"
+                        : ""
+                    }
+                  `}
                 ></div>
                 <div
                   className={`
                     relative
                     bg-white
                     border-[2px]
-                    sm:border-[3px]
                     rounded-md
                     border-black
-                    p-2
-                    sm:p-2.5
-                    md:p-3.5
+                    p-1.5
+                    sm:p-2
+                    md:p-2.5
                     transition-all
                     duration-200
                     ${
-                      hoveredIcon === index ? "translate-x-1 translate-y-1" : ""
+                      hoveredIcon === index
+                        ? "translate-x-0.5 translate-y-0.5"
+                        : ""
                     }
                   `}
                 >
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-6 md:h-6 flex items-center justify-center">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center">
                     {item.icon}
                   </div>
 
@@ -264,26 +279,27 @@ const HeroSection = () => {
                   <div
                     className={`
                       absolute 
-                      top-16
-                      sm:top-20
+                      top-12
+                      sm:top-14
                       left-1/2 
                       -translate-x-1/2 
                       bg-black 
                       text-white 
                       font-heading 
-                      text-xs
-                      sm:text-sm
+                      text-[10px]
+                      sm:text-xs
                       py-0.5
                       rounded-md
-                      sm:py-1
-                      px-2
-                      sm:px-3
-                      border-[2px]
+                      px-1.5
+                      sm:px-2
+                      border-[1px]
+                      sm:border-[2px]
                       border-black
                       pointer-events-none
                       transition-opacity duration-200
                       ${hoveredIcon === index ? "opacity-100" : "opacity-0"}
                       z-10
+                      whitespace-nowrap
                     `}
                   >
                     {item.label}
@@ -299,16 +315,16 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.5 }}
-          className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex-col items-center hidden md:flex"
+          className="absolute bottom-3 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex-col items-center hidden md:flex"
         >
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-yellow-400 border-[2px] border-black rounded-md translate-x-1 translate-y-1"></div>
-            <div className="relative border-[2px] border-black bg-white p-1 rounded-md">
-              <ChevronDown className="w-4 h-4 sm:w-7 sm:h-7" />
+            <div className="absolute inset-0 bg-yellow-400 border-[1px] sm:border-[2px] border-black rounded-md translate-x-1 translate-y-1"></div>
+            <div className="relative border-[1px] sm:border-[2px] border-black bg-white p-1 rounded-md">
+              <ChevronDown className="w-3 h-3 sm:w-5 sm:h-5" />
             </div>
           </motion.div>
         </motion.div>

@@ -34,7 +34,7 @@ export default function SectionHeader({
       variants={variants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      className="mb-10 md:mb-12"
+      className="mb-10 md:mb-16"
     >
       <div className="relative inline-block">
         {/* Background accent */}
@@ -57,7 +57,7 @@ export default function SectionHeader({
           {/* Header text */}
           <motion.h2
             variants={itemVariants}
-            className="text-xl sm:text-3xl md:text-4xl font-bold font-heading text-black uppercase"
+            className="text-lg sm:text-3xl md:text-4xl font-bold font-heading text-black uppercase"
           >
             {title}
           </motion.h2>

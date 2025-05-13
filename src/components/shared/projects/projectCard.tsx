@@ -44,12 +44,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
   // Only render dynamic content after client-side hydration
   if (!isMounted) {
     return (
-      <Card className="bg-white border-[3px] border-black rounded-none flex flex-col overflow-hidden h-[440px] sm:h-[460px]">
+      <Card className="bg-white border-[2px] sm:border-[3px] border-black rounded-md flex flex-col overflow-hidden h-[380px] sm:h-[400px] md:h-[420px]">
         {/* Static placeholder without random elements */}
-        <div className="relative w-full h-[180px] sm:h-[200px] md:h-[220px] overflow-hidden flex-shrink-0 border-b-[3px] border-black">
+        <div className="relative w-full h-[150px] sm:h-[170px] md:h-[190px] overflow-hidden flex-shrink-0 border-b-[2px] sm:border-b-[3px] border-black">
           <div className="w-full h-full bg-gray-200" />
         </div>
-        <div className="flex flex-col flex-grow overflow-hidden p-4">
+        <div className="flex flex-col flex-grow overflow-hidden p-3 sm:p-4">
           <div className="h-full" />
         </div>
       </Card>
@@ -69,12 +69,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
     >
       <motion.div
         animate={{
-          y: isHovered ? -5 : 0,
+          y: isHovered ? -3 : 0, // Reduced from -5 to -3 for less dramatic movement
         }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
         style={{
           boxShadow: isHovered
-            ? `${cardProps.shadowOffsetX + 1}px ${cardProps.shadowOffsetY + 1}px 0px 0px #000`
+            ? `${cardProps.shadowOffsetX - 1}px ${
+                cardProps.shadowOffsetY - 1
+              }px 0px 0px #000`
             : `${cardProps.shadowOffsetX}px ${cardProps.shadowOffsetY}px 0px 0px #000`,
         }}
         className="h-full w-full rounded-md"
@@ -82,17 +84,17 @@ const ProjectCard = ({ project }: { project: Project }) => {
         <Card
           className={`
           bg-white 
-          border-[3px] border-black 
+          border-[2px] sm:border-[3px] border-black 
           rounded-md 
           flex flex-col 
           overflow-hidden 
-          h-[440px] sm:h-[460px]
+          h-[380px] sm:h-[400px] md:h-[420px]
           transition-all duration-200
           ${isHovered ? "transform-gpu" : ""}
         `}
         >
-          {/* Image container */}
-          <div className="relative w-full h-[180px] sm:h-[200px] md:h-[220px] overflow-hidden flex-shrink-0 border-b-[3px] border-black">
+          {/* Image container - reduced height */}
+          <div className="relative w-full h-[150px] sm:h-[170px] md:h-[190px] overflow-hidden flex-shrink-0 border-b-[2px] sm:border-b-[3px] border-black">
             <Image
               src={project.image}
               alt={project.title}
@@ -100,27 +102,29 @@ const ProjectCard = ({ project }: { project: Project }) => {
               className={`
                 object-cover 
                 transition-transform duration-300
-                ${isHovered ? "scale-110" : "scale-100"}
+                ${
+                  isHovered ? "scale-105" : "scale-100"
+                } // Reduced from 110 to 105
               `}
             />
           </div>
 
           {/* Content area */}
           <div className="flex flex-col flex-grow overflow-hidden">
-            <CardHeader className="pl-4 pr-4 pt-4 pb-2">
-              <CardTitle className="text-base sm:text-lg md:text-xl font-heading font-extrabold line-clamp-2">
+            <CardHeader className="pl-3 pr-3 sm:pl-4 sm:pr-4 pt-3 pb-1 sm:pt-4 sm:pb-2">
+              <CardTitle className="text-sm sm:text-base md:text-lg font-heading font-extrabold line-clamp-2">
                 {project.title}
               </CardTitle>
             </CardHeader>
 
-            <CardContent className="px-4 flex-grow overflow-y-auto">
-              <CardDescription className="text-xs sm:text-sm md:text-base font-code text-black">
+            <CardContent className="px-3 sm:px-4 flex-grow overflow-y-auto">
+              <CardDescription className="text-xs sm:text-sm font-code text-black">
                 {project.description}
               </CardDescription>
             </CardContent>
 
-            {/* Fixed position footer */}
-            <CardFooter className="flex flex-col sm:flex-row gap-3 p-4 pt-2 flex-shrink-0">
+            {/* Fixed position footer - improved for mobile */}
+            <CardFooter className="flex flex-col sm:flex-row gap-2 p-3 sm:p-4 pt-1 sm:pt-2 flex-shrink-0">
               <Link href={project.link} className="w-full relative group">
                 <Button
                   className={`
@@ -129,18 +133,19 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     hover:bg-blue-600
                     text-white 
                     font-bold 
-                    border-[3px] 
+                    border-[2px] sm:border-[3px] 
                     border-black 
                     rounded-md 
-                    px-4 py-2
+                    px-3 py-1.5 sm:px-4 sm:py-2
+                    text-xs sm:text-sm
                     transition-all
-                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[2px_2px_0px_0px_#000]
-                    shadow-[1px_1px_0px_0px_#000]
+                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[1px_1px_0px_0px_#000] sm:group-hover:shadow-[2px_2px_0px_0px_#000]
+                    shadow-[0.5px_0.5px_0px_0px_#000] sm:shadow-[1px_1px_0px_0px_#000]
                   `}
                 >
-                  <span className="flex items-center justify-center gap-2 font-heading uppercase tracking-wide">
+                  <span className="flex items-center justify-center gap-1 sm:gap-2 font-heading uppercase tracking-wide">
                     View Project
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
               </Link>
@@ -152,18 +157,19 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     hover:bg-gray-800
                     text-white 
                     font-bold 
-                    border-[3px] 
+                    border-[2px] sm:border-[3px] 
                     border-black 
                     rounded-md 
-                    px-4 py-2
+                    px-3 py-1.5 sm:px-4 sm:py-2
+                    text-xs sm:text-sm
                     transition-all
-                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[2px_2px_0px_0px_#000]
-                    shadow-[1px_1px_0px_0px_#000]
+                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[1px_1px_0px_0px_#000] sm:group-hover:shadow-[2px_2px_0px_0px_#000]
+                    shadow-[0.5px_0.5px_0px_0px_#000] sm:shadow-[1px_1px_0px_0px_#000]
                   `}
                 >
-                  <span className="flex items-center justify-center gap-2 font-heading uppercase tracking-wide">
+                  <span className="flex items-center justify-center gap-1 sm:gap-2 font-heading uppercase tracking-wide">
                     GitHub
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
               </Link>

@@ -91,10 +91,10 @@ const Navbar = () => {
               isOpen || scrolled
                 ? "1.5px solid black"
                 : "0px solid transparent",
-            boxShadow: isOpen || scrolled ? "0 5px 0 rgba(0, 0, 0, 1)" : "none",
+            boxShadow: isOpen || scrolled ? "0 4px 0 rgba(0, 0, 0, 1)" : "none", // Reduced from 5px to 4px
           }}
           transition={{ duration: 0.3 }}
-          className="flex justify-between items-center py-3 sm:py-4 md:py-5 px-3 sm:px-6 md:px-8 lg:px-16 mx-auto"
+          className="flex justify-between items-center py-2 sm:py-3 md:py-4 px-3 sm:px-5 md:px-6 lg:px-10 xl:px-14 mx-auto" // Reduced padding
         >
           {/* Logo/Brand - Left Side - Smaller on mobile */}
           <div className="flex-shrink-0">
@@ -103,7 +103,7 @@ const Navbar = () => {
                 <div className="absolute inset-0 bg-yellow-400 border-[2px] sm:border-[3px] border-black translate-x-1 translate-y-1 sm:translate-x-1.5 sm:translate-y-1.5 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 sm:group-hover:translate-x-1 sm:group-hover:translate-y-1 rounded-md"></div>
                 <Button
                   variant="ghost"
-                  className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-lg sm:text-xl md:text-2xl font-bold transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] px-3 sm:px-4 md:px-5 py-1 sm:py-2 h-auto rounded-md"
+                  className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg 2xl:text-xl font-bold transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 h-auto rounded-md" // Reduced font size and padding
                 >
                   Dhruti&apos;s Folio
                 </Button>
@@ -112,22 +112,26 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation - Right Side */}
-          <div className="hidden lg:flex items-center space-x-2 xl:space-x-4 justify-end">
+          <div className="hidden xl:flex items-center 2xl:space-x-3 justify-end">
+            {" "}
+            {/* Reduced spacing */}
             {navItems.map((item) => (
               <Link href={item.href} key={item.label}>
-                <span className="relative group py-2 px-1">
+                <span className="relative group py-1.5 px-0.5 sm:py-2 sm:px-1">
+                  {" "}
+                  {/* Reduced padding */}
                   <div
                     className={`absolute inset-0 ${
                       pathname === item.href ? item.color : "bg-transparent"
                     } 
-                    border-b-[3px] border-black ${
+                    border-b-[2px] sm:border-b-[3px] border-black ${
                       pathname === item.href ? "opacity-100" : "opacity-0"
                     } 
                     transition-opacity group-hover:opacity-100 rounded-t-md`}
                   ></div>
                   <Button
                     variant="link"
-                    className="relative z-10 text-base xl:text-lg font-bold font-heading no-underline hover:no-underline tracking-wide text-black px-3 py-1 h-auto rounded-md"
+                    className="relative z-10 text-sm sm:text-base xk:text-md 2xl:text-lg font-bold font-heading no-underline hover:no-underline tracking-wide text-black px-2 sm:px-3 py-1 h-auto rounded-md" // Reduced font size and padding
                   >
                     {item.label.toUpperCase()}
                   </Button>
@@ -140,18 +144,22 @@ const Navbar = () => {
                 </span>
               </Link>
             ))}
-
             {/* CTA Button */}
-            <div className="relative group ml-4">
-              <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></div>
-              <Button className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-lg font-bold transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] px-6 py-2 h-auto rounded-md">
-                RESUME
+            <div className="relative group ml-2 sm:ml-3 md:ml-4">
+              {" "}
+              {/* Reduced margin */}
+              <div className="absolute inset-0 bg-blue-400 border-[2px] sm:border-[3px] border-black translate-x-1 translate-y-1 sm:translate-x-1.5 sm:translate-y-1.5 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 sm:group-hover:translate-x-1 sm:group-hover:translate-y-1 rounded-md"></div>
+              <Button
+                variant="ghost"
+                className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg 2xl:text-xl font-bold transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 h-auto rounded-md" // Reduced font size and padding
+              >
+                Resume
               </Button>
             </div>
           </div>
 
           {/* Mobile Hamburger Button - Right Side - Smaller on mobile */}
-          <div className="lg:hidden">
+          <div className="xl:hidden">
             <div className="relative group">
               <div
                 className={`absolute inset-0 ${
@@ -161,7 +169,7 @@ const Navbar = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black flex items-center justify-center p-1.5 sm:p-2 h-10 w-10 sm:h-12 sm:w-12 rounded-md"
+                className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black flex items-center justify-center p-1.5 sm:p-2 h-9 w-9 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-md" // Reduced button size
                 onClick={toggleMenu}
                 aria-label="Toggle menu"
               >
@@ -174,7 +182,8 @@ const Navbar = () => {
                       exit={{ opacity: 0, rotate: 90 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <X className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />{" "}
+                      {/* Reduced icon size */}
                     </motion.div>
                   ) : (
                     <motion.div
@@ -184,7 +193,8 @@ const Navbar = () => {
                       exit={{ opacity: 0, rotate: -90 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <Menu className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />{" "}
+                      {/* Reduced icon size */}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -201,13 +211,13 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "100vh" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{
-                duration: 0.3,
+                duration: 0.1,
                 opacity: { duration: 0.2 },
                 height: { duration: 0.3 },
               }}
-              className="lg:hidden bg-white fixed top-[58px] sm:top-[68px] inset-x-0 overflow-auto z-40 border-b-[1px] border-black"
+              className="lg:hidden bg-white fixed top-[52px] sm:top-[64px] md:top-[78px] inset-x-0 overflow-auto z-40" // Adjusted for smaller header heights
               style={{
-                maxHeight: "calc(100vh - 58px)", // Adjusted for mobile header height
+                maxHeight: "calc(100vh - 52px)", // Adjusted for smaller mobile header height
               }}
             >
               <motion.div
@@ -215,9 +225,11 @@ const Navbar = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.1, duration: 0.2 }}
-                className="flex items-center justify-center py-16"
+                className="flex items-center justify-center py-12 sm:py-14 md:py-16" // Reduced padding
               >
-                <div className="flex flex-col space-y-6 items-center justify-center w-full px-4 xs:px-6 sm:px-8 max-w-md mx-auto align-items">
+                <div className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6 items-center justify-center w-full px-3 xs:px-4 sm:px-6 max-w-md mx-auto align-items">
+                  {" "}
+                  {/* Reduced spacing */}
                   {navItems.map((item, index) => (
                     <motion.div
                       key={item.label}
@@ -239,7 +251,7 @@ const Navbar = () => {
                           ></div>
                           <Button
                             variant="ghost"
-                            className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-lg xs:text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] py-1.5 xs:py-2 sm:py-3 h-auto rounded-md"
+                            className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-base xs:text-lg sm:text-xl md:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] py-1 xs:py-1.5 sm:py-2 md:py-3 h-auto rounded-md" // Reduced font size and padding
                           >
                             {item.label.toUpperCase()}
                           </Button>
@@ -247,7 +259,6 @@ const Navbar = () => {
                       </Link>
                     </motion.div>
                   ))}
-
                   {/* Mobile Resume Button - Smaller for mobile */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -256,11 +267,11 @@ const Navbar = () => {
                       delay: 0.1 + navItems.length * 0.08,
                       duration: 0.3,
                     }}
-                    className="w-full mt-2 sm:mt-4 items-center flex flex-col justify-center align-items"
+                    className="w-full mt-1 sm:mt-2 md:mt-4 items-center flex flex-col justify-center align-items" // Reduced margin
                   >
                     <div className="relative group w-5/6">
-                      <div className="absolute inset-0 bg-blue-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 translate-y-1.5 rounded-md sm:translate-x-3 sm:translate-y-3 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 sm:group-hover:translate-x-1.5 sm:group-hover:translate-y-1.5"></div>
-                      <Button className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-lg xs:text-xl sm:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] sm:group-hover:translate-x-[-1.5px] sm:group-hover:translate-y-[-1.5px] py-1.5 xs:py-2 sm:py-3 h-auto rounded-md">
+                      <div className="absolute inset-0 bg-blue-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 translate-y-1.5 rounded-md sm:translate-x-2 sm:translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 sm:group-hover:translate-x-1.5 sm:group-hover:translate-y-1.5"></div>
+                      <Button className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-base xs:text-lg sm:text-lg md:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] sm:group-hover:translate-x-[-1.5px] sm:group-hover:translate-y-[-1.5px] py-1 xs:py-1.5 sm:py-2 md:py-3 h-auto rounded-md">
                         RESUME
                       </Button>
                     </div>

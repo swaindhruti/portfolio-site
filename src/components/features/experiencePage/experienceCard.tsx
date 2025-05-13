@@ -85,7 +85,7 @@ const ExperienceCard: React.FC<{
       </div>
 
       {/* Content with improved responsiveness */}
-      <div className="ml-8 sm:ml-10 md:ml-16 relative w-full" ref={contentRef}>
+      <div className="ml-8 sm:ml-10 md:ml-16 relative w-5/6" ref={contentRef}>
         <motion.div
           initial={{ opacity: 0, y: 20, x: -10 }}
           animate={

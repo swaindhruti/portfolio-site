@@ -121,7 +121,9 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
                   className="flex items-center space-x-5 group"
                 >
                   <div className="relative">
-                    <div className={`absolute inset-0 ${link.bgColor} border-[2px] border-black translate-x-1 translate-y-1 transition-transform duration-150 rounded-md `}></div>
+                    <div
+                      className={`absolute inset-0 ${link.bgColor} border-[2px] border-black translate-x-1 translate-y-1 transition-transform duration-150 rounded-md `}
+                    ></div>
                     <div className="bg-white border-[2px] border-black p-3 relative transition-transform duration-150 rounded-md g">
                       {link.icon}
                     </div>
