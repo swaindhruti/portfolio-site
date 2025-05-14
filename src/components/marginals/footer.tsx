@@ -13,13 +13,24 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import { footerLinks } from "@/config/marginals/footer/Data";
 
 const Footer = () => {
-  // Colors matching the Vanta fog theme
-  const vantaColors = {
-    highlight: "rgba(179, 229, 252, 0.7)", // Light blue (0xb3e5fc)
-    midtone: "rgba(225, 245, 254, 0.7)", // Lighter blue (0xe1f5fe)
-    lowlight: "rgba(255, 255, 255, 0.7)", // White (0xffffff)
+  const getIconComponent = (type: string, size: number) => {
+    switch (type) {
+      case "Github":
+        return <Github size={size} />;
+      case "Twitter":
+        return <Twitter size={size} />;
+      case "Linkedin":
+        return <Linkedin size={size} />;
+      case "RssIcon":
+        return <RssIcon size={size} />;
+      case "Mail":
+        return <Mail size={size} />;
+      default:
+        return null;
+    }
   };
 
   // Scroll to top function
@@ -38,38 +49,43 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="w-full py-6 sm:py-8 md:py-10 lg:py-12 px-3 sm:px-6 md:px-8 lg:px-12  border-t border-black/10 bg-white/20 backdrop-blur-md shadow-sm">
+    <footer className="w-full py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:px-12 bg-white border-t-[3px] border-black relative">
+      {/* Neo-brutalist accents */}
+      <div className="absolute top-0 right-0 w-32 h-3 bg-yellow-400 border-l-[3px] border-b-[3px] border-black rounded-bl-md"></div>
+      <div className="absolute top-0 left-0 w-24 h-3 bg-blue-400 border-r-[3px] border-b-[3px] border-black rounded-br-md"></div>
+
       <div className="max-w-7xl mx-auto">
         {/* Top section with scroll to top button */}
-        <div className="flex justify-center mb-6">
-          <motion.button
-            onClick={scrollToTop}
-            whileHover={{ scale: 1.1, y: -5 }}
-            whileTap={{ scale: 0.95 }}
-            className="border-2 border-black p-2 sm:p-3 rounded-full hover:bg-black hover:text-white transition-all duration-300"
-          >
-            <ChevronUp size={24} className="sm:w-6 sm:h-6 md:w-7 md:h-7" />
-          </motion.button>
+        <div className="flex justify-center mb-8">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-1 translate-y-1 rounded-md transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"></div>
+            <motion.button
+              onClick={scrollToTop}
+              whileTap={{ scale: 0.95 }}
+              className="relative border-[2px] border-black p-3 bg-white transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] rounded-md"
+            >
+              <ChevronUp size={24} className="text-black" />
+            </motion.button>
+          </div>
         </div>
 
         {/* Main footer content */}
-        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
           {/* Left section - Logo and description */}
-          <div className="md:w-1/3 text-center md:text-left">
-            <h2 className="font-borel text-2xl sm:text-3xl md:text-4xl mb-3 sm:mb-4">
+          <div className="text-center md:text-left">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold mb-6 relative inline-block">
               Dhrutinandan Swain
+              <div className="absolute -bottom-1 left-0 right-0 h-1 bg-black rounded-md"></div>
             </h2>
             <motion.div
-              className="relative backdrop-blur-sm border-2 border-black/50 p-3 sm:p-4 rounded-xl overflow-hidden"
+              className="relative border-[3px] border-black p-4 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-md"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              style={{
-                background: `linear-gradient(120deg, ${vantaColors.highlight}, ${vantaColors.midtone}, ${vantaColors.lowlight})`,
-              }}
             >
-              <p className="text-black text-sm sm:text-md md:text-lg font-sans tracking-wide z-10 relative">
+              <div className="absolute top-0 right-0 w-12 h-3 bg-red-400 border-l-[3px] border-b-[3px] border-black rounded-bl-md"></div>
+              <p className="text-black text-md font-medium font-sans leading-relaxed">
                 Creating digital experiences that blend creativity with
                 functionality.
               </p>
@@ -77,109 +93,68 @@ const Footer = () => {
           </div>
 
           {/* Middle section - Links */}
-          <div className="md:w-1/3 flex flex-col items-center">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-medium mb-3 sm:mb-4 font-sans">
-              Quick Links
+          <div className="flex flex-col items-center">
+            <h3 className="text-xl font-bold font-heading mb-5 relative inline-block">
+              QUICK LINKS
+              <div className="absolute -bottom-1 left-0 right-0 h-1 bg-black rounded-md"></div>
             </h3>
-            <div className="flex flex-col gap-2 sm:gap-3 items-center">
-              <a
-                href="#"
-                className="text-base sm:text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="text-base sm:text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
-              >
-                About
-              </a>
-              <a
-                href="#"
-                className="text-base sm:text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
-              >
-                Projects
-              </a>
-              <a
-                href="#"
-                className="text-base sm:text-lg hover:underline transition-all duration-300 font-sans tracking-wide"
-              >
-                Contact
-              </a>
+            <div className="flex flex-col gap-4 items-center">
+              {["Home", "About", "Projects", "Contact"].map((link, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  className="text-lg font-medium relative inline-block group"
+                >
+                  {link}
+                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform rounded-md"></div>
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Right section - Contact */}
-          <div className="md:w-1/3 flex flex-col items-center md:items-end">
-            <h3 className="text-lg sm:text-xl md:text-2xl font-medium mb-3 sm:mb-4 font-sans">
-              Get In Touch
+          <div className="flex flex-col items-center md:items-end">
+            <h3 className="text-xl font-bold font-heading mb-8 relative inline-block">
+              GET IN TOUCH
+              <div className="absolute -bottom-1 left-0 right-0 h-1 bg-black rounded-md"></div>
             </h3>
-            <Button className="group bg-black text-white rounded-xl hover:bg-transparent hover:text-black text-base sm:text-lg font-sans px-4 py-3 sm:px-5 sm:py-4 md:py-5 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out mb-4 sm:mb-6">
-              Contact Me
-              <Send className="w-4 h-4 sm:w-5 sm:h-5 transform transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
-            <div className="flex gap-3 sm:gap-4 mt-1">
-              <motion.a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-              >
-                <Github size={22} className="md:w-[22px] md:h-[22px]" />
-              </motion.a>
-              <motion.a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-              >
-                <Twitter size={22} className="md:w-[22px] md:h-[22px]" />
-              </motion.a>
-              <motion.a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-              >
-                <Linkedin size={22} className="md:w-[22px] md:h-[22px]" />
-              </motion.a>
-              <motion.a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-              >
-                <RssIcon size={22} className="md:w-[22px] md:h-[22px]" />
-              </motion.a>
-              <motion.a
-                href="mailto:example@email.com"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-              >
-                <Mail size={22} className="md:w-[22px] md:h-[22px]" />
-              </motion.a>
+
+            <div className="relative group mb-6">
+              <div className="absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></div>
+              <Button className="relative border-[2px] border-black bg-white text-black hover:bg-white px-6 py-3 font-bold font-heading text-md flex items-center gap-2 transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
+                CONTACT ME
+                <Send className="w-5 h-5" />
+              </Button>
+            </div>
+
+            <div className="flex gap-3 mt-3">
+              {footerLinks.map((item) => (
+                <div key={item.id} className="relative group">
+                  <div
+                    className={`absolute inset-0 ${item.color} border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 rounded-md`}
+                  ></div>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative border-[2px] border-black p-2 bg-white flex items-center justify-center transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] rounded-md"
+                  >
+                    {getIconComponent(item.type, item.size)}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Bottom copyright section */}
-        <motion.div
-          className="border-t border-black/20 mt-6 sm:mt-8 pt-4 sm:pt-6 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
-          <p className="flex items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base">
+        <div className="border-t-[2px] border-black mt-10 pt-6 text-center">
+          <p className="flex items-center justify-center gap-1 text-base">
             © {new Date().getFullYear()} Dhrutinandan. Made with{" "}
-            <Heart size={14} className="text-red-500 sm:w-4 sm:h-4" /> All
+            <Heart size={16} className="text-red-500" fill="currentColor" /> All
             rights reserved.
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

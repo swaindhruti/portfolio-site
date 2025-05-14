@@ -9,156 +9,324 @@ import {
   Mail,
   Twitter,
   RssIcon,
+  ChevronDown,
 } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 
 const HeroSection = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
+
+  // Icons with labels and colors
+  const socialIcons = [
+    {
+      icon: <Github size={20} />,
+      href: "https://github.com",
+      label: "GitHub",
+      color: "bg-purple-400",
+    },
+    {
+      icon: <Twitter size={20} />,
+      href: "https://twitter.com",
+      label: "Twitter",
+      color: "bg-blue-400",
+    },
+    {
+      icon: <Linkedin size={20} />,
+      href: "https://linkedin.com",
+      label: "LinkedIn",
+      color: "bg-yellow-400",
+    },
+    {
+      icon: <RssIcon size={20} />,
+      href: "/blog",
+      label: "Blog",
+      color: "bg-green-400",
+    },
+    {
+      icon: <Mail size={20} />,
+      href: "mailto:example@email.com",
+      label: "Email",
+      color: "bg-red-400",
+    },
+  ];
 
   return (
-    <motion.div
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className="flex justify-between items-center relative min-h-screen w-full pt-4"
-    >
-      <div className="flex flex-col lg:flex-row items-center justify-around min-h-screen px-4 sm:px-6 md:px-8 lg:px-10 w-full overflow-y-auto mt-3">
-        {/* Photo Section (Top for mobile, Right for desktop) */}
-        <div className="flex flex-col items-center lg:order-2 w-full lg:w-auto mt-16 lg:mt-0 lg:ml-4">
+    <div className="relative min-h-screen w-full overflow-hidden -top-6 sm:top-0">
+      {/* Main container with entry animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="flex flex-col items-center justify-center w-full min-h-screen px-4 sm:px-8 md:px-12 py-12 md:py-16 sm:pt-20"
+      >
+        {/* Text content container - centered */}
+        <div className="w-full max-w-5xl flex flex-col items-center text-center pb-8 sm:pb-10 sm:pt-12">
+          {/* Name with neo-brutalist styling matching buttons */}
           <motion.div
-            className="relative w-[220px] h-[220px] sm:w-[250px] sm:h-[250px] md:w-[280px] md:h-[280px] lg:w-[320px] lg:h-[320px] xl:w-[340px] xl:h-[340px] rounded-2xl overflow-hidden"
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
-            whileHover={{
-              boxShadow:
-                "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-              scale: 1.03,
-            }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          >
-            <Image
-              src="https://res.cloudinary.com/dhv234qct/image/upload/v1742043916/dssd/qzroz3gheyhau13ccgk4.png"
-              alt="Dhrutinandan Portrait"
-              fill
-              className="object-cover rounded-2xl"
-            />
-            {/* Foggy overlay effect - fixed to match image exactly */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: isHovered ? 1 : 0,
-                backdropFilter: isHovered ? "blur(6px)" : "blur(0px)",
-              }}
-              transition={{ duration: 0.8 }}
-              className="absolute inset-0 flex items-center justify-center rounded-2xl"
-              style={{
-                background: isHovered
-                  ? "linear-gradient(135deg, rgba(179,229,252,0.3), rgba(225,245,254,0.3), rgba(179,229,252,0.3))"
-                  : "transparent",
-              }}
-            >
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{
-                  y: isHovered ? 0 : 20,
-                  opacity: isHovered ? 1 : 0,
-                }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-center px-6 py-3 backdrop-blur-sm bg-white/30 rounded-lg border border-white/50"
-              >
-                <p className="text-black text-base sm:text-lg md:text-xl font-medium font-sans tracking-wide">
-                  Fun fact: I&apos;m a mining engineer
-                </p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Text Content Section (Bottom for mobile, Left for desktop) */}
-        <div className="max-w-xl lg:max-w-3xl lg:order-1 mt-8 lg:mt-0 px-3">
-          <h1 className="font-borel text-3xl sm:text-4xl md:text-5xl leading-tight lg:leading-[1.3] xl:leading-[1.3] text-center lg:text-left">
-            Hi, I am Dhrutinandan
-          </h1>
-          <motion.h4
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: -30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 1 }}
-            className="text-base sm:text-lg md:text-xl font-sans font-medium tracking-wide leading-relaxed text-center lg:text-left mt-3 "
+            transition={{ duration: 0.6 }}
+            className="relative mb-6 sm:mb-8 md:mb-10 w-full max-w-xl lg:max-w-2xl"
+            onMouseEnter={() => setHoveredButton("name")}
+            onMouseLeave={() => setHoveredButton(null)}
           >
-            I&apos;m a Full Stack Developer passionate about creating
-            user-centered applications. I transform ideas into elegant,
-            functional web experiences.
-          </motion.h4>
+            <div className="absolute inset-0 bg-green-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md"></div>
+            <div
+              className={`
+                relative 
+                bg-white
+                border-[2px]
+                sm:border-[3px]
+                border-black
+                rounded-md
+                px-4
+                sm:px-5
+                md:px-7 
+                py-2.5
+                sm:py-3
+                md:py-4
+                transition-all
+                duration-200
+                ${hoveredButton === "name" ? "translate-x-1 translate-y-1" : ""}
+              `}
+            >
+              <h1 className="font-heading tracking-wide text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black">
+                Hi, I&apos;m Dhrutinandan
+              </h1>
+            </div>
+          </motion.div>
+
+          {/* Description block */}
           <motion.div
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start mt-6 lg:mt-10 space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6 "
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="relative mb-6 sm:mb-8 md:mb-10 w-full max-w-full"
           >
-            <Button className="bg-transparent text-black rounded-xl hover:bg-black hover:text-white text-lg md:text-xl font-sans px-4 py-5 md:px-5 md:py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out w-full sm:w-auto">
-              <div className="flex items-center gap-2 group">
-                <span>Contact Me</span>
-                <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </Button>
-            <Button className="bg-black text-white rounded-xl hover:bg-transparent hover:text-black text-lg md:text-xl font-sans px-4 py-5 md:px-5 md:py-6 flex items-center gap-2 border-2 border-black transition-all duration-300 ease-in-out w-full sm:w-auto">
-              See My Resume
-            </Button>
+            <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-code leading-relaxed text-black px-2 xs:px-3 sm:px-4 py-1.5 sm:py-2 md:py-3">
+              I&apos;m a Full Stack Developer passionate about creating
+              user-centered applications. I transform ideas into elegant,
+              functional web experiences.
+            </h4>
           </motion.div>
+
+          {/* Action buttons with minimal neo-brutalist styling */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="flex gap-3 sm:gap-4 mb-8 md:mb-10 max-w-md justify-center"
+          >
+            {/* Contact button */}
+            <div
+              className="relative group sm:w-1/2"
+              onMouseEnter={() => setHoveredButton("contact")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <div className="absolute inset-0 bg-yellow-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md"></div>
+              <Button
+                className={`
+                  bg-white  
+                  relative 
+                  hover:bg-white 
+                  text-black  
+                  border-[2px] 
+                  sm:border-[3px]  
+                  border-black  
+                  rounded-md  
+                  text-sm 
+                  sm:text-base  
+                  font-heading  
+                  font-bold 
+                  uppercase  
+                  tracking-wide 
+                  px-3  
+                  sm:px-4  
+                  py-2 
+                  sm:py-2.5 
+                  md:py-3.5 
+                  h-auto 
+                  transition-all  
+                  duration-200
+                  ${
+                    hoveredButton === "contact"
+                      ? "translate-x-1 translate-y-1"
+                      : ""
+                  }
+                `}
+              >
+                <span className="flex items-center justify-center gap-1.5">
+                  Contact Me
+                  <ArrowRight
+                    className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 ${
+                      hoveredButton === "contact" ? "translate-x-1" : ""
+                    }`}
+                  />
+                </span>
+              </Button>
+            </div>
+
+            {/* Resume button */}
+            <div
+              className="relative group w-full sm:w-1/2"
+              onMouseEnter={() => setHoveredButton("resume")}
+              onMouseLeave={() => setHoveredButton(null)}
+            >
+              <div className="absolute inset-0 bg-orange-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md"></div>
+              <Button
+                className={`
+                  relative 
+                  bg-white 
+                  hover:bg-white 
+                  text-black 
+                  border-[2px] 
+                  sm:border-[3px]  
+                  border-black  
+                  rounded-md  
+                  text-sm 
+                  sm:text-base  
+                  font-heading  
+                  font-bold 
+                  uppercase  
+                  tracking-wide 
+                  px-3 
+                  sm:px-4 
+                  py-2 
+                  sm:py-2.5 
+                  md:py-3.5 
+                  h-auto 
+                  w-full 
+                  transition-all  
+                  duration-200
+                  ${
+                    hoveredButton === "resume"
+                      ? "translate-x-1 translate-y-1"
+                      : ""
+                  }
+                `}
+              >
+                <span>See My Resume</span>
+              </Button>
+            </div>
+          </motion.div>
+
+          {/* Social icons with colorful neo-brutalist styling - smaller on mobile */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.7, duration: 1 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 pt-5 mt-5"
+            transition={{ delay: 0.6, duration: 0.5 }}
+            className="flex justify-center flex-wrap gap-3 md:gap-4"
           >
-            <motion.a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-            >
-              <Github size={22} className="md:w-[26px] md:h-[26px]" />
-            </motion.a>
-            <motion.a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-            >
-              <Twitter size={22} className="md:w-[26px] md:h-[26px]" />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-            >
-              <Linkedin size={22} className="md:w-[26px] md:h-[26px]" />
-            </motion.a>
-            <motion.a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-            >
-              <RssIcon size={22} className="md:w-[26px] md:h-[26px]" />
-            </motion.a>
-            <motion.a
-              href="mailto:example@email.com"
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              className="border-2 border-black p-2 rounded-xl hover:bg-black hover:text-white"
-            >
-              <Mail size={22} className="md:w-[26px] md:h-[26px]" />
-            </motion.a>
+            {socialIcons.map((item, index) => (
+              <motion.a
+                key={index}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group"
+                onMouseEnter={() => setHoveredIcon(index)}
+                onMouseLeave={() => setHoveredIcon(null)}
+              >
+                <div
+                  className={`
+                    absolute 
+                    inset-0 
+                    ${item.color} 
+                    border-[2px] 
+                    border-black 
+                    translate-x-1 
+                    sm:translate-x-1.5 
+                    translate-y-1 
+                    sm:translate-y-1.5 
+                    transition-transform 
+                    duration-200 
+                    rounded-md 
+                    ${
+                      hoveredIcon === index
+                        ? "translate-x-0.5 translate-y-0.5"
+                        : ""
+                    }
+                  `}
+                ></div>
+                <div
+                  className={`
+                    relative
+                    bg-white
+                    border-[2px]
+                    rounded-md
+                    border-black
+                    p-1.5
+                    sm:p-2
+                    md:p-2.5
+                    transition-all
+                    duration-200
+                    ${
+                      hoveredIcon === index
+                        ? "translate-x-0.5 translate-y-0.5"
+                        : ""
+                    }
+                  `}
+                >
+                  <div className="w-6 h-6 flex items-center justify-center">
+                    {item.icon}
+                  </div>
+
+                  {/* Simplified label popup on hover - positioned better for mobile */}
+                  <div
+                    className={`
+                      absolute 
+                      top-12
+                      sm:top-14
+                      left-1/2 
+                      -translate-x-1/2 
+                      bg-black 
+                      text-white 
+                      font-heading 
+                      text-[10px]
+                      sm:text-xs
+                      py-0.5
+                      rounded-md
+                      px-1.5
+                      sm:px-2
+                      border-[1px]
+                      sm:border-[2px]
+                      border-black
+                      pointer-events-none
+                      transition-opacity duration-200
+                      ${hoveredIcon === index ? "opacity-100" : "opacity-0"}
+                      z-10
+                      whitespace-nowrap
+                    `}
+                  >
+                    {item.label}
+                  </div>
+                </div>
+              </motion.a>
+            ))}
           </motion.div>
         </div>
-      </div>
-    </motion.div>
+
+        {/* Minimal scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="absolute bottom-16 sm:bottom-6 left-1/2 -translate-x-1/2 flex-col items-center"
+        >
+          <motion.div
+            animate={{ y: [0, 7, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-yellow-400 border-[1px] sm:border-[2px] border-black rounded-md translate-x-1 translate-y-1"></div>
+            <div className="relative border-[1px] sm:border-[2px] border-black bg-white p-1 rounded-md">
+              <ChevronDown className="w-3 h-3 sm:w-5 sm:h-5" />
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

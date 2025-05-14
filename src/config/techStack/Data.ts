@@ -1,35 +1,27 @@
 export const techStacks = [
   {
-    name: "Express.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  },
-  {
-    name: "Hono",
-    logo: "https://hono.dev/images/logo.svg",
-  },
-  {
-    name: "Next.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    name: "Node.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
   },
   {
     name: "React",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   },
   {
+    name: "Express.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+  },
+  {
     name: "MongoDB",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
   },
   {
-    name: "Google Cloud",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    name: "Next.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
   },
   {
-    name: "Git",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  },
-  {
-    name: "GitHub",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    name: "Hono",
+    logo: "https://hono.dev/images/logo.svg",
   },
   {
     name: "PostgreSQL",
@@ -40,35 +32,42 @@ export const techStacks = [
     logo: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg",
   },
   {
-    name: "Vue.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
-  },
-  {
-    name: "GraphQL",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
-  },
-  {
-    name: "RedwoodJS",
-    logo: "https://avatars.githubusercontent.com/u/45050444?s=200&v=4",
-  },
-  {
-    name: "Next Auth",
-    logo: "https://next-auth.js.org/img/logo/logo-sm.png",
-  },
-  {
-    name: "Vite",
-    logo: "https://vitejs.dev/logo.svg",
+    name: "Google Cloud",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
   },
   {
     name: "Docker",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
   },
   {
-    name: "Dart",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+    name: "GraphQL",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
   },
   {
-    name: "Flutter",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+    name: "Go",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg",
+  },
+  {
+    name: "Move",
+    logo: "https://developers.diem.com/img/move.svg",
+    // Alternative: "https://aptos.dev/img/move-section.png"
+  },
+  {
+    name: "Ethereum",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1200px-Ethereum-icon-purple.svg.png",
+    // Alternative: "https://seeklogo.com/images/E/ethereum-logo-EC6CDBA45B-seeklogo.com.png"
+  },
+  {
+    name: "Sui",
+    logo: "https://sui.io/img/sui-logo.svg",
+    // Alternative: "https://assets.coingecko.com/coins/images/26375/large/sui_asset.jpeg"
+  },
+  {
+    name: "Gin",
+    logo: "https://raw.githubusercontent.com/gin-gonic/logo/master/color.png",
+  },
+  {
+    name: "Drizzle",
+    logo: "https://avatars.githubusercontent.com/u/108468352?s=200&v=4",
   },
 ];

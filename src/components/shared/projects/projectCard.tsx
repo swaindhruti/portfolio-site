@@ -13,6 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface Project {
   title: string;
@@ -23,60 +24,159 @@ interface Project {
 }
 
 const ProjectCard = ({ project }: { project: Project }) => {
+  // Client-side only state to prevent hydration mismatch
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [cardProps, setCardProps] = useState({
+    shadowOffsetX: 3,
+    shadowOffsetY: 3,
+  });
+
+  // Generate random properties only after component mounts on client
+  useEffect(() => {
+    setIsMounted(true);
+    setCardProps({
+      shadowOffsetX: Math.floor(Math.random() * 2) + 2, // Reduced from 5+5 to 2+2
+      shadowOffsetY: Math.floor(Math.random() * 2) + 2, // Reduced from 5+5 to 2+2
+    });
+  }, []);
+
+  // Only render dynamic content after client-side hydration
+  if (!isMounted) {
+    return (
+      <Card className="bg-white border-[2px] sm:border-[3px] border-black rounded-md flex flex-col overflow-hidden h-[380px] sm:h-[400px] md:h-[420px]">
+        {/* Static placeholder without random elements */}
+        <div className="relative w-full h-[150px] sm:h-[170px] md:h-[190px] overflow-hidden flex-shrink-0 border-b-[2px] sm:border-b-[3px] border-black">
+          <div className="w-full h-full bg-gray-200" />
+        </div>
+        <div className="flex flex-col flex-grow overflow-hidden p-3 sm:p-4">
+          <div className="h-full" />
+        </div>
+      </Card>
+    );
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.2, delay: 0.1 }}
-      className="h-full"
+      transition={{ duration: 0.3, delay: 0.1 }}
+      className="h-full w-full"
+      style={{ perspective: "1000px" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <Card className="bg-white/10 backdrop-blur-lg rounded-xl hover:bg-white/40 transition-all duration-300 ease-in-out flex flex-col border-2 border-black/10 hover:border-black overflow-hidden h-[440px] sm:h-[460px]">
-        {/* Fixed height image container */}
-        <div className="relative w-full h-[180px] sm:h-[200px] md:h-[220px] overflow-hidden flex-shrink-0">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-300 hover:scale-105"
-          />
-        </div>
+      <motion.div
+        animate={{
+          y: isHovered ? -3 : 0, // Reduced from -5 to -3 for less dramatic movement
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 15 }}
+        style={{
+          boxShadow: isHovered
+            ? `${cardProps.shadowOffsetX - 1}px ${
+                cardProps.shadowOffsetY - 1
+              }px 0px 0px #000`
+            : `${cardProps.shadowOffsetX}px ${cardProps.shadowOffsetY}px 0px 0px #000`,
+        }}
+        className="h-full w-full rounded-md"
+      >
+        <Card
+          className={`
+          bg-white 
+          border-[2px] sm:border-[3px] border-black 
+          rounded-md 
+          flex flex-col 
+          overflow-hidden 
+          h-[380px] sm:h-[400px] md:h-[420px]
+          transition-all duration-200
+          ${isHovered ? "transform-gpu" : ""}
+        `}
+        >
+          {/* Image container - reduced height */}
+          <div className="relative w-full h-[150px] sm:h-[170px] md:h-[190px] overflow-hidden flex-shrink-0 border-b-[2px] sm:border-b-[3px] border-black">
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className={`
+                object-cover 
+                transition-transform duration-300
+                ${
+                  isHovered ? "scale-105" : "scale-100"
+                } // Reduced from 110 to 105
+              `}
+            />
+          </div>
 
-        {/* Content area with fixed structure */}
-        <div className="flex flex-col flex-grow overflow-hidden">
-          <CardHeader className="pl-3 sm:pl-4 md:pl-5 pb-3">
-            <CardTitle className="text-base sm:text-lg md:text-xl font-sans line-clamp-2">
-              {project.title}
-            </CardTitle>
-          </CardHeader>
+          {/* Content area */}
+          <div className="flex flex-col flex-grow overflow-hidden">
+            <CardHeader className="pl-3 pr-3 sm:pl-4 sm:pr-4 pt-3 pb-1 sm:pt-4 sm:pb-2">
+              <CardTitle className="text-sm sm:text-base md:text-lg font-heading font-extrabold line-clamp-2">
+                {project.title}
+              </CardTitle>
+            </CardHeader>
 
-          <CardContent className="pl-3 sm:pl-4 md:pl-5 flex-grow overflow-y-auto">
-            <CardDescription className="text-xs sm:text-sm md:text-base font-sans">
-              {project.description}
-            </CardDescription>
-          </CardContent>
+            <CardContent className="px-3 sm:px-4 flex-grow overflow-y-auto">
+              <CardDescription className="text-xs sm:text-sm font-code text-black">
+                {project.description}
+              </CardDescription>
+            </CardContent>
 
-          {/* Fixed position footer */}
-          <CardFooter className="flex flex-col sm:flex-row gap-2 p-3 sm:p-4 md:p-5 flex-shrink-0">
-            <Link href={project.link} className="w-full">
-              <Button className="w-full bg-white/10 border-2 border-black text-black hover:bg-black hover:text-white rounded-lg text-xs sm:text-sm md:text-base py-1 sm:py-1.5 md:py-2 px-2 sm:px-3">
-                <span className="flex items-center justify-center gap-1 font-sans">
-                  View Project
-                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 transform group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Button>
-            </Link>
-            <Link href={project.github} className="w-full">
-              <Button className="w-full bg-black border-2 border-black text-white hover:bg-white/10 hover:text-black rounded-lg text-xs sm:text-sm md:text-base py-1 sm:py-1.5 md:py-2 px-2 sm:px-3">
-                <span className="flex items-center justify-center gap-1 font-sans">
-                  GitHub
-                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 transform group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Button>
-            </Link>
-          </CardFooter>
-        </div>
-      </Card>
+            {/* Fixed position footer - improved for mobile */}
+            <CardFooter className="flex flex-col sm:flex-row gap-2 p-3 sm:p-4 pt-1 sm:pt-2 flex-shrink-0">
+              <Link href={project.link} className="w-full relative group">
+                <Button
+                  className={`
+                    w-full
+                    bg-blue-500 
+                    hover:bg-blue-600
+                    text-white 
+                    font-bold 
+                    border-[2px] sm:border-[3px] 
+                    border-black 
+                    rounded-md 
+                    px-3 py-1.5 sm:px-4 sm:py-2
+                    text-xs sm:text-sm
+                    transition-all
+                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[1px_1px_0px_0px_#000] sm:group-hover:shadow-[2px_2px_0px_0px_#000]
+                    shadow-[0.5px_0.5px_0px_0px_#000] sm:shadow-[1px_1px_0px_0px_#000]
+                  `}
+                >
+                  <span className="flex items-center justify-center gap-1 sm:gap-2 font-heading uppercase tracking-wide">
+                    View Project
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Button>
+              </Link>
+              <Link href={project.github} className="w-full relative group">
+                <Button
+                  className={`
+                    w-full
+                    bg-black 
+                    hover:bg-gray-800
+                    text-white 
+                    font-bold 
+                    border-[2px] sm:border-[3px] 
+                    border-black 
+                    rounded-md 
+                    px-3 py-1.5 sm:px-4 sm:py-2
+                    text-xs sm:text-sm
+                    transition-all
+                    group-hover:translate-y-[-1px] group-hover:translate-x-[-1px] group-hover:shadow-[1px_1px_0px_0px_#000] sm:group-hover:shadow-[2px_2px_0px_0px_#000]
+                    shadow-[0.5px_0.5px_0px_0px_#000] sm:shadow-[1px_1px_0px_0px_#000]
+                  `}
+                >
+                  <span className="flex items-center justify-center gap-1 sm:gap-2 font-heading uppercase tracking-wide">
+                    GitHub
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Button>
+              </Link>
+            </CardFooter>
+          </div>
+        </Card>
+      </motion.div>
     </motion.div>
   );
 };
