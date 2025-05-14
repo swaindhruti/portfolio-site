@@ -116,10 +116,10 @@ const ExperienceCard: React.FC<{
             className={`absolute bottom-0 left-0 w-12 h-3 ${accentColor} border-r-[3px] border-t-[3px] border-black rounded-tr-md`}
           ></div>
 
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-6 mb-5 sm:mb-6 md:mb-7">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 md:gap-6 mb-5 sm:mb-6">
             <div>
               <motion.h3
-                className="font-heading text-xl sm:text-2xl md:text-3xl font-bold mb-2 relative inline-block"
+                className="font-heading text-xl sm:text-2xl md:text-3xl font-bold mb-3 relative inline-block pb-2"
                 initial={{ opacity: 0 }}
                 animate={contentInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 + 0.1 }}
@@ -148,14 +148,14 @@ const ExperienceCard: React.FC<{
               <div
                 className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1 rounded-md`}
               ></div>
-              <span className="relative bg-white border-[2px] border-black px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 font-bold font-heading text-sm sm:text-base md:text-lg block rounded-md">
+              <span className="relative bg-white border-[2px] border-black px-3 py-1 sm:px-4 sm:py-1.5 md:px-5 md:py-2 font-bold font-heading text-sm sm:text-base md:text-lg block rounded-md ">
                 {experience.duration}
               </span>
             </motion.div>
           </div>
 
           <motion.p
-            className="text-black mb-6 sm:mb-7 md:mb-8 font-sans text-sm sm:text-base md:text-lg leading-relaxed"
+            className="text-black mb-6 sm:mb-7 md:mb-8 text-sm sm:text-base md:text-lg leading-relaxed tracking-wide font-sans"
             initial={{ opacity: 0 }}
             animate={contentInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 + 0.3 }}
@@ -166,13 +166,13 @@ const ExperienceCard: React.FC<{
           {/* Technologies section */}
           <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 pb-3 sm:pb-0">
             {experience.technologies.map((tech, i) => (
-              <div key={i} className="relative group">
+              <div key={i} className="relative">
                 <div
                   className={`absolute inset-0 ${
                     colors[(i + index) % colors.length]
-                  } border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 rounded-md`}
+                  } border-[2px] border-black translate-x-1 translate-y-1 rounded-md transition-all duration-150 ease-in-out`}
                 ></div>
-                <span className="relative block bg-white border-[2px] border-black px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-1.5 text-xs sm:text-sm md:text-base font-medium font-sans transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] rounded-md">
+                <span className="relative block bg-white border-[2px] border-black px-2 py-1 sm:px-3 sm:py-1 md:px-4 md:py-1.5 text-xs sm:text-sm md:text-base font-medium font-sans rounded-md transition-all duration-150 ease-in-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none hover:cursor-pointer">
                   {tech}
                 </span>
               </div>

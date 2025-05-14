@@ -49,7 +49,7 @@ export default function CardGrid({
           {childrenArray.map((child, index) => (
             <CarouselItem
               key={index}
-              className="px-4 py-4 basis-full md::basis-1/2 xl:basis-1/3"
+              className="px-4 py-4 basis-full md:basis-1/2 xl:basis-1/3"
             >
               {child}
             </CarouselItem>
