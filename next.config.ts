@@ -48,6 +48,51 @@ const nextConfig: NextConfig = {
         hostname: "source.unsplash.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cryptologos.cc",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "sui.io",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "developers.diem.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "aptos.dev",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "seeklogo.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "assets.coingecko.com",
+        pathname: "/**",
+      },
     ],
   },
   /* config options here */

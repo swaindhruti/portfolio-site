@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, User, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,9 +9,6 @@ export interface Blog {
   id: string;
   title: string;
   excerpt: string;
-  date: string;
-  author: string;
-  readTime: string;
   image: string;
   slug: string;
 }
@@ -65,33 +62,6 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           ></div>
         </div>
 
-        {/* Blog info bar with date and metadata */}
-        <div className="flex items-center justify-between border-b-[3px] border-black px-3 sm:px-4 py-2 bg-white">
-          <div className="flex items-center gap-3 text-xs sm:text-sm text-black">
-            <div className="flex items-center gap-1 relative group/read">
-              <div
-                className={`absolute inset-0 ${accentColor} border-[1px] border-black translate-x-0.5 translate-y-0.5 rounded-sm`}
-              ></div>
-              <div className="relative border-[1px] border-black bg-white px-1 py-0.5 flex items-center rounded-sm">
-                <Clock className="w-3 h-3 mr-1" />
-                <span className="font-medium">{blog.readTime}</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-1 relative group/author">
-              <div
-                className={`absolute inset-0 ${accentColor} border-[1px] border-black translate-x-0.5 translate-y-0.5 rounded-sm`}
-              ></div>
-              <div className="relative border-[1px] border-black bg-white px-1 py-0.5 flex items-center rounded-sm">
-                <User className="w-3 h-3 mr-1" />
-                <span className="font-medium">{blog.author}</span>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-xs font-bold">{blog.date}</p>
-        </div>
-
         {/* Content */}
         <div className="p-3 sm:p-4 md:p-8 flex flex-col flex-grow">
           <h3 className="font-heading text-base sm:text-lg md:text-xl font-bold text-black mb-2 sm:mb-3 line-clamp-2">
@@ -103,7 +73,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           </p>
 
           {/* Neo-brutalist link button */}
-          <div className="mt-auto relative group/btn self-start">
+          <div className="mt-auto relative group/btn self-start mb-3 sm:mb-0">
             <div
               className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:translate-y-0.5 rounded-md `}
             ></div>

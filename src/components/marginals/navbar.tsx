@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
+import { navItems } from "@/config/marginals/navbar/Data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,15 +50,6 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const navItems = [
-    { label: "Home", href: "/", color: "bg-yellow-400" },
-    { label: "Projects", href: "/projects", color: "bg-blue-400" },
-    { label: "Experience", href: "/experience", color: "bg-red-400" },
-    { label: "Community", href: "/community", color: "bg-green-400" },
-    { label: "Blogs", href: "/blogs", color: "bg-purple-400" },
-    { label: "Contact", href: "/contact", color: "bg-pink-400" },
-  ];
-
   return (
     <div className="relative z-50">
       {/* Fixed overlay for mobile menu background */}
@@ -94,7 +86,7 @@ const Navbar = () => {
             boxShadow: isOpen || scrolled ? "0 4px 0 rgba(0, 0, 0, 1)" : "none", // Reduced from 5px to 4px
           }}
           transition={{ duration: 0.3 }}
-          className="flex justify-between items-center py-2 sm:py-3 md:py-4 px-3 sm:px-5 md:px-6 lg:px-10 xl:px-14 mx-auto" // Reduced padding
+          className="flex justify-between items-center py-3 sm:py-4 md:py-6 px-3 sm:px-5 md:px-6 lg:px-10 xl:px-14 mx-auto" // Reduced padding
         >
           {/* Logo/Brand - Left Side - Smaller on mobile */}
           <div className="flex-shrink-0">
@@ -112,14 +104,12 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation - Right Side */}
-          <div className="hidden xl:flex items-center 2xl:space-x-3 justify-end">
+          <div className="hidden xl:flex items-center space-x-3 justify-end">
             {" "}
             {/* Reduced spacing */}
             {navItems.map((item) => (
               <Link href={item.href} key={item.label}>
                 <span className="relative group py-1.5 px-0.5 sm:py-2 sm:px-1">
-                  {" "}
-                  {/* Reduced padding */}
                   <div
                     className={`absolute inset-0 ${
                       pathname === item.href ? item.color : "bg-transparent"
@@ -131,14 +121,18 @@ const Navbar = () => {
                   ></div>
                   <Button
                     variant="link"
-                    className="relative z-10 text-sm sm:text-base xk:text-md 2xl:text-lg font-bold font-heading no-underline hover:no-underline tracking-wide text-black px-2 sm:px-3 py-1 h-auto rounded-md" // Reduced font size and padding
+                    className="relative z-10 text-sm sm:text-base xl:text-md 2xl:text-lg font-bold font-heading no-underline hover:no-underline tracking-wide text-black px-2 sm:px-3 py-1 h-auto rounded-md" // Reduced font size and padding
                   >
                     {item.label.toUpperCase()}
                   </Button>
                   {pathname === item.href && (
                     <motion.div
                       className="absolute bottom-0 left-0 w-full h-1 bg-black rounded-md"
-                      layoutId="navIndicator"
+                      transition={{
+                        type: "spring",
+                        bounce: 0.2,
+                        duration: 0.6,
+                      }}
                     />
                   )}
                 </span>
@@ -227,9 +221,7 @@ const Navbar = () => {
                 transition={{ delay: 0.1, duration: 0.2 }}
                 className="flex items-center justify-center py-12 sm:py-14 md:py-16" // Reduced padding
               >
-                <div className="flex flex-col space-y-4 sm:space-y-5 md:space-y-6 items-center justify-center w-full px-3 xs:px-4 sm:px-6 max-w-md mx-auto align-items">
-                  {" "}
-                  {/* Reduced spacing */}
+                <div className="flex flex-col pt-10 sm:pt-6 md:pt-4 lg:pt-0 space-y-6 items-center justify-center w-full px-3 xs:px-4 sm:px-6 max-w-md mx-auto align-items">
                   {navItems.map((item, index) => (
                     <motion.div
                       key={item.label}
@@ -251,7 +243,7 @@ const Navbar = () => {
                           ></div>
                           <Button
                             variant="ghost"
-                            className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-base xs:text-lg sm:text-xl md:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] py-1 xs:py-1.5 sm:py-2 md:py-3 h-auto rounded-md" // Reduced font size and padding
+                            className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-base xs:text-lg sm:text-xl md:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] sm:group-hover:translate-x-[-1px] sm:group-hover:translate-y-[-1px] py-1.5 sm:py-2 md:py-3 h-auto rounded-md" // Reduced font size and padding
                           >
                             {item.label.toUpperCase()}
                           </Button>

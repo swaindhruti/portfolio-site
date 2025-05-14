@@ -5,85 +5,11 @@ import ProjectCard from "@/components/shared/projects/projectCard";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-
-const projects = [
-  {
-    title: "Project 1",
-    description:
-      "Project 1 description lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    link: "/project-1",
-    github: "/project-1",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 2",
-    description: "Project 2 description",
-    link: "/project-2",
-    github: "/project-2",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 3",
-    description: "Project 3 description",
-    link: "/project-3",
-    github: "/project-3",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 4",
-    description: "Project 4 description",
-    link: "/project-4",
-    github: "/project-4",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 5",
-    description: "Project 5 description",
-    link: "/project-5",
-    github: "/project-5",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 6",
-    description:
-      "An impressive project with advanced features and robust architecture.",
-    link: "/project-6",
-    github: "/project-6",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 7",
-    description: "A comprehensive solution for complex business problems.",
-    link: "/project-7",
-    github: "/project-7",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 8",
-    description: "An innovative approach to solving everyday challenges.",
-    link: "/project-8",
-    github: "/project-8",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 9",
-    description: "A cutting-edge implementation with modern technologies.",
-    link: "/project-9",
-    github: "/project-9",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 10",
-    description: "A scalable and efficient solution for growing businesses.",
-    link: "/project-10",
-    github: "/project-10",
-    image: "/api/placeholder/800/500",
-  },
-];
+import { projects } from "@/config/projects/Data";
 
 const ProjectContainer = () => {
   // Initially show 4 projects, or fewer if on smaller screens
-  const [visibleProjects, setVisibleProjects] = useState(3);
+  const [visibleProjects, setVisibleProjects] = useState(4);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [isButtonPressed, setIsButtonPressed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -94,7 +20,7 @@ const ProjectContainer = () => {
 
     // Use setTimeout to simulate loading and reduce the delay perception
     setTimeout(() => {
-      setVisibleProjects((prev) => Math.min(prev + 3, projects.length));
+      setVisibleProjects((prev) => Math.min(prev + 4, projects.length));
       setIsLoading(false);
     }, 100);
   };
@@ -120,7 +46,7 @@ const ProjectContainer = () => {
       </motion.div>
 
       {/* Project grid with faster staggered animation */}
-      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8 md:gap-10 w-full px-2 sm:px-4 md:px-6 ">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 w-full ">
         <AnimatePresence mode="sync">
           {projects.slice(0, visibleProjects).map((project, index) => (
             <motion.div
@@ -170,7 +96,6 @@ const ProjectContainer = () => {
                 mt-8
                 border-[3px]
                 border-black 
-                rounded-none 
                 px-6 sm:px-8
                 py-2 sm:py-6
                 text-base sm:text-lg
@@ -178,6 +103,7 @@ const ProjectContainer = () => {
                 tracking-wide
                 transition-all
                 duration-200
+                rounded-md
                 ${isLoading ? "opacity-80 cursor-not-allowed" : ""}
                 ${
                   isButtonPressed

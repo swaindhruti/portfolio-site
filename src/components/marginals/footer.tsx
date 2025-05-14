@@ -13,8 +13,26 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import { footerLinks } from "@/config/marginals/footer/Data";
 
 const Footer = () => {
+  const getIconComponent = (type: string, size: number) => {
+    switch (type) {
+      case "Github":
+        return <Github size={size} />;
+      case "Twitter":
+        return <Twitter size={size} />;
+      case "Linkedin":
+        return <Linkedin size={size} />;
+      case "RssIcon":
+        return <RssIcon size={size} />;
+      case "Mail":
+        return <Mail size={size} />;
+      default:
+        return null;
+    }
+  };
+
   // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
@@ -110,22 +128,18 @@ const Footer = () => {
             </div>
 
             <div className="flex gap-3 mt-3">
-              {[
-                { icon: <Github size={24} />, color: "bg-yellow-400" },
-                { icon: <Twitter size={24} />, color: "bg-blue-400" },
-                { icon: <Linkedin size={24} />, color: "bg-red-400" },
-                { icon: <RssIcon size={24} />, color: "bg-green-400" },
-                { icon: <Mail size={24} />, color: "bg-purple-400" },
-              ].map((item, index) => (
-                <div key={index} className="relative group">
+              {footerLinks.map((item) => (
+                <div key={item.id} className="relative group">
                   <div
                     className={`absolute inset-0 ${item.color} border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 rounded-md`}
                   ></div>
                   <a
-                    href="#"
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="relative border-[2px] border-black p-2 bg-white flex items-center justify-center transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] rounded-md"
                   >
-                    {item.icon}
+                    {getIconComponent(item.type, item.size)}
                   </a>
                 </div>
               ))}

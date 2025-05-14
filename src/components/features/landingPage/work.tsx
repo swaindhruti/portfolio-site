@@ -20,72 +20,7 @@ import {
 } from "@/components/ui/carousel";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-
-const workExperiences = [
-  {
-    company: "TechInnovate Solutions",
-    title: "Senior Full Stack Developer",
-    duration: "Jan 2022 - Present",
-    description:
-      "Led development of scalable web applications using React, Next.js, and Node.js, implementing GraphQL APIs and optimizing performance.",
-    technologies: ["React", "Next.js", "Node.js", "GraphQL", "PostgreSQL"],
-    link: "#",
-  },
-  {
-    company: "CloudNative Enterprises",
-    title: "Full Stack Engineer",
-    duration: "Jun 2019 - Dec 2021",
-    description:
-      "Developed microservices architecture and built interactive user interfaces using modern web technologies.",
-    technologies: ["Express.js", "Ruby on Rails", "Firebase", "Supabase"],
-    link: "#",
-  },
-  {
-    company: "StartUp Innovators",
-    title: "Junior Web Developer",
-    duration: "Jan 2018 - May 2019",
-    description:
-      "Contributed to innovative web solutions, gaining expertise in full-stack development and agile methodologies.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    link: "#",
-  },
-  {
-    company: "StartUp Innovators",
-    title: "Junior Web Developer",
-    duration: "Jan 2018 - May 2019",
-    description:
-      "Contributed to innovative web solutions, gaining expertise in full-stack development and agile methodologies.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    link: "#",
-  },
-  {
-    company: "StartUp Innovators",
-    title: "Junior Web Developer",
-    duration: "Jan 2018 - May 2019",
-    description:
-      "Contributed to innovative web solutions, gaining expertise in full-stack development and agile methodologies.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    link: "#",
-  },
-  {
-    company: "StartUp Innovators",
-    title: "Junior Web Developer",
-    duration: "Jan 2018 - May 2019",
-    description:
-      "Contributed to innovative web solutions, gaining expertise in full-stack development and agile methodologies.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    link: "#",
-  },
-  {
-    company: "StartUp Innovators",
-    title: "Junior Web Developer",
-    duration: "Jan 2018 - May 2019",
-    description:
-      "Contributed to innovative web solutions, gaining expertise in full-stack development and agile methodologies.",
-    technologies: ["React", "Node.js", "MongoDB"],
-    link: "#",
-  },
-];
+import { workExperiences } from "@/config/experience/Data";
 
 // Item variants for heading animation
 const itemVariants = {
@@ -132,7 +67,7 @@ const WorkExperienceSection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
   };

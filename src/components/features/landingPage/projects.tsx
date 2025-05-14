@@ -10,45 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import ProjectCard from "@/components/shared/projects/projectCard";
 import { motion, useInView } from "framer-motion";
-
-const projects = [
-  {
-    title: "Project 1",
-    description:
-      "Project 1 description lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    link: "/project-1",
-    github: "/project-1",
-    image: "/api/placeholder/800/500", // Placeholder image - replace with your image paths
-  },
-  {
-    title: "Project 2",
-    description: "Project 2 description",
-    link: "/project-2",
-    github: "/project-2",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 3",
-    description: "Project 3 description",
-    link: "/project-3",
-    github: "/project-3",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 4",
-    description: "Project 4 description",
-    link: "/project-4",
-    github: "/project-4",
-    image: "/api/placeholder/800/500",
-  },
-  {
-    title: "Project 5",
-    description: "Project 5 description",
-    link: "/project-5",
-    github: "/project-5",
-    image: "/api/placeholder/800/500",
-  },
-];
+import { projects } from "@/config/projects/Data";
 
 // Container animation variant
 const containerVariants = {
