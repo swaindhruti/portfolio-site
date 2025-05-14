@@ -209,7 +209,7 @@ const Navbar = () => {
                 opacity: { duration: 0.2 },
                 height: { duration: 0.3 },
               }}
-              className="lg:hidden bg-white fixed top-[52px] sm:top-[64px] md:top-[78px] inset-x-0 overflow-auto z-40" // Adjusted for smaller header heights
+              className="xl:hidden bg-white fixed top-[52px] sm:top-[64px] md:top-[78px] inset-x-0 overflow-auto z-40" // Adjusted for smaller header heights
               style={{
                 maxHeight: "calc(100vh - 52px)", // Adjusted for smaller mobile header height
               }}

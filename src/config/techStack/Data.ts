@@ -1,73 +1,86 @@
 export const techStacks = [
   {
+    name: "Javascript",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246367/portfolio-site-dhrutinandan/eu8lddn1vxnxvwhpwmo3.svg",
+  },
+  {
+    name: "Typescript",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246366/portfolio-site-dhrutinandan/prmkz9jt3fl2bswkgjve.svg",
+  },
+  {
+    name: "Tailwind",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246366/portfolio-site-dhrutinandan/ivc1qi7fkrnyuadpauxu.svg",
+  },
+  {
     name: "Node.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246369/portfolio-site-dhrutinandan/zzbkcjthjonowvltzfep.svg",
   },
   {
     name: "React",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747247454/portfolio-site-dhrutinandan/opnyiwcxgtdjuzwh3xic.svg",
   },
   {
     name: "Express.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246365/portfolio-site-dhrutinandan/ag9nx4if3cwlripyldwi.svg",
   },
   {
     name: "MongoDB",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246367/portfolio-site-dhrutinandan/lcfbpdbsmhhkikregtht.svg",
   },
   {
     name: "Next.js",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246368/portfolio-site-dhrutinandan/p8elg04kytvxdsmerrsw.svg",
   },
   {
     name: "Hono",
-    logo: "https://hono.dev/images/logo.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246367/portfolio-site-dhrutinandan/ffdovidg3pvld5a4s1tj.svg",
   },
   {
     name: "PostgreSQL",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246362/portfolio-site-dhrutinandan/mlfbfxbiz7ninjdcpzoo.svg",
   },
   {
     name: "Prisma",
-    logo: "https://cdn.worldvectorlogo.com/logos/prisma-2.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246367/portfolio-site-dhrutinandan/n41s5njnrrl8olm5qte4.svg",
   },
   {
     name: "Google Cloud",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246364/portfolio-site-dhrutinandan/zgh9coiwaspchwblbenl.svg",
   },
   {
     name: "Docker",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246362/portfolio-site-dhrutinandan/ia2onkbkdsh9wn0rsozn.svg",
+  },
+  {
+    name: "Redis",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246362/portfolio-site-dhrutinandan/dfrkkjdngocsrloc3q9u.svg",
   },
   {
     name: "GraphQL",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246366/portfolio-site-dhrutinandan/p7htf0prgqklsuv3ehkw.svg",
   },
   {
     name: "Go",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747247664/portfolio-site-dhrutinandan/nzkzeo8ibnaeqysji723.svg",
   },
   {
     name: "Move",
-    logo: "https://developers.diem.com/img/move.svg",
-    // Alternative: "https://aptos.dev/img/move-section.png"
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246368/portfolio-site-dhrutinandan/oiw16srxyi0cl1b1vmov.svg",
   },
   {
     name: "Ethereum",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1200px-Ethereum-icon-purple.svg.png",
-    // Alternative: "https://seeklogo.com/images/E/ethereum-logo-EC6CDBA45B-seeklogo.com.png"
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246362/portfolio-site-dhrutinandan/pb2pzvsgummwgukgbzyv.svg",
   },
   {
     name: "Sui",
-    logo: "https://sui.io/img/sui-logo.svg",
-    // Alternative: "https://assets.coingecko.com/coins/images/26375/large/sui_asset.jpeg"
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246364/portfolio-site-dhrutinandan/htrxnub7v4qny37dyvzf.svg",
   },
   {
     name: "Gin",
-    logo: "https://raw.githubusercontent.com/gin-gonic/logo/master/color.png",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747247588/portfolio-site-dhrutinandan/ypz6wj8pfr6exsuorpfl.svg",
   },
   {
     name: "Drizzle",
-    logo: "https://avatars.githubusercontent.com/u/108468352?s=200&v=4",
+    logo: "https://res.cloudinary.com/dhv234qct/image/upload/v1747246362/portfolio-site-dhrutinandan/fpybgvhpfj9t1aiiwro5.png",
   },
 ];

@@ -90,9 +90,10 @@ export default function NeoBrutalistBackground({
             transition={{ duration: 0.7, delay: 0.5 }}
             className="absolute top-[75%] left-[22%] w-32 md:w-40 lg:w-48 h-6 md:h-8 lg:h-10"
             style={{
-              backgroundImage: "linear-gradient(45deg, transparent 33.333%, #a855f7 33.333%, #a855f7 66.667%, transparent 66.667%)",
+              backgroundImage:
+                "linear-gradient(45deg, transparent 33.333%, #a855f7 33.333%, #a855f7 66.667%, transparent 66.667%)",
               backgroundSize: "24px 12px",
-              backgroundRepeat: "repeat-x"
+              backgroundRepeat: "repeat-x",
             }}
           />
 
@@ -117,8 +118,8 @@ export default function NeoBrutalistBackground({
                 linear-gradient(45deg, transparent 75%, #f87171 75%),
                 linear-gradient(-45deg, transparent 75%, #f87171 75%)
               `,
-              backgroundSize: '20px 20px',
-              backgroundPosition: '0 0, 0 10px, 10px -10px, -10px 0px'
+              backgroundSize: "20px 20px",
+              backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
             }}
           />
 
@@ -129,8 +130,9 @@ export default function NeoBrutalistBackground({
             transition={{ duration: 0.5, delay: 0.65 }}
             className="absolute bottom-[5%] right-[5%] w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 rounded-full"
             style={{
-              background: 'radial-gradient(circle, #38bdf8 25%, transparent 25%)',
-              backgroundSize: '12px 12px',
+              background:
+                "radial-gradient(circle, #38bdf8 25%, transparent 25%)",
+              backgroundSize: "12px 12px",
             }}
           />
 
@@ -141,7 +143,6 @@ export default function NeoBrutalistBackground({
             transition={{ duration: 0.6, delay: 0.4 }}
             className="absolute bottom-[15%] left-[42%] w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 bg-pink-200 border-[1px] border-black/30 transform"
           />
-
         </div>
       </div>
 

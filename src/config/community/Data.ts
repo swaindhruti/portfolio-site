@@ -1,111 +1,89 @@
 // Communities I'm part of data
 export const communitiesList = [
   {
-    title: "React India Community",
+    title: "Google Developer Groups",
     description:
       "Active member of the React India community, participating in discussions, knowledge sharing, and organizing local meetups focused on React ecosystem.",
-    image: "react-india",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1747256173/portfolio-site-dhrutinandan/fqkuneojjgcbozrk4rjp.svg",
     link: "https://www.reactindia.io/",
   },
   {
-    title: "Google Developer Groups",
+    title: "OpenCode NITR",
     description:
       "Member of Google Developer Groups (GDG) Bhubaneswar, helping organize workshops and hackathons to promote Google technologies and best practices.",
-    image: "gdg",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/t_cut-oc/portfolio-site-dhrutinandan/xf87mcpseobcqdrcw9qe",
     link: "https://gdg.community.dev/",
   },
   {
-    title: "Dev.to Community",
+    title: "HackNITR",
     description:
       "Regular contributor to dev.to community, sharing tutorials, coding tips, and career advice with a growing follower base of fellow developers.",
-    image: "devto",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1747259913/portfolio-site-dhrutinandan/rxgghkwgezpjssjls6jj.jpg",
     link: "https://dev.to/",
-  },
-  {
-    title: "GitHub Open Source",
-    description:
-      "Active participant in open source projects on GitHub, contributing to frontend libraries and developer tools to improve the ecosystem for everyone.",
-    image: "github",
-    link: "https://github.com/",
-  },
-  {
-    title: "Stack Overflow",
-    description:
-      "Active contributor on Stack Overflow, helping solve coding problems and sharing knowledge with the developer community worldwide.",
-    image: "stack-overflow",
-    link: "https://stackoverflow.com/",
-  },
-  {
-    title: "HashNode Community",
-    description:
-      "Regular writer and reader on HashNode, engaging with other developers through articles and discussions on web development topics.",
-    image: "hashnode",
-    link: "https://hashnode.com/",
   },
 ];
 
 // Events I've been part of data
 export const eventsList = [
   {
-    title: "ReactConf India 2023",
+    title: "HackNITR 5.0",
     description:
       "Speaker at ReactConf India where I presented on 'Building Accessible React Applications'. Engaged with over 300 developers and shared practical accessibility tips.",
     date: "August 2023",
     location: "Bangalore, India",
-    image: "reactconf",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/e_improve:outdoor/c_crop,h_0.20,w_0.70/portfolio-site-dhrutinandan/mvtjxgwstk0cnwm5wqzk",
     link: "https://reactconf.in/",
   },
   {
-    title: "Web Dev Summit 2023",
+    title: "HackInno 2024",
     description:
       "Participated as a panelist discussing 'The Future of Frontend Development'. Shared insights on emerging technologies and best practices in modern web development.",
     date: "May 2023",
     location: "Virtual Event",
-    image: "webdev-summit",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1747260596/portfolio-site-dhrutinandan/qvjgncsggazq5dvdbjhd.png",
     link: "#",
   },
   {
-    title: "Local Hackathon 2023",
+    title: "OpenChase 2024",
     description:
       "Served as a mentor for participants at a local 48-hour hackathon. Helped teams with technical challenges and provided feedback on projects and presentations.",
     date: "March 2023",
     location: "Bhubaneswar, India",
-    image: "hackathon",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1747260899/portfolio-site-dhrutinandan/higomlxbussbfswn5vbe.png",
     link: "#",
   },
   {
-    title: "Dev Workshop Series",
+    title: "Cybersecurity Workshop",
     description:
       "Organized and led a series of monthly workshops teaching web development fundamentals to beginners. Topics included HTML/CSS, JavaScript, and introduction to React.",
     date: "Jan-Dec 2022",
     location: "Bhubaneswar, India",
-    image: "workshop",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1747261337/portfolio-site-dhrutinandan/wtkvd7ac2dlfiyeabcma.jpg",
     link: "#",
   },
   {
-    title: "Frontend Masters Meetup",
+    title: "Git and GitHub Workshop",
     description:
       "Co-organized a regional frontend developers meetup, featuring lightning talks and networking sessions for developers of all experience levels.",
     date: "October 2022",
     location: "Bhubaneswar, India",
-    image: "frontend-meetup",
-    link: "#",
-  },
-  {
-    title: "CodeFest 2022",
-    description:
-      "Participated as a judge in a university coding competition, evaluating student projects based on innovation, code quality, and presentation skills.",
-    date: "September 2022",
-    location: "Cuttack, India",
-    image: "codefest",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1747261466/portfolio-site-dhrutinandan/aikzpz6vdysrpv92jojt.svg",
     link: "#",
   },
 ];
 
 // Stats data
 export const statsData = [
-  { value: "12+", label: "Communities Joined" },
-  { value: "20+", label: "Events Attended" },
-  { value: "8+", label: "Talks Given" },
-  { value: "50+", label: "People Mentored" },
+  { value: "4+", label: "Communities Joined" },
+  { value: "10+", label: "Events Attended" },
+  { value: "3+", label: "Talks Given" },
+  { value: "20+", label: "People Mentored" },
 ];

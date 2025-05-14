@@ -39,17 +39,22 @@ export default function CommunityCard({
       ></div>
 
       {/* Main card */}
-      <div className="relative border-[3px] border-black bg-white  flex flex-col h-full transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
+      <div className="relative border-[3px] border-black bg-white flex flex-col h-full transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
         {/* Image section - FIXED HEIGHT */}
-        <div className="relative h-48 border-b-[3px] border-black overflow-hidden rounded-t-[5px]">
-          <Image
-            src={`https://source.unsplash.com/random/800x600?${encodeURIComponent(
-              image
-            )}`}
-            alt={title}
-            fill
-            className="object-cover"
-          />
+        <div className="relative h-60 border-b-[3px] border-black overflow-hidden rounded-t-[5px]">
+          {/* Using Next/Image for all images with different object-fit strategy */}
+          <div className="flex items-center justify-center w-full h-[calc(100%-50px)]">
+            <div className="relative w-4/5 h-4/5">
+              <Image
+                src={image}
+                alt={title}
+                fill
+                className={"object-contain"}
+                priority
+              />
+            </div>
+          </div>
+
           {/* Neo-brutalist corner accent */}
           <div
             className={`absolute top-0 right-0 w-10 h-3 ${accentColor} border-l-[3px] border-b-[3px] border-black rounded-bl-md`}

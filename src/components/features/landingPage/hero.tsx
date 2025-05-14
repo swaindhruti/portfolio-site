@@ -64,9 +64,9 @@ const HeroSection = () => {
         <div className="w-full max-w-5xl flex flex-col items-center text-center pb-8 sm:pb-10 sm:pt-12">
           {/* Name with neo-brutalist styling matching buttons */}
           <motion.div
-            initial={{ y: -30, opacity: 0 }}
+            initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             className="relative mb-6 sm:mb-8 md:mb-10 w-full max-w-xl lg:max-w-2xl"
             onMouseEnter={() => setHoveredButton("name")}
             onMouseLeave={() => setHoveredButton(null)}
@@ -216,7 +216,7 @@ const HeroSection = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex justify-center flex-wrap gap-3 md:gap-4"
+            className="flex justify-center flex-wrap gap-3 md:gap-5"
           >
             {socialIcons.map((item, index) => (
               <motion.a
@@ -277,14 +277,15 @@ const HeroSection = () => {
                     className={`
                       absolute 
                       top-12
-                      sm:top-14
+                      sm:top-16
                       left-1/2 
                       -translate-x-1/2 
                       bg-black 
                       text-white 
                       font-heading 
                       text-[10px]
-                      sm:text-xs
+                      sm:text-[14px]
+                      tracking-wide
                       py-0.5
                       rounded-md
                       px-1.5
