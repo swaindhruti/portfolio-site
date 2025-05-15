@@ -117,8 +117,7 @@ const TechStackSection = () => {
                     >
                       <Card
                         className={`
-                          border-[1px] 
-                          sm:border-[2px] 
+                          border-[2px] 
                           border-black 
                           rounded-md
                           bg-white 
@@ -210,7 +209,7 @@ const TechStackSection = () => {
             </CarouselContent>
 
             {/* Neo-brutalist navigation buttons */}
-            <div className="flex justify-center gap-4 sm:gap-6 mt-3 sm:mt-4">
+            <div className="flex justify-center gap-4 sm:gap-6 mt-3">
               <CarouselPrevious
                 className="bg-orange-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
                    transition-all duration-200 hidden sm:flex"

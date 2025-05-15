@@ -102,10 +102,7 @@ const CommunityPage = () => {
               key={index}
               title={event.title}
               description={event.description}
-              date={event.date}
-              location={event.location}
               image={event.image}
-              link={event.link}
               variants={itemVariants}
             />
           ))}

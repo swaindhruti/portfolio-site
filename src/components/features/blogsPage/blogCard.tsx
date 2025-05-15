@@ -10,7 +10,7 @@ export interface Blog {
   title: string;
   excerpt: string;
   image: string;
-  slug: string;
+  src: string;
 }
 
 interface BlogCardProps {
@@ -49,7 +49,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       {/* Main card */}
       <div className="relative border-[3px] border-black bg-white flex flex-col h-full transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
         {/* Image section */}
-        <div className="relative h-40 sm:h-44 md:h-48 border-b-[3px] border-black overflow-hidden rounded-t-[5px]">
+        <div className="relative h-40 sm:h-44 md:h-60 border-b-[3px] border-black overflow-hidden rounded-t-[5px]">
           <Image
             src={blog.image}
             alt={blog.title}
@@ -78,7 +78,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
               className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:translate-y-0.5 rounded-md `}
             ></div>
             <Link
-              href={`/blog/${blog.slug}`}
+              href={blog.src}
               className="relative inline-flex items-center border-[2px] border-black bg-white px-3 py-1 font-bold text-sm sm:text-base transition-transform group-hover/btn:translate-x-[-0.5px] group-hover/btn:translate-y-[-0.5px] rounded-md"
             >
               READ ARTICLE
