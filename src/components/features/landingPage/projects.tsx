@@ -62,7 +62,7 @@ const ProjectSection = () => {
       {/* Neo-brutalist heading with highlighted box */}
       <div className="text-center mb-6 sm:mb-8 md:mb-10">
         <div className="relative inline-block mb-4 sm:mb-5">
-          <div className="absolute inset-0 bg-blue-500 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 rounded-md"></div>
+          <div className="absolute inset-0 bg-green-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"
@@ -94,7 +94,7 @@ const ProjectSection = () => {
               {projects.map((project, index) => (
                 <CarouselItem
                   key={index}
-                  className="pl-1 sm:pl-2 md:pl-3 basis-full sm:basis-1/2 lg:basis-1/3 px-1 sm:px-2"
+                  className="pl-3 sm:pl-3 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 px-2"
                 >
                   <motion.div variants={cardVariants}>
                     <ProjectCard project={project} />
@@ -106,12 +106,12 @@ const ProjectSection = () => {
             {/* Neo-brutalist navigation buttons */}
             <div className="flex justify-center gap-4 sm:gap-5 md:gap-6 mt-3 sm:mt-4">
               <CarouselPrevious
-                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
+                className="bg-green-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
                    transition-all duration-200 hidden sm:flex"
               />
 
               <CarouselNext
-                className="bg-blue-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
+                className="bg-green-400 text-black hover:bg-black hover:text-white border-[2px] sm:border-[3px] border-black rounded-md h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 
                    transition-all duration-200 hidden sm:flex"
               />
             </div>

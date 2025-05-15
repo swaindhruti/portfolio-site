@@ -1,22 +1,16 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { Calendar, MapPin } from "lucide-react";
 
 interface EventCardProps {
   title: string;
   description: string;
-  date: string;
-  location: string;
   image: string;
-  link: string;
   variants: Variants;
 }
 
 export default function EventCard({
   title,
   description,
-  date,
-  location,
   image,
   variants,
 }: EventCardProps) {
@@ -42,7 +36,7 @@ export default function EventCard({
       ></div>
 
       {/* Main card */}
-      <div className="relative border-[3px] border-black bg-white shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] flex flex-col h-full transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
+      <div className="relative border-[3px] border-black bg-white flex flex-col h-full transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
         {/* Image section */}
         <div className="relative h-60 border-b-[3px] border-black overflow-hidden rounded-t-[5px]">
           {/* Using Next/Image for all images with different object-fit strategy */}
@@ -73,34 +67,9 @@ export default function EventCard({
         </div>
 
         {/* Content section */}
-        <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between min-h-[200px]">
-          {/* Date and location with neo-brutalist styling */}
-          <div className="flex flex-col sm:flex-row gap-2 mb-4">
-            <div className="relative group/date">
-              <div
-                className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1 rounded-md`}
-              ></div>
-              <div className="relative border-[2px] border-black bg-white px-2 py-1 inline-flex items-center rounded-md">
-                <Calendar className="w-3.5 h-3.5 mr-1.5" />
-                <span className="text-xs sm:text-sm font-medium">{date}</span>
-              </div>
-            </div>
-
-            <div className="relative group/location">
-              <div
-                className={`absolute inset-0 ${accentColor} border-[2px] border-black translate-x-1 translate-y-1 rounded-md`}
-              ></div>
-              <div className="relative border-[2px] border-black bg-white px-2 py-1 inline-flex items-center truncate rounded-md">
-                <MapPin className="w-3.5 h-3.5 mr-1.5 flex-shrink-0" />
-                <span className="text-xs sm:text-sm font-medium truncate">
-                  {location}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Description - Now with fixed height */}
-          <div className="min-h-[100px]">
+        <div className="p-4 sm:p-5 flex flex-col flex-grow min-h-[180px]">
+          {/* Description - Shifted slightly towards top but still somewhat centered */}
+          <div className="flex items-center justify-center flex-grow min-h-[100px] -mt-4">
             <p className="text-sm sm:text-base text-black font-medium line-clamp-4">
               {description}
             </p>

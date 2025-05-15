@@ -5,7 +5,7 @@ export const workExperiences = [
     duration: "Dec 2024 - Jan 2025",
     description:
       "Designed a scalable backend supporting 1000+ users and products. Developed REST APIs for authentication, product management, and order processing. Integrated JWT-based security for authentication and authorization.",
-    technologies: ["Next.js", "Prisma", "PostgreSQL", "Firebase", "REST API"],
+    technologies: ["Next.js", "Prisma", "PostgreSQL", "Firebase"],
     link: "/experience",
   },
   {

@@ -36,7 +36,7 @@ const BlogsContainer = () => {
 
       {/* Blog grid - without outer container box */}
       <div className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-y-8 gap-4 sm:gap-y-6 sm:gap-6 md:gap-10 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-y-8 gap-4 px-2 sm:gap-y-6 sm:gap-6 md:gap-10 w-full">
           <AnimatePresence>
             {blogs.slice(0, visibleBlogs).map((blog, index) => (
               <motion.div

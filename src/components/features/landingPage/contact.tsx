@@ -21,7 +21,7 @@ const ContactSection: React.FC = () => {
       {/* Neo-brutalist Page Header */}
       <div className="text-center mb-8 sm:mb-10 md:mb-12">
         <div className="relative inline-block mb-4 sm:mb-5 md:mb-6">
-          <div className="absolute inset-0 bg-emerald-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 rounded-md"></div>
+          <div className="absolute inset-0 bg-blue-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 rounded-md"></div>
           <motion.h1
             variants={itemVariants}
             initial="hidden"

@@ -3,26 +3,26 @@ export const communitiesList = [
   {
     title: "Google Developer Groups",
     description:
-      "Active member of the React India community, participating in discussions, knowledge sharing, and organizing local meetups focused on React ecosystem.",
+      "Active Member of GDG NITRKL, helping organize workshops and hackathons to promote new tech and best practices.",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/v1747256173/portfolio-site-dhrutinandan/fqkuneojjgcbozrk4rjp.svg",
-    link: "https://www.reactindia.io/",
+    link: "https://dscnitrourkela.org/",
   },
   {
     title: "OpenCode NITR",
     description:
-      "Member of Google Developer Groups (GDG) Bhubaneswar, helping organize workshops and hackathons to promote Google technologies and best practices.",
+      "Empowering open-source growth at OpenCode NITR, guiding developers in web and Web3.  ",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/t_cut-oc/portfolio-site-dhrutinandan/xf87mcpseobcqdrcw9qe",
-    link: "https://gdg.community.dev/",
+    link: "https://project-athena-sid.netlify.app/",
   },
   {
     title: "HackNITR",
     description:
-      "Regular contributor to dev.to community, sharing tutorials, coding tips, and career advice with a growing follower base of fellow developers.",
+      "An active HackNITR member, organizing events and workshops to foster innovation and collaboration.",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/v1747259913/portfolio-site-dhrutinandan/rxgghkwgezpjssjls6jj.jpg",
-    link: "https://dev.to/",
+    link: "https://hacknitr.com/",
   },
 ];
 
@@ -31,52 +31,37 @@ export const eventsList = [
   {
     title: "HackNITR 5.0",
     description:
-      "Speaker at ReactConf India where I presented on 'Building Accessible React Applications'. Engaged with over 300 developers and shared practical accessibility tips.",
-    date: "August 2023",
-    location: "Bangalore, India",
+      "Organizer of HackNITR 5.0, India's largest student-run hackathon. Coordinated workshops and sessions to enhance participants skills.",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/e_improve:outdoor/c_crop,h_0.20,w_0.70/portfolio-site-dhrutinandan/mvtjxgwstk0cnwm5wqzk",
-    link: "https://reactconf.in/",
   },
   {
     title: "HackInno 2024",
     description:
-      "Participated as a panelist discussing 'The Future of Frontend Development'. Shared insights on emerging technologies and best practices in modern web development.",
-    date: "May 2023",
-    location: "Virtual Event",
+      "Core team member of HackInno 2024, a institute level hackathon. More than 200 participants took part in the event.",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/v1747260596/portfolio-site-dhrutinandan/qvjgncsggazq5dvdbjhd.png",
-    link: "#",
   },
   {
     title: "OpenChase 2024",
     description:
-      "Served as a mentor for participants at a local 48-hour hackathon. Helped teams with technical challenges and provided feedback on projects and presentations.",
-    date: "March 2023",
-    location: "Bhubaneswar, India",
+      "Treasure hunt event organized by OpenCode & GDG NITR, where participants solved puzzles and challenges to find hidden treasures.",
     image:
-      "https://res.cloudinary.com/dhv234qct/image/upload/v1747260899/portfolio-site-dhrutinandan/higomlxbussbfswn5vbe.png",
-    link: "#",
+      "https://res.cloudinary.com/dhv234qct/image/upload/t_jjjj/portfolio-site-dhrutinandan/higomlxbussbfswn5vbe",
   },
   {
     title: "Cybersecurity Workshop",
     description:
-      "Organized and led a series of monthly workshops teaching web development fundamentals to beginners. Topics included HTML/CSS, JavaScript, and introduction to React.",
-    date: "Jan-Dec 2022",
-    location: "Bhubaneswar, India",
+      "Speaker at a workshop on cybersecurity, sharing insights on best practices and tools to enhance online security.",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/v1747261337/portfolio-site-dhrutinandan/wtkvd7ac2dlfiyeabcma.jpg",
-    link: "#",
   },
   {
     title: "Git and GitHub Workshop",
     description:
-      "Co-organized a regional frontend developers meetup, featuring lightning talks and networking sessions for developers of all experience levels.",
-    date: "October 2022",
-    location: "Bhubaneswar, India",
+      "Speaker at a workshop on Git and GitHub, sharing insights on version control and collaboration.",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/v1747261466/portfolio-site-dhrutinandan/aikzpz6vdysrpv92jojt.svg",
-    link: "#",
   },
 ];
 

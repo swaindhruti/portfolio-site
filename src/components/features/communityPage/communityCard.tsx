@@ -35,7 +35,7 @@ export default function CommunityCard({
     <motion.div variants={variants} className="group relative h-full">
       {/* Neo-brutalist background accent */}
       <div
-        className={`absolute inset-0 ${accentColor} border-[3px] border-black translate-x-1.5 translate-y-1.5 rounded-md`}
+        className={`absolute inset-0 ${accentColor} border-[3px] border-black translate-x-2 translate-y-2 rounded-md`}
       ></div>
 
       {/* Main card */}
@@ -74,7 +74,7 @@ export default function CommunityCard({
         <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between min-h-[200px]">
           {/* Description - FIXED HEIGHT */}
           <div className="min-h-[100px]">
-            <p className="text-sm sm:text-base text-black font-medium line-clamp-4">
+            <p className="text-sm sm:text-base text-black/80 font-medium line-clamp-4">
               {description}
             </p>
           </div>

@@ -11,21 +11,21 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
   const socialLinks = [
     {
       icon: <Github size={22} />,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/swaindhruti",
       label: "GitHub",
-      username: "@yourusername",
+      username: "@swaindhruti",
       bgColor: "bg-yellow-400",
     },
     {
       icon: <Twitter size={22} />,
-      href: "https://twitter.com/yourusername",
+      href: "https://twitter.com/D_SwainX",
       label: "Twitter",
-      username: "@yourusername",
+      username: "@D_SwainX",
       bgColor: "bg-blue-400",
     },
     {
       icon: <Linkedin size={22} />,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://linkedin.com/in/dhrutinandan",
       label: "LinkedIn",
       username: "Dhrutinandan Swain",
       bgColor: "bg-red-400",
@@ -69,10 +69,10 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
                 EMAIL
               </h3>
               <a
-                href="mailto:dhrutinandan@email.com"
+                href="mailto:dhrutinandan.dev@email.com"
                 className="text-base sm:text-lg font-medium relative inline-block group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-transform"
               >
-                dhrutinandan@email.com
+                dhrutinandan.dev@email.com
                 <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform"></div>
               </a>
             </div>
