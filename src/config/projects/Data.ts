@@ -48,7 +48,7 @@ export const projects = [
     title: "Minare 2025",
     description:
       "Official site for Annual Geo-Tech Fest of NIT Rourkela. Organized by the Department of Mining Engineering.",
-    link: "https://github.com/swaindhruti/project-campa",
+    link: "https://mes-iota.vercel.app/",
     github: "https://github.com/swaindhruti/MES",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/v1747298201/portfolio-site-dhrutinandan/z3likquwdxexbqrhjtnt.png",
@@ -57,8 +57,8 @@ export const projects = [
     title: "Scribe Space",
     description:
       "Official site for Annual Geo-Tech Fest of NIT Rourkela. Organized by the Department of Mining Engineering.",
-    link: "https://github.com/swaindhruti/project-campa",
-    github: "https://github.com/swaindhruti/MES",
+    link: "https://scribe-space.vercel.app/",
+    github: "https://github.com/swaindhruti/Scribe-Space",
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/v1747299557/portfolio-site-dhrutinandan/wrokcgrfdj6v1vf3v8ky.png",
   },
