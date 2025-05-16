@@ -134,7 +134,7 @@ const ProjectSection = () => {
           className="flex justify-center mt-8 sm:mt-10 md:mt-12"
         >
           <div className="relative group">
-            <div className="absolute inset-0 bg-purple-400 border-[2px] sm:border-[3px] border-black translate-x-1 translate-y-1 transition-transform duration-200 rounded-md group-hover:translate-x-0.5 group-hover:translate-y-0.5"></div>
+            <div className="absolute inset-0 bg-purple-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 translate-y-1.5 transition-transform duration-200 rounded-md group-hover:translate-x-0.5 group-hover:translate-y-0.5"></div>
             <Button
               asChild
               className="relative bg-white hover:bg-white text-black border-[2px] sm:border-[3px] border-black rounded-md px-5 sm:px-6 py-3 sm:py-5 text-sm sm:text-base font-heading font-bold transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
