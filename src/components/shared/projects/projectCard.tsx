@@ -168,7 +168,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
                   </span>
                 </Button>
               </Link>
-              <Link href={project.github} className="w-full relative group">
+              <Link
+                href={project.github}
+                target="_blank"
+                className="w-full relative group"
+              >
                 <Button
                   className={`
                     w-full

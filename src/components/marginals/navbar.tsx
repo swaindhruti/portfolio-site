@@ -77,8 +77,8 @@ const Navbar = () => {
             backgroundColor: isOpen
               ? "rgba(255, 255, 255, 1)"
               : scrolled
-              ? "rgba(255, 255, 255, 1)"
-              : "rgba(255, 255, 255, 0)",
+                ? "rgba(255, 255, 255, 1)"
+                : "rgba(255, 255, 255, 0)",
             borderBottom:
               isOpen || scrolled
                 ? "1.5px solid black"
@@ -275,7 +275,7 @@ const Navbar = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Resume
+                          RESUME
                         </a>
                       </Button>
                     </div>
