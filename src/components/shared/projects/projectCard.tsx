@@ -104,7 +104,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           h-[380px] sm:h-[400px] md:h-[420px]
           transition-all duration-200
           ${isHovered ? "transform-gpu" : ""}
-          ${isHovered ? "translate-x-[-1px] translate-y-[-1px]" : ""}
+          ${isHovered ? "translate-x-1.5 translate-y-2" : ""}
         `}
         >
           {/* Rest of card content remains unchanged */}

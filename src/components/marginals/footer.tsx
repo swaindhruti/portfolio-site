@@ -57,12 +57,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         {/* Top section with scroll to top button */}
         <div className="flex justify-center mb-8">
-          <div className="relative group">
-            <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-1 translate-y-1 rounded-md transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"></div>
+          <div className="relative ">
+            <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-1 translate-y-1 rounded-md transition-transform "></div>
             <motion.button
               onClick={scrollToTop}
               whileTap={{ scale: 0.95 }}
-              className="relative border-[2px] border-black p-3 bg-white transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] rounded-md"
+              className="relative border-[2px] border-black p-3 bg-white transition-transform hover:translate-x-1 hover:translate-y-1 rounded-md"
             >
               <ChevronUp size={24} className="text-black" />
             </motion.button>
