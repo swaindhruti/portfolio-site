@@ -1,4 +1,3 @@
-// Communities I'm part of data
 export const communitiesList = [
   {
     title: "Google Developer Groups",
@@ -26,7 +25,6 @@ export const communitiesList = [
   },
 ];
 
-// Events I've been part of data
 export const eventsList = [
   {
     title: "HackNITR 5.0",
@@ -65,7 +63,6 @@ export const eventsList = [
   },
 ];
 
-// Stats data
 export const statsData = [
   { value: "4+", label: "Communities Joined" },
   { value: "10+", label: "Events Attended" },

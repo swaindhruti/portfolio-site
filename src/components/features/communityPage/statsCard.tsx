@@ -33,7 +33,7 @@ export default function StatCard({
       ></div>
 
       {/* Main card */}
-      <div className="relative border-[3px] border-black bg-white p-4 sm:p-5 text-center transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md h-full flex flex-col justify-center min-h-[150px]">
+      <div className="relative border-[3px] border-black bg-white p-4 sm:p-5 text-center transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2 rounded-md h-full flex flex-col justify-center min-h-[150px]">
         {/* Decorative corner accents */}
         <div
           className={`absolute top-0 right-0 w-10 h-3 ${accentColor} border-l-[3px] border-b-[3px] border-black rounded-bl-md`}
@@ -47,7 +47,6 @@ export default function StatCard({
           <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-black relative z-10">
             {value}
           </p>
-
         </div>
 
         {/* Label */}

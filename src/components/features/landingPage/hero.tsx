@@ -21,31 +21,31 @@ const HeroSection = () => {
   const socialIcons = [
     {
       icon: <Github size={20} />,
-      href: "https://github.com",
+      href: "https://github.com/swaindhruti",
       label: "GitHub",
       color: "bg-purple-400",
     },
     {
       icon: <Twitter size={20} />,
-      href: "https://twitter.com",
+      href: "https://twitter.com/D_SwainX",
       label: "Twitter",
       color: "bg-blue-400",
     },
     {
       icon: <Linkedin size={20} />,
-      href: "https://linkedin.com",
+      href: "https://linkedin.com/in/dhrutinandan",
       label: "LinkedIn",
       color: "bg-yellow-400",
     },
     {
       icon: <RssIcon size={20} />,
-      href: "/blog",
+      href: "/blogs",
       label: "Blog",
       color: "bg-green-400",
     },
     {
       icon: <Mail size={20} />,
-      href: "mailto:example@email.com",
+      href: "mailto:dhrutinandan.dev@email.com",
       label: "Email",
       color: "bg-red-400",
     },
@@ -88,7 +88,7 @@ const HeroSection = () => {
                 md:py-4
                 transition-all
                 duration-200
-                ${hoveredButton === "name" ? "translate-x-1 translate-y-1" : ""}
+                ${hoveredButton === "name" ? "translate-x-2 translate-y-2" : ""}
               `}
             >
               <h1 className="font-heading tracking-wide text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black">
@@ -126,6 +126,7 @@ const HeroSection = () => {
             >
               <div className="absolute inset-0 bg-yellow-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md"></div>
               <Button
+                asChild
                 className={`
                   bg-white  
                   relative 
@@ -151,19 +152,21 @@ const HeroSection = () => {
                   duration-200
                   ${
                     hoveredButton === "contact"
-                      ? "translate-x-1 translate-y-1"
+                      ? "translate-x-2 translate-y-2"
                       : ""
                   }
                 `}
               >
-                <span className="flex items-center justify-center gap-1.5">
-                  Contact Me
-                  <ArrowRight
-                    className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 ${
-                      hoveredButton === "contact" ? "translate-x-1" : ""
-                    }`}
-                  />
-                </span>
+                <a href="/contact">
+                  <span className="flex items-center justify-center gap-1.5">
+                    Contact Me
+                    <ArrowRight
+                      className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 ${
+                        hoveredButton === "contact" ? "translate-x-1" : ""
+                      }`}
+                    />
+                  </span>
+                </a>
               </Button>
             </div>
 
@@ -175,6 +178,7 @@ const HeroSection = () => {
             >
               <div className="absolute inset-0 bg-orange-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 sm:translate-x-2 translate-y-1.5 sm:translate-y-2 transition-transform duration-200 rounded-md"></div>
               <Button
+                asChild
                 className={`
                   relative 
                   bg-white 
@@ -201,12 +205,21 @@ const HeroSection = () => {
                   duration-200
                   ${
                     hoveredButton === "resume"
-                      ? "translate-x-1 translate-y-1"
+                      ? "translate-x-2 translate-y-2"
                       : ""
                   }
                 `}
               >
-                <span>See My Resume</span>
+                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <span className="flex items-center justify-center gap-1.5">
+                    See My Resume
+                    <ArrowRight
+                      className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 ${
+                        hoveredButton === "resume" ? "translate-x-1" : ""
+                      }`}
+                    />
+                  </span>
+                </a>
               </Button>
             </div>
           </motion.div>
@@ -262,9 +275,7 @@ const HeroSection = () => {
                     transition-all
                     duration-200
                     ${
-                      hoveredIcon === index
-                        ? "translate-x-0.5 translate-y-0.5"
-                        : ""
+                      hoveredIcon === index ? "translate-x-1 translate-y-1" : ""
                     }
                   `}
                 >

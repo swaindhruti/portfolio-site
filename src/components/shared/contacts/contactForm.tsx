@@ -3,17 +3,23 @@ import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { containerVariants, itemVariants } from "./animationVariants";
+import { sendEmail } from "@/actions/send-mails/action";
+import { z } from "zod";
 
-type FormData = {
-  name: string;
-  email: string;
-  message: string;
-};
+// Define form schema matching the server action
+const FormSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Valid email is required"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type FormData = z.infer<typeof FormSchema>;
 
 type FormErrors = {
   name?: string;
   email?: string;
   message?: string;
+  form?: string;
 };
 
 interface ContactFormProps {
@@ -50,24 +56,24 @@ const ContactForm: React.FC<ContactFormProps> = ({ isInView }) => {
   };
 
   const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+    try {
+      // Use Zod to validate the form data
+      FormSchema.parse(formData);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Convert Zod errors to our form errors format
+        const newErrors: FormErrors = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            newErrors[err.path[0] as keyof FormErrors] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+      return false;
     }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -78,11 +84,35 @@ const ContactForm: React.FC<ContactFormProps> = ({ isInView }) => {
     }
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("message", formData.message);
+
+      const result = await sendEmail(formDataToSend);
+
+      if (result.success) {
+        setFormData({ name: "", email: "", message: "" });
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        setErrors({
+          ...errors,
+          form:
+            result.error || "Failed to send message. Please try again later.",
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setErrors({
+        ...errors,
+        form: "An unexpected error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -96,7 +126,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ isInView }) => {
         variants={itemVariants}
         className="bg-white border-[3px] border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] p-6 sm:p-8 md:p-10 relative rounded-md"
       >
-        {/* Neo-brutalist accents with rounded corners */}
         <div className="absolute top-0 right-0 w-32 h-3 bg-green-400 border-l-[3px] border-b-[3px] border-black rounded-bl-md"></div>
         <div className="absolute bottom-0 left-0 w-24 h-3 bg-purple-400 border-r-[3px] border-t-[3px] border-black rounded-tr-md"></div>
 
@@ -150,9 +179,9 @@ const SubmissionSuccess: React.FC<SubmissionSuccessProps> = ({ onReset }) => {
         </div>
       </div>
 
-      <h3 className="text-2xl sm:text-3xl font-bold font-heading mb-4 relative inline-block">
+      <h3 className="text-2xl sm:text-3xl font-bold font-heading mb-4 pl-4 pb-6 relative inline-block">
         Message Sent!
-        <div className="absolute -bottom-2 left-0 right-0 h-1 bg-black"></div>
+        <div className="absolute -bottom-2 left-4 right-0 h-1 bg-black"></div>
       </h3>
 
       <p className="text-base sm:text-lg max-w-md mx-auto mb-8">
@@ -211,6 +240,15 @@ const Form: React.FC<FormProps> = ({
         <div className="absolute -bottom-2 left-0 right-0 h-1 bg-black"></div>
       </motion.h2>
 
+      {errors.form && (
+        <motion.div
+          variants={itemVariants}
+          className="p-4 bg-red-100 border-2 border-red-500 text-red-700 rounded-md"
+        >
+          {errors.form}
+        </motion.div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name Field */}
         <motion.div variants={itemVariants}>
@@ -222,8 +260,9 @@ const Form: React.FC<FormProps> = ({
           </label>
           <div className="relative">
             <div
-              className={`absolute inset-0 bg-yellow-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-200 rounded-md ${activeField === "name" ? "translate-x-0.5 translate-y-0.5" : ""
-                }`}
+              className={`absolute inset-0 bg-yellow-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-200 rounded-md ${
+                activeField === "name" ? "translate-x-0.5 translate-y-0.5" : ""
+              }`}
             ></div>
             <input
               type="text"
@@ -233,10 +272,11 @@ const Form: React.FC<FormProps> = ({
               onChange={handleChange}
               onFocus={() => setActiveField("name")}
               onBlur={() => setActiveField(null)}
-              className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none relative transition-all rounded-md duration-200 ${activeField === "name"
-                ? "translate-x-[-0.5px] translate-y-[-0.5px]"
-                : ""
-                } ${errors.name ? "border-red-500 bg-red-50" : ""}`}
+              className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none relative transition-all rounded-md duration-200 ${
+                activeField === "name"
+                  ? "translate-x-[-0.5px] translate-y-[-0.5px]"
+                  : ""
+              } ${errors.name ? "border-red-500 bg-red-50" : ""}`}
               placeholder="Your name"
             />
           </div>
@@ -257,8 +297,9 @@ const Form: React.FC<FormProps> = ({
           </label>
           <div className="relative">
             <div
-              className={`absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-200 rounded-md ${activeField === "email" ? "translate-x-0.5 translate-y-0.5" : ""
-                }`}
+              className={`absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-200 rounded-md ${
+                activeField === "email" ? "translate-x-0.5 translate-y-0.5" : ""
+              }`}
             ></div>
             <input
               type="email"
@@ -268,10 +309,11 @@ const Form: React.FC<FormProps> = ({
               onChange={handleChange}
               onFocus={() => setActiveField("email")}
               onBlur={() => setActiveField(null)}
-              className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none relative transition-all duration-200 rounded-md ${activeField === "email"
-                ? "translate-x-[-0.5px] translate-y-[-0.5px]"
-                : ""
-                } ${errors.email ? "border-red-500 bg-red-50" : ""}`}
+              className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none relative transition-all duration-200 rounded-md ${
+                activeField === "email"
+                  ? "translate-x-[-0.5px] translate-y-[-0.5px]"
+                  : ""
+              } ${errors.email ? "border-red-500 bg-red-50" : ""}`}
               placeholder="Your email"
             />
           </div>
@@ -293,8 +335,9 @@ const Form: React.FC<FormProps> = ({
         </label>
         <div className="relative">
           <div
-            className={`absolute inset-0 bg-red-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-200 rounded-md ${activeField === "message" ? "translate-x-0.5 translate-y-0.5" : ""
-              }`}
+            className={`absolute inset-0 bg-red-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-200 rounded-md ${
+              activeField === "message" ? "translate-x-0.5 translate-y-0.5" : ""
+            }`}
           ></div>
           <textarea
             id="message"
@@ -304,10 +347,11 @@ const Form: React.FC<FormProps> = ({
             onChange={handleChange}
             onFocus={() => setActiveField("message")}
             onBlur={() => setActiveField(null)}
-            className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none rounded-md relative transition-all duration-200 ${activeField === "message"
-              ? "translate-x-[-0.5px] translate-y-[-0.5px]"
-              : ""
-              } ${errors.message ? "border-red-500 bg-red-50" : ""}`}
+            className={`w-full px-4 py-3 border-[2px] border-black bg-white text-black placeholder-black/50 focus:outline-none rounded-md relative transition-all duration-200 ${
+              activeField === "message"
+                ? "translate-x-[-0.5px] translate-y-[-0.5px]"
+                : ""
+            } ${errors.message ? "border-red-500 bg-red-50" : ""}`}
             placeholder="Your message"
           ></textarea>
         </div>
@@ -320,13 +364,12 @@ const Form: React.FC<FormProps> = ({
 
       {/* Submit Button */}
       <motion.div variants={itemVariants} className="flex justify-center mt-8">
-        <div className="relative">
-          <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-200 group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></div>
+        <div className="relative group hover:cursor-pointer">
+          <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-150 ease-in-out rounded-md group-hover:translate-x-0.5 group-hover:translate-y-0.5"></div>
           <motion.button
             type="submit"
-            className="relative flex items-center justify-center px-8 py-3 border-[2px] border-black text-black bg-white font-bold font-heading group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-all duration-200 rounded-md"
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 0.99 }}
+            className="relative flex items-center justify-center px-8 py-3 border-[2px] border-black text-black bg-white font-bold font-heading transition-all duration-150 ease-in-out rounded-md group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] shadow-[1px_1px_0px_0px_rgba(0,0,0,0.3)] group-hover:shadow-none"
+            whileTap={{ scale: 0.97 }}
             disabled={isSubmitting}
           >
             {isSubmitting ? (
