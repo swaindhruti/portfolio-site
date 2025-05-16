@@ -126,9 +126,14 @@ const Footer = () => {
 
             <div className="relative group mb-6">
               <div className="absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></div>
-              <Button className="relative border-[2px] border-black bg-white text-black hover:bg-white px-6 py-3 font-bold font-heading text-md flex items-center gap-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md">
-                CONTACT ME
-                <Send className="w-5 h-5" />
+              <Button
+                asChild
+                className="relative border-[2px] border-black bg-white text-black hover:bg-white px-6 py-3 font-bold font-heading text-md flex items-center gap-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"
+              >
+                <a href="/contact">
+                  CONTACT ME
+                  <Send className="w-5 h-5" />
+                </a>
               </Button>
             </div>
 

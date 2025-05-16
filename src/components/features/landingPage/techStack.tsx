@@ -117,7 +117,7 @@ const TechStackSection = () => {
                     >
                       <Card
                         className={`
-                          border-[2px] 
+                          border-[3px]
                           border-black 
                           rounded-md
                           bg-white 
@@ -159,12 +159,12 @@ const TechStackSection = () => {
                                   index % 5 === 0
                                     ? "bg-blue-400"
                                     : index % 5 === 1
-                                    ? "bg-yellow-400"
-                                    : index % 5 === 2
-                                    ? "bg-red-400"
-                                    : index % 5 === 3
-                                    ? "bg-purple-400"
-                                    : "bg-cyan-400"
+                                      ? "bg-yellow-400"
+                                      : index % 5 === 2
+                                        ? "bg-red-400"
+                                        : index % 5 === 3
+                                          ? "bg-purple-400"
+                                          : "bg-cyan-400"
                                 }
                               `}
                             ></div>

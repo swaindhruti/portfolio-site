@@ -368,7 +368,7 @@ const Form: React.FC<FormProps> = ({
           <div className="absolute inset-0 bg-green-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-all duration-150 ease-in-out rounded-md group-hover:translate-x-0.5 group-hover:translate-y-0.5"></div>
           <motion.button
             type="submit"
-            className="relative flex items-center justify-center px-8 py-3 border-[2px] border-black text-black bg-white font-bold font-heading transition-all duration-150 ease-in-out rounded-md group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] shadow-[1px_1px_0px_0px_rgba(0,0,0,0.3)] group-hover:shadow-none"
+            className="relative flex items-center justify-center px-8 py-3 border-[2px] border-black text-black bg-white font-bold font-heading transition-all duration-150 ease-in-out rounded-md group-hover:translate-x-0.5 group-hover:translate-y-0.5 shadow-[1px_1px_0px_0px_rgba(0,0,0,0.3)] group-hover:shadow-none"
             whileTap={{ scale: 0.97 }}
             disabled={isSubmitting}
           >
