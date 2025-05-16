@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -11,6 +12,8 @@ import {
 import ProjectCard from "@/components/shared/projects/projectCard";
 import { motion, useInView } from "framer-motion";
 import { projects } from "@/config/projects/Data";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 // Container animation variant
 const containerVariants = {
@@ -53,6 +56,8 @@ const itemVariants = {
 const ProjectSection = () => {
   const sectionRef = useRef(null);
   const isSectionInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const buttonRef = useRef(null);
+  const isButtonInView = useInView(buttonRef, { once: true, amount: 0.8 });
 
   return (
     <div
@@ -117,6 +122,32 @@ const ProjectSection = () => {
             </div>
           </Carousel>
         </div>
+
+        {/* See More Projects Button */}
+        <motion.div
+          ref={buttonRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={
+            isButtonInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex justify-center mt-8 sm:mt-10 md:mt-12"
+        >
+          <div className="relative group">
+            <div className="absolute inset-0 bg-purple-400 border-[2px] sm:border-[3px] border-black translate-x-1 translate-y-1 transition-transform duration-200 rounded-md group-hover:translate-x-0.5 group-hover:translate-y-0.5"></div>
+            <Button
+              asChild
+              className="relative bg-white hover:bg-white text-black border-[2px] sm:border-[3px] border-black rounded-md px-5 sm:px-6 py-3 sm:py-5 text-sm sm:text-base font-heading font-bold transition-transform duration-200 group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+            >
+              <Link href="/projects">
+                <span className="flex items-center gap-2 tracking-wide">
+                  SEE ALL PROJECTS
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </span>
+              </Link>
+            </Button>
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
