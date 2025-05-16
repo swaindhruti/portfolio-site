@@ -99,13 +99,18 @@ const Footer = () => {
               <div className="absolute -bottom-1 left-0 right-0 h-1 bg-black rounded-md"></div>
             </h3>
             <div className="flex flex-col gap-4 items-center">
-              {["Home", "About", "Projects", "Contact"].map((link, index) => (
+              {[
+                { name: "Home", path: "/" },
+                { name: "Projects", path: "/projects" },
+                { name: "Experience", path: "/experience" },
+                { name: "Contact", path: "/contact" },
+              ].map((link, index) => (
                 <a
                   key={index}
-                  href="#"
+                  href={link.path}
                   className="text-lg font-medium relative inline-block group"
                 >
-                  {link}
+                  {link.name}
                   <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform rounded-md"></div>
                 </a>
               ))}
@@ -121,7 +126,7 @@ const Footer = () => {
 
             <div className="relative group mb-6">
               <div className="absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1.5 translate-y-1.5 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></div>
-              <Button className="relative border-[2px] border-black bg-white text-black hover:bg-white px-6 py-3 font-bold font-heading text-md flex items-center gap-2 transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
+              <Button className="relative border-[2px] border-black bg-white text-black hover:bg-white px-6 py-3 font-bold font-heading text-md flex items-center gap-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md">
                 CONTACT ME
                 <Send className="w-5 h-5" />
               </Button>
@@ -137,7 +142,7 @@ const Footer = () => {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative border-[2px] border-black p-2 bg-white flex items-center justify-center transition-transform group-hover:translate-x-[-0.5px] group-hover:translate-y-[-0.5px] rounded-md"
+                    className="relative border-[2px] border-black p-2 bg-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 rounded-md"
                   >
                     {getIconComponent(item.type, item.size)}
                   </a>

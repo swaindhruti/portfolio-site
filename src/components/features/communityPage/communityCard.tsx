@@ -39,7 +39,7 @@ export default function CommunityCard({
       ></div>
 
       {/* Main card */}
-      <div className="relative border-[3px] border-black bg-white flex flex-col h-full transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
+      <div className="relative border-[3px] border-black bg-white flex flex-col h-full transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2 rounded-md">
         {/* Image section - FIXED HEIGHT */}
         <div className="relative h-60 border-b-[3px] border-black overflow-hidden rounded-t-[5px]">
           {/* Using Next/Image for all images with different object-fit strategy */}
@@ -74,7 +74,7 @@ export default function CommunityCard({
         <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between min-h-[200px]">
           {/* Description - FIXED HEIGHT */}
           <div className="min-h-[100px]">
-            <p className="text-sm sm:text-base text-black/80 font-medium line-clamp-4">
+            <p className="text-sm sm:text-base text-black/70 font-medium line-clamp-4">
               {description}
             </p>
           </div>

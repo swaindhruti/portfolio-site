@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Github, Twitter, Linkedin } from "lucide-react";
+import {
+  Mail,
+  Github,
+  Twitter,
+  MessageCircleCode,
+  Linkedin,
+} from "lucide-react";
 import { containerVariants, itemVariants } from "./animationVariants";
 
 interface ContactInfoProps {
@@ -86,7 +92,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-400 border-[2px] border-black translate-x-1 translate-y-1 rounded-md"></div>
               <div className="bg-white border-[2px] border-black p-3 relative rounded-md">
-                <Phone size={24} className="text-black" />
+                <MessageCircleCode size={24} className="text-black" />
               </div>
             </div>
             <div className="py-1.5">
@@ -94,10 +100,10 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
                 PHONE
               </h3>
               <a
-                href="tel:+91XXXXXXXXXX"
+                href="tel:+919348840861"
                 className="text-base sm:text-lg font-medium relative inline-block group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-transform"
               >
-                +91 XXXXXXXXXX
+                +91 9348840861
                 <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform"></div>
               </a>
             </div>

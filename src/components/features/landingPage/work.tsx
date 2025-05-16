@@ -152,7 +152,7 @@ const WorkExperienceSection = () => {
                         transform 
                         ${
                           hoveredIndex === index
-                            ? "translate-y-[1px] translate-x-[1px] sm:translate-y-[2px] sm:translate-x-[2px]"
+                            ? "translate-y-[1px] translate-x-[1px] sm:translate-y-1.5 sm:translate-x-1.5"
                             : ""
                         }
                       `}

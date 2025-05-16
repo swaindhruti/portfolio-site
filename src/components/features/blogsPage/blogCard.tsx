@@ -47,7 +47,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       ></div>
 
       {/* Main card */}
-      <div className="relative border-[3px] border-black bg-white flex flex-col h-full transition-transform duration-300 group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md">
+      <div className="relative border-[3px] border-black bg-white flex flex-col h-full transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2 rounded-md">
         {/* Image section */}
         <div className="relative h-40 sm:h-44 md:h-60 border-b-[3px] border-black overflow-hidden rounded-t-[5px]">
           <Image
@@ -68,7 +68,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             {blog.title}
           </h3>
 
-          <p className="text-xs sm:text-sm md:text-base text-black mb-4 line-clamp-3">
+          <p className="text-xs sm:text-sm md:text-base text-black/70 mb-4 line-clamp-3">
             {blog.excerpt}
           </p>
 
@@ -79,7 +79,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
             ></div>
             <Link
               href={blog.src}
-              className="relative inline-flex items-center border-[2px] border-black bg-white px-3 py-1 font-bold text-sm sm:text-base transition-transform group-hover/btn:translate-x-[-0.5px] group-hover/btn:translate-y-[-0.5px] rounded-md"
+              className="relative inline-flex items-center border-[2px] border-black bg-white px-3 py-1 font-bold text-sm sm:text-base transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:translate-y-0.5 rounded-md"
             >
               READ ARTICLE
               <ArrowRight className="ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4 transform group-hover:translate-x-1 transition-transform duration-300" />

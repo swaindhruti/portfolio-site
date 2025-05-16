@@ -151,9 +151,9 @@ const CommunityPage = () => {
           </div>
 
           <div className="relative inline-block group">
-            <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-2 group-hover:translate-y-1 rounded-md"></div>
+            <div className="absolute inset-0 bg-blue-400 border-[3px] border-black translate-x-2 translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"></div>
             <Button
-              className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg font-bold px-8 py-3 h-auto flex items-center transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] rounded-md"
+              className="relative border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg font-bold px-8 py-3 h-auto flex items-center transition-transform group-hover:translate-x-1 group-hover:translate-y-1 rounded-md"
               asChild
             >
               <a href="/contact">
