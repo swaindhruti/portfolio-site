@@ -210,7 +210,11 @@ const HeroSection = () => {
                   }
                 `}
               >
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://drive.google.com/file/d/1wDDN4EDm_IPHUCgCNPzXUtmdaAA5V7p0/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <span className="flex items-center justify-center gap-1.5">
                     See My Resume
                     <ArrowRight
