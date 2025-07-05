@@ -20,7 +20,7 @@ const BlogsContainer = () => {
   const allBlogsShown = visibleBlogs >= blogs.length;
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-10 md:space-y-16 px-3 sm:px-4 md:px-6 lg:px-8 py-6 pt-24 sm:pt-28 pb-10  min-h-screen">
+    <div className="flex flex-col items-center justify-center space-y-10 md:space-y-16 px-3 sm:px-4 md:px-6 lg:px-8 py-6 pb-10  min-h-screen">
       {/* Neo-brutalist header */}
       <div className="relative inline-block mb-6">
         <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>

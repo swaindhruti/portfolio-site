@@ -16,6 +16,14 @@ export const communitiesList = [
     link: "https://project-athena-sid.netlify.app/",
   },
   {
+    title: "AWS Cloud Club NITR",
+    description:
+      "Empowering Cloud Enthusiasts at AWS Cloud Club NITR, organizing workshops and events to enhance cloud skills.",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1751757918/portfolio-site-dhrutinandan/1_55H7iTJ-BAl77RUYoBzX0A_kns8ow.png",
+    link: "https://www.meetup.com/aws-cloud-club-at-national-institute-of-technology-rourkela/",
+  },
+  {
     title: "HackNITR",
     description:
       "An active HackNITR member, organizing events and workshops to foster innovation and collaboration.",
@@ -64,8 +72,8 @@ export const eventsList = [
 ];
 
 export const statsData = [
-  { value: "4+", label: "Communities Joined" },
+  { value: "5+", label: "Communities Joined" },
   { value: "10+", label: "Events Attended" },
-  { value: "3+", label: "Talks Given" },
-  { value: "20+", label: "People Mentored" },
+  { value: "5+", label: "Talks Given" },
+  { value: "40+", label: "People Mentored" },
 ];

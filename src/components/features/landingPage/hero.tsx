@@ -211,7 +211,7 @@ const HeroSection = () => {
                 `}
               >
                 <a
-                  href="https://drive.google.com/file/d/1wDDN4EDm_IPHUCgCNPzXUtmdaAA5V7p0/view?usp=sharing"
+                  href="https://drive.google.com/drive/folders/1gU87SBkf4GzEflajoTUE1eukY8uusyxK?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -279,7 +279,9 @@ const HeroSection = () => {
                     transition-all
                     duration-200
                     ${
-                      hoveredIcon === index ? "translate-x-1 translate-y-1" : ""
+                      hoveredIcon === index
+                        ? "translate-x-1.5 translate-y-1.5"
+                        : ""
                     }
                   `}
                 >

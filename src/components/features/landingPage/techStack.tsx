@@ -128,7 +128,7 @@ const TechStackSection = () => {
                           overflow-hidden
                           ${
                             hoveredIndex === index
-                              ? "translate-y-[1px] translate-x-[1px] shadow-[1px_1px_0px_0px_#000]"
+                              ? "translate-y-1 translate-x-1"
                               : "shadow-[2px_2px_0px_0px_#000] sm:shadow-[3px_3px_0px_0px_#000]"
                           }
                         `}
@@ -195,7 +195,6 @@ const TechStackSection = () => {
                               duration-200
                               text-center
                               line-clamp-1
-                              ${hoveredIndex === index ? "scale-105" : ""}
                             `}
                           >
                             {tech.name}

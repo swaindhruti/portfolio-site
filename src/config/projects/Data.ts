@@ -1,5 +1,23 @@
 export const projects = [
   {
+    title: "GoUnplan Travels",
+    description:
+      "Official website of GoUnplan Travels. The travel platform that passes your vibe check.",
+    link: "https://gounplan.com/",
+    github: "https://github.com/ask-netgenius",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/c_crop,h_700/v1751758680/portfolio-site-dhrutinandan/Screenshot_2025-07-06_050748_ot9ms9.png",
+  },
+  {
+    title: "NutriScan",
+    description:
+      "A real-time nutrition platform offering personalized AI-driven recommendations and a seamless, cross-platform user experience.",
+    link: "https://youtu.be/WaJyNxkrd2o",
+    github: "https://github.com/ayussh-2/project-amobagan",
+    image:
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1751758497/portfolio-site-dhrutinandan/400e5ac6-454a-414c-863b-6a395dafcc37_bfshcl.jpg",
+  },
+  {
     title: "GDG NIT Rourkela",
     description:
       "Official website of Google Developer Group NIT Rourkela. A platform for developers to connect, learn, and grow together.",

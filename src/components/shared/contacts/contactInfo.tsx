@@ -103,7 +103,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({ isInView }) => {
                 href="tel:+919348840861"
                 className="text-base sm:text-lg font-medium relative inline-block group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-transform"
               >
-                +91 9348840861
+                +91 9556493605
                 <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform"></div>
               </a>
             </div>
