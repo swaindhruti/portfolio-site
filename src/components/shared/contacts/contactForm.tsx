@@ -335,7 +335,7 @@ const Form: React.FC<FormProps> = ({
         </label>
         <div className="relative">
           <div
-            className={`absolute inset-0 bg-red-400 border-[2px] border-black translate-x-1.5 transition-all duration-200 rounded-md ${
+            className={`absolute inset-0 bg-red-400 border-[2px] border-black translate-y-0.5 translate-x-1.5 transition-all duration-200 rounded-md ${
               activeField === "message" ? "translate-x-0.5 translate-y-0.5" : ""
             }`}
           ></div>

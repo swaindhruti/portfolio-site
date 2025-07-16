@@ -5,7 +5,7 @@ export const blogs: Blog[] = [
     id: "1",
     title: "A Beginner’s Guide to Web3",
     excerpt:
-      "Fedora XFCE is a lightweight and efficient Linux distribution that offers a simple yet powerful user experience.",
+      "Beginner's guide to Web3 and it's working and its potential impact on the future of the internet.",
 
     image:
       "https://res.cloudinary.com/dhv234qct/image/upload/c_pad,b_gen_fill,ar_4:3/v1751756997/portfolio-site-dhrutinandan/Screenshot_2025-06-02_190405_tpgwas.png",

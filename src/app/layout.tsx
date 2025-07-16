@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import VantaBackground from "@/components/background/TextureBackground";
+import ModernTextureBackground from "@/components/background/TextureBackground";
 import { Roboto, Roboto_Mono, Borel } from "next/font/google";
 import Navbar from "@/components/marginals/navbar";
 import Footer from "@/components/marginals/footer";
@@ -42,11 +42,11 @@ export default function RootLayout({
       className={`${roboto.variable} ${robotoMono.variable} ${borel.variable} overflow-x-hidden`}
     >
       <body className={`${roboto.className} overflow-x-hidden scrollbar-hide`}>
-        <VantaBackground>
+        <ModernTextureBackground>
           <Navbar />
           <main className="relative z-10">{children}</main>
           <Footer />
-        </VantaBackground>
+        </ModernTextureBackground>
       </body>
     </html>
   );

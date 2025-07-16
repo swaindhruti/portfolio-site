@@ -92,7 +92,7 @@ const HeroSection = () => {
               `}
             >
               <h1 className="font-heading tracking-wide text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black">
-                Hi, I&apos;m Dhrutinandan
+                Hi, I&apos;m Dhrutinandan Swain
               </h1>
             </div>
           </motion.div>
@@ -104,7 +104,7 @@ const HeroSection = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="relative mb-6 sm:mb-8 md:mb-10 w-full max-w-full"
           >
-            <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-code leading-relaxed text-black px-2 xs:px-3 sm:px-4 py-1.5 sm:py-2 md:py-3">
+            <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-code leading-relaxed text-black px-2 xs:px-3 sm:px-4 py-1.5 sm:py-2 md:py-3 tracking-wide">
               I&apos;m a Full Stack Developer passionate about creating
               user-centered applications. I transform ideas into elegant,
               functional web experiences.
