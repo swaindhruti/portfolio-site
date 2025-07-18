@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useInView } from "framer-motion";
+import { useInView, motion } from "framer-motion";
 import { Users, Calendar, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -41,15 +41,20 @@ const CommunityPage = () => {
 
   return (
     <main className="pt-28 md:pt-36">
-      {/* Neo-brutalist Page Header */}
-      <div className="text-center px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
+      {/* Centered header with underline */}
+      <motion.div
+        className="w-full text-center px-4 sm:px-6 md:px-8 max-w-7xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         <div className="relative inline-block">
           <div className="absolute inset-0 bg-green-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
-          <h1 className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md">
+          <h1 className="relative text-3xl sm:text-4xl lg:text-5xl font-heading font-bold z-10 bg-white border-[3px] border-black px-6 py-3 rounded-md">
             COMMUNITY ENGAGEMENT
           </h1>
         </div>
-      </div>
+      </motion.div>
 
       {/* SECTION 1: Communities I'm Part Of */}
       <section

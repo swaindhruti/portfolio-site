@@ -20,19 +20,21 @@ const BlogsContainer = () => {
   const allBlogsShown = visibleBlogs >= blogs.length;
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-10 md:space-y-16 px-3 sm:px-4 md:px-6 lg:px-8 py-6 pb-10  min-h-screen">
-      {/* Neo-brutalist header */}
-      <div className="relative inline-block mb-6">
-        <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
-        <motion.h1
-          className="relative border-[3px] border-black bg-white font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold px-6 py-3 text-black rounded-md"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          MY BLOG
-        </motion.h1>
-      </div>
+    <div className="flex flex-col items-center justify-center space-y-10 md:space-y-16 px-3 sm:px-4 md:px-6 lg:px-8 py-6 pb-10 pt-24 md:pt-28 min-h-screen">
+      {/* Centered header with underline */}
+      <motion.div
+        className="w-full text-center mb-10 "
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div className="relative inline-block mb-6">
+          <div className="absolute inset-0 bg-yellow-400 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
+          <h1 className="relative text-3xl sm:text-4xl lg:text-5xl font-heading font-bold z-10 bg-white border-[3px] border-black px-6 py-3 rounded-md">
+            MY BLOGS
+          </h1>
+        </div>
+      </motion.div>
 
       {/* Blog grid - without outer container box */}
       <div className="w-full">

@@ -40,7 +40,7 @@ const ProjectContainer = () => {
         <div className="relative inline-block mb-6">
           <div className="absolute inset-0 bg-blue-500 border-[3px] border-black translate-x-2 translate-y-2 rounded-md"></div>
           <h1 className="relative text-3xl sm:text-4xl lg:text-5xl font-heading font-bold z-10 bg-white border-[3px] border-black px-6 py-3 rounded-md">
-            Projects
+            PROJECTS
           </h1>
         </div>
       </motion.div>
@@ -109,8 +109,8 @@ const ProjectContainer = () => {
                   isButtonPressed
                     ? "translate-y-[2px] translate-x-[2px] shadow-[1px_1px_0px_0px_#000]"
                     : isButtonHovered
-                    ? "translate-y-[-2px] translate-x-[-2px] shadow-[3px_3px_0px_0px_#000]"
-                    : "shadow-[2px_2px_0px_0px_#000]"
+                      ? "translate-y-[-2px] translate-x-[-2px] shadow-[3px_3px_0px_0px_#000]"
+                      : "shadow-[2px_2px_0px_0px_#000]"
                 }
               `}
             >
