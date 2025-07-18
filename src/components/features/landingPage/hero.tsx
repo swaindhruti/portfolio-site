@@ -211,7 +211,7 @@ const HeroSection = () => {
                 `}
               >
                 <a
-                  href="https://drive.google.com/drive/folders/1gU87SBkf4GzEflajoTUE1eukY8uusyxK?usp=sharing"
+                  href="https://drive.google.com/file/d/1HPf3X48IhivspAZF85Q-oWX58kNnYm66/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
