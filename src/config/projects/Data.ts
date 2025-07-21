@@ -6,7 +6,7 @@ export const projects = [
     link: "https://gounplan.com/",
     github: "https://github.com/ask-netgenius",
     image:
-      "https://res.cloudinary.com/dhv234qct/image/upload/c_crop,h_700/v1751758680/portfolio-site-dhrutinandan/Screenshot_2025-07-06_050748_ot9ms9.png",
+      "https://res.cloudinary.com/dhv234qct/image/upload/v1753086378/portfolio-site-dhrutinandan/Screenshot_2025-07-21_135450_hc1ybx.png",
   },
   {
     title: "NutriScan",
