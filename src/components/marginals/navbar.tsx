@@ -147,7 +147,7 @@ const Navbar = () => {
                 className="relative border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black font-heading text-base sm:text-lg 2xl:text-xl font-bold transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5 sm:group-hover:translate-x-1 sm:group-hover:translate-y-1 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 h-auto rounded-md"
               >
                 <a
-                  href="https://drive.google.com/file/d/1S32-8JVpJCSRQVIRhKb7-IkkWPK51pnN/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1eWxM-pl6MNwfHjv-7maxbgiXSaSi42nC/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -270,7 +270,7 @@ const Navbar = () => {
                       <div className="absolute inset-0 bg-blue-400 border-[2px] sm:border-[3px] border-black translate-x-1.5 translate-y-1.5 rounded-md sm:translate-x-2 sm:translate-y-2 transition-transform group-hover:translate-x-1 group-hover:translate-y-1 sm:group-hover:translate-x-1.5 sm:group-hover:translate-y-1.5"></div>
                       <Button className="relative w-full border-[2px] sm:border-[3px] border-black bg-white text-black hover:bg-white hover:text-black text-base xs:text-lg sm:text-lg md:text-2xl font-bold font-heading transition-transform group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] sm:group-hover:translate-x-[-1.5px] sm:group-hover:translate-y-[-1.5px] py-1 xs:py-1.5 sm:py-2 md:py-3 h-auto rounded-md">
                         <a
-                          href="https://drive.google.com/file/d/1S32-8JVpJCSRQVIRhKb7-IkkWPK51pnN/view?usp=sharing"
+                          href="https://drive.google.com/file/d/1eWxM-pl6MNwfHjv-7maxbgiXSaSi42nC/view?usp=sharing"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
